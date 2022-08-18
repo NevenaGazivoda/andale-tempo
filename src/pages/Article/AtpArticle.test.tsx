@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import AtpArticle from './AtpArticle';
 
 test('renders react app', () => {
-  render(<App />);
+    render(<AtpArticle />);
 });
