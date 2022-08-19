@@ -1,26 +1,27 @@
 import React, { FC } from 'react';
-import AtpLink from '../Link/AtpLink';
+import { strings } from '../../constants/strings';
+import AtpLink from '../link/AtpLink';
 import './AtpNavbar.scss'
 
 export const AtpNavbar: FC = () => (
     <nav className='atp-navbar'>
         <ul className='atp-navbar__list'>
             <li className='atp-navbar__list__link'>
-                <AtpLink to="/">Menswear</AtpLink>
+                <AtpLink to="/">{strings.MENSWEAR}</AtpLink>
             </li>
             <li className='atp-navbar__list__link'>
-                <AtpLink to="/">Womenwear</AtpLink>
+                <AtpLink to="/">{strings.WOMENWEAR}</AtpLink>
             </li>
         </ul>
 
-        <p className='atp-navbar__title'>ANDALE TEMPO</p>
+        <p className='atp-navbar__title'>{strings.BRANDNAME}</p>
 
         <ul className='atp-navbar__list'>
             <li className='atp-navbar__list__link'>
-                <AtpLink to="/">Home</AtpLink>
+                <AtpLink to="/">{strings.HOME}</AtpLink>
             </li>
             <li className='atp-navbar__list__link'>
-                <AtpLink to="/article">Article</AtpLink>
+                <AtpLink to="/article">{strings.ARTICLE}</AtpLink>
             </li>
         </ul>
     </nav>

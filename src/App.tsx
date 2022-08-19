@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import AtpArticle from './pages/Article/AtpArticle';
-import Home from './pages/Home/Home';
 import './App.scss'
-import { AtpNavbar } from './components/Navbar/AtpNavbar';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AtpNavbar } from './components/navbar/AtpNavbar';
+import AtpArticle from './pages/article/AtpArticle';
+import Home from './pages/home/Home';
 
 export const App = () => {
   return (
