@@ -5,11 +5,19 @@
     &__informations {
         width: 100%;
 
-        &__title {
+        &__text {
             margin-left: 4rem;
             position: sticky;
-            top: 50vh;
+            top: 40vh;
         }
+
+        &__buttons {
+            display: flex;
+        }
+    }
+
+    &__selector {
+        height: 35px;
     }
 
     &__photos {

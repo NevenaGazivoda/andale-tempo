@@ -3,5 +3,6 @@ export enum strings {
     'HOME' = 'Home',
     'BRANDNAME' = 'ANDALE TEMPO',
     'MENSWEAR' = 'Menswear',
-    'WOMENWEAR' = 'Womenwear'
+    'WOMENWEAR' = 'Womenwear',
+    'BRAND' = 'Brand'
 }
