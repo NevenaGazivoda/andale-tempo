@@ -14,13 +14,13 @@ export const AtpNavbar: FC = () => (
             </li>
         </ul>
 
-        <p className='atp-navbar__title'>{strings.BRANDNAME}</p>
+        <p className='atp-navbar__title'>{strings.BRAND_NAME}</p>
 
         <ul className='atp-navbar__list'>
             <li className='atp-navbar__list__link'>
                 <AtpLink to="/">{strings.HOME}</AtpLink>
             </li>
-            <li className='atp-navbar__list__link'>
+            <li className='atp-navbar__list__link--noPadding'>
                 <AtpLink to="/article">{strings.ARTICLE}</AtpLink>
             </li>
         </ul>

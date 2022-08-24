@@ -16,12 +16,11 @@ export const AtpArticle = () => {
 
     const itemInfo = ['Half-zip closure', 'Rib knit stand collar', 'Logo graphic embroidered at chest', 'Flap pocket', 'Welt pockets', 'Elasticized hem and cuffs ']
 
-
     return (
         <div className="page atp-article">
-            <div className='atp-article__informations'>
-                <div className='atp-article__informations__text'>
-                    <AtpLink to="/">{strings.BRAND}</AtpLink>
+            <div className='atp-article__description'>
+                <div className='atp-article__description__text'>
+                    <AtpLink to="/">OFF-WHITE</AtpLink>
                     <AtpText>Off-White Embroidered Sweater</AtpText>
                     <AtpList listName='French terry sweater.' list={itemInfo} />
                     <AtpText>Supplier color: Snow white</AtpText>
@@ -36,29 +35,27 @@ export const AtpArticle = () => {
                 <img src={hoodie3} alt="hoodie" className='atp-article__photos__photo' />
                 <img src={hoodie4} alt="hoodie" className='atp-article__photos__photo' />
             </div>
-            <div className='atp-article__informations'>
-                <div className='atp-article__informations__text'>
+            <div className='atp-article__actions'>
+                <div className='atp-article__actions__elements'>
                     <AtpPrice price={200} newPrice={100} discount={50}></AtpPrice>
-                    <AtpPrice price={0}></AtpPrice>
-                    <div className='atp-article__informations__buttons'>
-                        <AtpButton>Add to bag</AtpButton>
-                        <AtpButton isSecondary>Add to bag</AtpButton>
-                    </div>
-                </div>
-                <select name='size' id='size-select' className='atp-article__selector'>
-                    <option value="">Select a size</option>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
 
-                </select>
+                    <select name='size' id='size-select' className='atp-article__actions__selector'>
+                        <option value="">{strings.SELECT_A_SIZE}</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+
+                    <div className='atp-article__actions__buttons'>
+                        <AtpButton>{strings.ADD_TO_BAG}</AtpButton>
+                        <AtpButton isSecondary>{strings.ADD_TO_WISH_LIST}</AtpButton>
+                    </div>
+                    <AtpText>Model is 6ft 3 and wears size L.</AtpText>
+                </div>
 
             </div>
-            {/* <div className='atp-article__adding'>
-                <h1 className='atp-article__adding__title'>Add article</h1>
-            </div> */}
         </div >
     );
 }
