@@ -1,3 +1,11 @@
-.page {
-    margin-top: 60px;
+@import './assets/styles/main.scss';
+
+body,
+select,
+button {
+    font-size: $font-size-base;
+}
+
+.atp-page {
+    margin-top: $spacing-4xl;
 }

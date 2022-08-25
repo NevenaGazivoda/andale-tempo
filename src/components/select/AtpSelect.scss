@@ -1,0 +1,22 @@
+@import '../../assets/styles/main.scss';
+
+.atp-selector {
+    text-transform: uppercase;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    border: 1px solid;
+    border-radius: 0;
+    line-height: 2rem;
+    font-weight: 500;
+    font-size: $font-size-base;
+    background: transparent url("../../assets/images/dropdow-arrow-2xmargin-right.png") center right no-repeat;
+    background-size: 1rem;
+}
+
+select:focus {
+    outline: 0;
+}

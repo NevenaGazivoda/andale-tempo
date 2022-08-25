@@ -11,11 +11,12 @@ type Props = PropsWithChildren<{
 export const AtpPrice: FC<Props> = ({ price, newPrice, discount }) => {
 
     return (
-        <AtpText>${price} USD
-            {newPrice && <>
-                <span className='atp-price'>${newPrice} USD</span>
+        <AtpText>
+            {newPrice ? <>
+                <span>${newPrice} USD</span>
+                <span className='atp-price'>${price} USD</span>
                 <span className='atp-price--grey'>{discount}% OFF</span>
-            </>}
+            </> : <span>${price} USD</span>}
         </AtpText>
     )
 };

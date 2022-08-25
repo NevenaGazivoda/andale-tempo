@@ -1,14 +1,16 @@
+@import '../../assets/styles/main.scss';
+
 .atp-navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: $color-white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: $spacing-4xl;
 
     &__list {
         list-style: none;
@@ -16,15 +18,19 @@
         flex-direction: row;
         padding-inline-start: 0;
         margin: 0 4rem;
+        width: 14rem;
+
+        &--right {
+            justify-content: flex-end;
+        }
 
         &__link {
-            padding-right: 10px;
+            padding-right: $spacing-md;
 
             &--noPadding {
                 padding-right: 0;
             }
         }
-
     }
 
     &__title {

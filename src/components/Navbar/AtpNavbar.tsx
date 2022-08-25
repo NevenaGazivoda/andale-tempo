@@ -16,7 +16,7 @@ export const AtpNavbar: FC = () => (
 
         <p className='atp-navbar__title'>{strings.BRAND_NAME}</p>
 
-        <ul className='atp-navbar__list'>
+        <ul className='atp-navbar__list atp-navbar__list--right'>
             <li className='atp-navbar__list__link'>
                 <AtpLink to="/">{strings.HOME}</AtpLink>
             </li>

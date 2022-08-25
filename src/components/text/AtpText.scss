@@ -1,8 +1,9 @@
 @import '../../assets/styles/main.scss';
 
 .atp-text {
-    color: black;
+    color: $color-black;
     font-size: $font-size-base;
     text-align: left;
     margin-block-start: 0;
+    margin-bottom: $spacing-xl;
 }

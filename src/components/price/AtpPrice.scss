@@ -1,9 +1,11 @@
+@import '../../assets/styles/main.scss';
+
 .atp-price {
-    color: #888;
+    color: $color-grey;
     text-decoration: line-through;
-    padding: 0 10px;
+    padding: 0 $spacing-md;
 
     &--grey {
-        color: #888;
+        color: $color-grey;
     }
 }
