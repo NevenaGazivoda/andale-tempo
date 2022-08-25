@@ -55,7 +55,7 @@ export const AtpArticle = () => {
             <div className='atp-article__actions'>
                 <div className='atp-article__actions__elements'>
                     <AtpPrice price={ARTICLE_DATA.price} newPrice={ARTICLE_DATA.newPrice} discount={ARTICLE_DATA.discount} />
-                    <AtpSelect selectValues={ARTICLE_DATA.articleSize} />
+                    <AtpSelect selectValues={ARTICLE_DATA.articleSize} name={'articleSize'} />
 
                     <div className='atp-article__actions__buttons'>
                         <AtpButton>{strings.ADD_TO_BAG}</AtpButton>

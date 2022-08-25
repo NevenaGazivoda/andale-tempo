@@ -10,6 +10,6 @@ export interface Article {
     price: number;
     newPrice?: number;
     discount?: number;
-    articleSize: { value: string, label: string }[]
+    articleSize: { value: string, label: string }[];
     modelSize: string;
 }
