@@ -35,6 +35,7 @@ export const AtpArticle = () => {
 
     return (
         <div className="atp-page atp-article">
+
             <div className='atp-article__description'>
                 <div className='atp-article__description__text'>
                     <AtpLink to="/">{ARTICLE_DATA.brand}</AtpLink>
@@ -46,12 +47,14 @@ export const AtpArticle = () => {
                     <AtpText>{ARTICLE_DATA.articleCode}</AtpText>
                 </div>
             </div>
+
             <div className='atp-article__photos'>
                 <img src={hoodie1} alt="hoodie" className='atp-article__photos__photo' />
-                <img src={hoodie2} alt="hoodie" className='atp-article__photos__photo' />
+                {/* <img src={hoodie2} alt="hoodie" className='atp-article__photos__photo' />
                 <img src={hoodie3} alt="hoodie" className='atp-article__photos__photo' />
-                <img src={hoodie4} alt="hoodie" className='atp-article__photos__photo' />
+                <img src={hoodie4} alt="hoodie" className='atp-article__photos__photo' /> */}
             </div>
+
             <div className='atp-article__actions'>
                 <div className='atp-article__actions__elements'>
                     <AtpPrice price={ARTICLE_DATA.price} newPrice={ARTICLE_DATA.newPrice} discount={ARTICLE_DATA.discount} />
@@ -63,8 +66,8 @@ export const AtpArticle = () => {
                     </div>
                     <AtpText>{ARTICLE_DATA.modelSize}</AtpText>
                 </div>
-
             </div>
+
         </div >
     );
 }
