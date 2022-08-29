@@ -10,6 +10,7 @@ export interface Article {
     price: number;
     newPrice?: number;
     discount?: number;
+    images: { url: string, title: string }[];
     articleSize: { value: string, label: string }[];
     modelSize: string;
 }

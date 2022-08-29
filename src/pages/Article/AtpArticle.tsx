@@ -29,6 +29,7 @@ export const AtpArticle = () => {
         price: 200,
         newPrice: 100,
         discount: 50,
+        images: [{ url: hoodie1, title: 'hoodie1' }, { url: hoodie2, title: 'hoodie2' }, { url: hoodie3, title: 'hoodie3' }, { url: hoodie4, title: 'hoodie4' }],
         articleSize: [{ value: "xs", label: "XS" }, { value: "s", label: "S" }, { value: "m", label: "M" }, { value: "l", label: "L" }, { value: "xl", label: "XL" }],
         modelSize: 'Model is 6ft 3 and wears size L.',
     }
@@ -49,10 +50,9 @@ export const AtpArticle = () => {
             </div>
 
             <div className='atp-article__photos'>
-                <img src={hoodie1} alt="hoodie" className='atp-article__photos__photo' />
-                {/* <img src={hoodie2} alt="hoodie" className='atp-article__photos__photo' />
-                <img src={hoodie3} alt="hoodie" className='atp-article__photos__photo' />
-                <img src={hoodie4} alt="hoodie" className='atp-article__photos__photo' /> */}
+                {ARTICLE_DATA.images.map((image, imageIndex) => (
+                    <img key={imageIndex} src={image.url} alt="hoodie" className='atp-article__photos__photo' />
+                ))}
             </div>
 
             <div className='atp-article__actions'>
