@@ -9,3 +9,9 @@
         color: $color-grey;
     }
 }
+
+.row {
+    @media screen and (min-width: $breakpoint-xl) {
+        display: none;
+    }
+}

@@ -15,7 +15,7 @@
         color: $color-white;
         width: 60%;
 
-        @media screen and (max-width: $breakpoint-md) {
+        @media screen and (max-width: $breakpoint-xl) {
             width: 90%;
         }
     }
@@ -24,6 +24,10 @@
         background-color: $color-white;
         color: $color-black;
         border-color: $color-white;
-        width: 100%;
+        width: 40%;
+
+        @media screen and (max-width: $breakpoint-xl) {
+            width: 10%;
+        }
     }
 }

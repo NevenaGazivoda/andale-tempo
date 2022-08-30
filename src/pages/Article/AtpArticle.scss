@@ -1,121 +1,108 @@
 @import '../../assets/styles/main.scss';
 
-.atp-article {
+.atp-article-desktop {
+
     display: flex;
-    flex-direction: column;
-    height: 100vh;
+    flex-direction: row;
+    height: 100%;
     margin-left: $spacing-xl;
     margin-right: $spacing-xl;
 
-    &__photos {
-        order: 1;
+    &__description {
         width: 100%;
+        margin-left: $spacing-4xl;
 
-        &__photo {
-            display: none;
+        &__text {
+            margin-left: $spacing-xl;
+            position: sticky;
+            top: 35vh;
         }
     }
 
     &__actions {
-        order: 2;
         width: 100%;
+        margin: 0 $spacing-4xl 0 0;
+
+        &__elements {
+            position: sticky;
+            top: 40vh;
+            margin-right: $spacing-xl;
+            width: 400px;
+            margin-left: auto;
+        }
+
+        &__buttons {
+            margin-bottom: $spacing-xl;
+        }
+    }
+
+    &__photos {
+        width: 100%;
+
+        &__photo {
+            margin: 0 auto;
+            height: calc(100vh - 60px);
+            margin-bottom: $spacing-4xl;
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-xl) {
+        display: none;
+    }
+}
+
+.atp-article-mobile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: $spacing-xl;
+    margin-right: $spacing-xl;
+
+    &__photos {
+        width: 100%;
+    }
+
+    &__description {
+        width: 100%;
+
+        &__info {
+            display: flex;
+            flex-direction: row;
+
+            &__brand {
+                display: flex;
+                flex-direction: column;
+                width: 60%;
+            }
+
+            &__price {
+                width: 40%;
+                text-align-last: right;
+            }
+        }
 
         &__buttons {
             display: flex;
             flex-direction: row;
             margin-bottom: $spacing-xl;
             width: 100%;
-
-            &__text {
-                display: none;
-            }
-
-            &__heart {
-                width: 10%;
-            }
         }
     }
 
-    &__description {
-        order: 3;
-    }
 
     @media screen and (min-width: $breakpoint-md) {
-        flex-wrap: wrap;
-
-        &__photos {
-            order: 1;
-            height: 100%;
-            width: 60%;
-        }
-
-
-        &__actions {
-            margin-top: 1rem;
-            order: 2;
-            width: 40%;
-
-            &__buttons {
-
-                &__heart {
-                    display: none;
-                }
-
-                &__text {
-                    display: block;
-                    width: 40%;
-                }
-            }
-        }
+        flex-direction: row;
 
         &__description {
-            order: 3;
-            width: 40%;
+            margin-top: $spacing-xl;
         }
     }
 
     @media screen and (min-width: $breakpoint-xl) {
-        flex-direction: row;
-        flex-wrap: nowrap;
-
-        &__description {
-            order: 1;
-            width: 100%;
-            margin-left: $spacing-4xl;
-
-            &__text {
-                margin-left: $spacing-xl;
-                position: sticky;
-                top: 35vh;
-            }
-        }
-
-        &__actions {
-            width: 100%;
-            order: 3;
-            margin: 0 $spacing-4xl 0 0;
-
-            &__elements {
-                position: sticky;
-                top: 40vh;
-                margin-right: $spacing-xl;
-                width: 400px;
-                margin-left: auto;
-            }
-        }
-
-        &__photos {
-            width: 100%;
-            order: 2;
-
-            &__photo {
-                margin: 0 auto;
-                height: calc(100vh - 60px);
-                margin-bottom: $spacing-4xl;
-                display: block;
-            }
-        }
+        display: none;
     }
+
 }
 
 .icon-heart {

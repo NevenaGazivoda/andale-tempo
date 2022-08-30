@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AtpArticle.scss'
 import hoodie1 from '../../assets/images/hoodie1.jpeg'
 import hoodie2 from '../../assets/images/hoodie2.jpeg'
@@ -35,45 +35,77 @@ export const AtpArticle = () => {
         articleSize: [{ value: "xs", label: "XS" }, { value: "s", label: "S" }, { value: "m", label: "M" }, { value: "l", label: "L" }, { value: "xl", label: "XL" }],
         modelSize: 'Model is 6ft 3 and wears size L.',
     }
+    const [isLiked, setIsLiked] = useState(false);
 
     return (
-        <div className="atp-page atp-article">
+        <>
+            <div className="atp-page atp-article-desktop">
 
-            <div className='atp-article__description'>
-                <div className='atp-article__description__text'>
-                    <AtpLink to="/">{ARTICLE_DATA.brand}</AtpLink>
-                    <AtpText>{ARTICLE_DATA.articleName}</AtpText>
+                <div className='atp-article-desktop__description'>
+                    <div className='atp-article-desktop__description__text'>
+                        <AtpLink to="/">{ARTICLE_DATA.brand}</AtpLink>
+                        <AtpText>{ARTICLE_DATA.articleName}</AtpText>
+                        <AtpList listName={ARTICLE_DATA.description} list={ARTICLE_DATA.features} />
+                        <AtpText>{strings.SUPPLIER_COLOR} {ARTICLE_DATA.supplierColor}</AtpText>
+                        <AtpText>{ARTICLE_DATA.material}</AtpText>
+                        <AtpText>{ARTICLE_DATA.countryOfOrigin}</AtpText>
+                        <AtpText>{ARTICLE_DATA.articleCode}</AtpText>
+                    </div>
+                </div>
+
+                <div className='atp-article-desktop__photos'>
+                    {ARTICLE_DATA.images.map((image, imageIndex) => (
+                        <img key={imageIndex} src={image.url} alt={image.title} className='atp-article-desktop__photos__photo' />
+                    ))}
+                </div>
+
+                <div className='atp-article-desktop__actions'>
+                    <div className='atp-article-desktop__actions__elements'>
+                        <AtpPrice price={ARTICLE_DATA.price} newPrice={ARTICLE_DATA.newPrice} discount={ARTICLE_DATA.discount} />
+                        <AtpSelect selectValues={ARTICLE_DATA.articleSize} name={'articleSize'} />
+
+                        <div className='atp-article-desktop__actions__buttons'>
+                            <AtpButton>{strings.ADD_TO_BAG}</AtpButton>
+                            <AtpButton isSecondary>{strings.ADD_TO_WISH_LIST}</AtpButton>
+                        </div>
+                        <AtpText>{ARTICLE_DATA.modelSize}</AtpText>
+                    </div>
+                </div>
+            </div >
+
+
+            <div className="atp-page atp-article-mobile">
+
+                <div className='atp-article-mobile__photos'>
+                    <AtpCarousel slides={ARTICLE_DATA.images} />
+                </div>
+
+                <div className='atp-article-mobile__description'>
+                    <div className='atp-article-mobile__description__info'>
+                        <div className='atp-article-mobile__description__info__brand'>
+                            <AtpLink to="/">{ARTICLE_DATA.brand}</AtpLink>
+                            <AtpText>{ARTICLE_DATA.articleName}</AtpText>
+                        </div>
+                        <div className='atp-article-mobile__description__info__price'>
+                            <AtpPrice price={ARTICLE_DATA.price} newPrice={ARTICLE_DATA.newPrice} discount={ARTICLE_DATA.discount} />
+                        </div>
+                    </div>
+
+                    <AtpSelect selectValues={ARTICLE_DATA.articleSize} name={'articleSize'} />
+
+                    <div className='atp-article-mobile__description__buttons'>
+                        <AtpButton>{strings.ADD_TO_BAG}</AtpButton>
+                        <AtpButton isSecondary><HiOutlineHeart className='icon-heart' onClick={() => setIsLiked(!isLiked)} fill={isLiked ? 'black' : 'white'} /></AtpButton>
+                    </div>
+
                     <AtpList listName={ARTICLE_DATA.description} list={ARTICLE_DATA.features} />
                     <AtpText>{strings.SUPPLIER_COLOR} {ARTICLE_DATA.supplierColor}</AtpText>
                     <AtpText>{ARTICLE_DATA.material}</AtpText>
                     <AtpText>{ARTICLE_DATA.countryOfOrigin}</AtpText>
                     <AtpText>{ARTICLE_DATA.articleCode}</AtpText>
                 </div>
-            </div>
-
-            <div className='atp-article__photos'>
-                <AtpCarousel slides={ARTICLE_DATA.images} />
-                {ARTICLE_DATA.images.map((image, imageIndex) => (
-                    <img key={imageIndex} src={image.url} alt="hoodie" className='atp-article__photos__photo' />
-                ))}
-            </div>
-
-            <div className='atp-article__actions'>
-                <div className='atp-article__actions__elements'>
-                    <AtpPrice price={ARTICLE_DATA.price} newPrice={ARTICLE_DATA.newPrice} discount={ARTICLE_DATA.discount} />
-                    <AtpSelect selectValues={ARTICLE_DATA.articleSize} name={'articleSize'} />
-
-                    <div className='atp-article__actions__buttons'>
-                        <AtpButton>{strings.ADD_TO_BAG}</AtpButton>
-                        <span className='atp-article__actions__buttons__text'> <AtpButton isSecondary>{strings.ADD_TO_WISH_LIST}</AtpButton></span>
-                        <span className='atp-article__actions__buttons__heart'><AtpButton isSecondary><HiOutlineHeart className='icon-heart' /></AtpButton></span>
-
-                    </div>
-                    <AtpText>{ARTICLE_DATA.modelSize}</AtpText>
-                </div>
-            </div>
-
-        </div >
+            </div >
+        </>
     );
 }
 
