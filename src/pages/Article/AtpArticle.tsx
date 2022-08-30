@@ -13,6 +13,7 @@ import AtpSelect from '../../components/select/AtpSelect';
 import { strings } from '../../constants/strings';
 import { Article } from '../../models/article.model';
 import AtpCarousel from '../../components/carousel/AtpCarousel';
+import { HiOutlineHeart } from 'react-icons/hi';
 
 
 export const AtpArticle = () => {
@@ -20,7 +21,7 @@ export const AtpArticle = () => {
     const ARTICLE_DATA: Article =
     {
         brand: 'OFF-WHITE',
-        articleName: 'Off-White Embroidered SweaterRRRR',
+        articleName: 'Off-White Embroidered Sweater',
         description: 'French terry sweater.',
         features: ['Half-zip closure', 'Rib knit stand collar', 'Logo graphic embroidered at chest', 'Flap pocket', 'Welt pockets', 'Elasticized hem and cuffs '],
         supplierColor: 'Snow white',
@@ -64,7 +65,9 @@ export const AtpArticle = () => {
 
                     <div className='atp-article__actions__buttons'>
                         <AtpButton>{strings.ADD_TO_BAG}</AtpButton>
-                        <AtpButton isSecondary>{strings.ADD_TO_WISH_LIST}</AtpButton>
+                        <span className='atp-article__actions__buttons__text'> <AtpButton isSecondary>{strings.ADD_TO_WISH_LIST}</AtpButton></span>
+                        <span className='atp-article__actions__buttons__heart'><AtpButton isSecondary><HiOutlineHeart className='icon-heart' /></AtpButton></span>
+
                     </div>
                     <AtpText>{ARTICLE_DATA.modelSize}</AtpText>
                 </div>

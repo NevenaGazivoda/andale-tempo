@@ -14,12 +14,16 @@
         border-color: $color-black;
         color: $color-white;
         width: 60%;
+
+        @media screen and (max-width: $breakpoint-md) {
+            width: 90%;
+        }
     }
 
     &--secondary {
         background-color: $color-white;
         color: $color-black;
         border-color: $color-white;
-        width: 40%;
+        width: 100%;
     }
 }
