@@ -12,6 +12,7 @@ import AtpPrice from '../../components/price/AtpPrice';
 import AtpSelect from '../../components/select/AtpSelect';
 import { strings } from '../../constants/strings';
 import { Article } from '../../models/article.model';
+import AtpCarousel from '../../components/carousel/AtpCarousel';
 
 
 export const AtpArticle = () => {
@@ -50,6 +51,7 @@ export const AtpArticle = () => {
             </div>
 
             <div className='atp-article__photos'>
+                <AtpCarousel slides={ARTICLE_DATA.images} />
                 {ARTICLE_DATA.images.map((image, imageIndex) => (
                     <img key={imageIndex} src={image.url} alt="hoodie" className='atp-article__photos__photo' />
                 ))}
