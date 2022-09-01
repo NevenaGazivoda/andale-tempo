@@ -87,6 +87,10 @@
             flex-direction: row;
             margin-bottom: $spacing-xl;
             width: 100%;
+
+            &__icon-heart {
+                font-size: 1.5rem;
+            }
         }
     }
 
@@ -103,9 +107,4 @@
         display: none;
     }
 
-}
-
-.icon-heart {
-    width: 25px;
-    height: 25px;
 }

@@ -15,7 +15,6 @@ import { Article } from '../../models/article.model';
 import AtpCarousel from '../../components/carousel/AtpCarousel';
 import { HiOutlineHeart } from 'react-icons/hi';
 
-
 export const AtpArticle = () => {
 
     const ARTICLE_DATA: Article =
@@ -36,6 +35,7 @@ export const AtpArticle = () => {
         modelSize: 'Model is 6ft 3 and wears size L.',
     }
     const [isLiked, setIsLiked] = useState(false);
+
 
     return (
         <>
@@ -95,7 +95,7 @@ export const AtpArticle = () => {
 
                     <div className='atp-article-mobile__description__buttons'>
                         <AtpButton>{strings.ADD_TO_BAG}</AtpButton>
-                        <AtpButton isSecondary><HiOutlineHeart className='icon-heart' onClick={() => setIsLiked(!isLiked)} fill={isLiked ? 'black' : 'white'} /></AtpButton>
+                        <AtpButton isSecondary><HiOutlineHeart className='atp-article-mobile__description__buttons__icon-heart' onClick={() => setIsLiked(!isLiked)} fill={isLiked ? 'black' : 'white'} /></AtpButton>
                     </div>
 
                     <AtpList listName={ARTICLE_DATA.description} list={ARTICLE_DATA.features} />

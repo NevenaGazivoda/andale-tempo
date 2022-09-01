@@ -14,7 +14,7 @@ export const AtpPrice: FC<Props> = ({ price, newPrice, discount }) => {
         <AtpText>
             {newPrice ? <>
                 <span>${newPrice} USD</span>
-                <div className='row'></div>
+                <span className='row'></span>
                 <span className='atp-price'>${price} USD</span>
                 <span className='atp-price--grey'>{discount}% OFF</span>
             </> : <span>${price} USD</span>}

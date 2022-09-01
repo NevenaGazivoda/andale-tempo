@@ -11,14 +11,41 @@
     justify-content: space-between;
     align-items: center;
     height: $spacing-4xl;
+    z-index: 1000;
 
-    &__list {
+    &__desktop-list {
         list-style: none;
         display: flex;
         flex-direction: row;
         padding-inline-start: 0;
         margin: 0 4rem;
-        width: 14rem;
+        width: 12rem;
+
+        &--right {
+            justify-content: flex-end;
+        }
+
+        &__link {
+
+            padding-right: $spacing-md;
+
+            &--noPadding {
+                padding-right: 0;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint-md) {
+            display: none;
+        }
+    }
+
+    &__mobile-list {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        padding-inline-start: 0;
+        margin: 0 1rem;
+        width: 4rem;
 
         &--right {
             justify-content: flex-end;
@@ -27,9 +54,17 @@
         &__link {
             padding-right: $spacing-md;
 
+            &__icon {
+                font-size: 1.5rem;
+            }
+
             &--noPadding {
                 padding-right: 0;
             }
+        }
+
+        @media screen and (min-width: $breakpoint-md) {
+            display: none;
         }
     }
 

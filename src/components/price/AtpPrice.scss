@@ -11,6 +11,8 @@
 }
 
 .row {
+    display: block;
+
     @media screen and (min-width: $breakpoint-xl) {
         display: none;
     }
