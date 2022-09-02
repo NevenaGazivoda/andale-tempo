@@ -8,7 +8,7 @@ type Props = {
 
 export const AtpCarouselButton: FC<Props> = ({ selected, onClick }) => (
     <button
-        className={`embla__dot ${selected ? "is-selected" : ""}`}
+        className={`atp-carousel__dot ${selected ? "is-selected" : ""}`}
         type="button"
         onClick={onClick}
     />

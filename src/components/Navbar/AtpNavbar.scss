@@ -11,64 +11,55 @@
     justify-content: space-between;
     align-items: center;
     height: $spacing-4xl;
-    z-index: 1000;
-
-    &__desktop-list {
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        padding-inline-start: 0;
-        margin: 0 4rem;
-        width: 12rem;
-
-        &--right {
-            justify-content: flex-end;
-        }
-
-        &__link {
-
-            padding-right: $spacing-md;
-
-            &--noPadding {
-                padding-right: 0;
-            }
-        }
-
-        @media screen and (max-width: $breakpoint-md) {
-            display: none;
-        }
-    }
-
-    &__mobile-list {
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        padding-inline-start: 0;
-        margin: 0 1rem;
-        width: 4rem;
-
-        &--right {
-            justify-content: flex-end;
-        }
-
-        &__link {
-            padding-right: $spacing-md;
-
-            &__icon {
-                font-size: 1.5rem;
-            }
-
-            &--noPadding {
-                padding-right: 0;
-            }
-        }
-
-        @media screen and (min-width: $breakpoint-md) {
-            display: none;
-        }
-    }
+    z-index: $zindex-fixed;
 
     &__title {
         font-size: large;
+    }
+
+    .navbar-list {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        padding-inline-start: 0;
+
+        &--desktop {
+            margin: 0 4rem;
+            width: 12rem;
+
+            @media screen and (max-width: $breakpoint-md) {
+                display: none;
+            }
+
+            @media screen and (max-width: $breakpoint-lg) {
+                margin: 0 3rem;
+            }
+        }
+
+        &--mobile {
+            margin: 0 1rem;
+            width: 4rem;
+
+            @media screen and (min-width: $breakpoint-md) {
+                display: none;
+            }
+        }
+
+        &--right {
+            justify-content: flex-end;
+        }
+
+        &__link {
+            padding-right: $spacing-md;
+
+            &--noPadding {
+                padding-right: 0;
+            }
+
+            &__mobile-icon {
+                font-size: 1.5rem;
+            }
+        }
+
     }
 }

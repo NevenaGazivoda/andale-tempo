@@ -10,12 +10,19 @@ import { strings } from '../../constants/strings';
 import { Article } from '../../models/article.model';
 import AtpCarousel from '../../components/carousel/AtpCarousel';
 import { HiOutlineHeart } from 'react-icons/hi';
+import AtpModal from '../../components/modal/AtpModal';
 
 type Props = {
     article: Article;
 }
 
 export const AtpArticle: FC<Props> = ({ article }) => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    function toggleModal() {
+        setIsOpen(!isOpen);
+    }
 
     const [isLiked, setIsLiked] = useState(false);
 
@@ -38,8 +45,10 @@ export const AtpArticle: FC<Props> = ({ article }) => {
 
                 <div className='atp-article-desktop__photos'>
                     {article.images.map((image, imageIndex) => (
-                        <img key={imageIndex} src={image.url} alt={image.title} className='atp-article-desktop__photos__photo' />
+                        <img key={imageIndex} src={image.url} alt={image.title} className='atp-article-desktop__photos__photo' onClick={toggleModal} />
                     ))}
+                    <AtpModal isOpen={isOpen} toggleModal={toggleModal} content={article.images} />
+
                 </div>
 
                 <div className='atp-article-desktop__actions'>
@@ -60,7 +69,7 @@ export const AtpArticle: FC<Props> = ({ article }) => {
             <div className="atp-page atp-article-mobile">
 
                 <div className='atp-article-mobile__photos'>
-                    <AtpCarousel slides={article.images} />
+                    <AtpCarousel slides={article.images} toggleModal={toggleModal} />
                 </div>
 
                 <div className='atp-article-mobile__description'>

@@ -64,20 +64,21 @@
 
     &__description {
         width: 100%;
+        margin: 0 auto;
+        max-width: 37.5rem;
 
         &__info {
             display: flex;
             flex-direction: row;
 
             &__brand {
-                display: flex;
                 flex-direction: column;
                 width: 60%;
             }
 
             &__price {
                 width: 40%;
-                text-align-last: right;
+                text-align: end;
             }
         }
 
@@ -96,6 +97,8 @@
 
     @media screen and (min-width: $breakpoint-md) {
         flex-direction: row;
+        margin-left: $spacing-4xl;
+        margin-right: $spacing-4xl;
 
         &__description {
             margin-top: $spacing-xl;
