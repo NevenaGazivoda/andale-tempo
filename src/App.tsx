@@ -9,6 +9,8 @@ import hoodie1 from './assets/images/hoodie1.jpeg'
 import hoodie2 from './assets/images/hoodie2.jpeg'
 import hoodie3 from './assets/images/hoodie3.jpeg'
 import hoodie4 from './assets/images/hoodie4.jpeg'
+import Atp404 from './pages/page404/Atp404';
+import AtpFooter from './pages/footer/AtpFooter';
 
 const ARTICLE_DATA: Article =
 {
@@ -31,12 +33,19 @@ const ARTICLE_DATA: Article =
 export const App = () => {
   return (
     <Router>
-      <AtpNavbar />
+      <header>
+        <AtpNavbar />
+      </header>
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/article" element={<AtpArticle article={ARTICLE_DATA} />} />
+        <Route path="*" element={<Atp404 />} />
       </Routes>
+
+      <footer>
+        <AtpFooter />
+      </footer>
     </Router>
   );
 }

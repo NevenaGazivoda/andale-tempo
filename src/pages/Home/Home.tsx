@@ -3,7 +3,7 @@ import React from 'react';
 export const AtpHome = () => {
 
     return (
-        <div className="page home">
+        <div className="atp-page">
             Home
         </div>
     );
