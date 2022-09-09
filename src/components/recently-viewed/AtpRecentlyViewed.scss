@@ -1,0 +1,19 @@
+@import '../../assets/styles/main.scss';
+
+.atp-recently-viewed {
+    margin: $spacing-xl $spacing-4xl;
+
+    &__articles {
+        display: grid;
+        gap: 1rem;
+        justify-content: start;
+        grid-auto-flow: column;
+        grid-auto-columns: 11rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    &__articles::-webkit-scrollbar {
+        display: none;
+    }
+}

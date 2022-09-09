@@ -11,6 +11,7 @@ import { Article } from '../../models/article.model';
 import AtpCarousel from '../../components/carousel/AtpCarousel';
 import { HiOutlineHeart } from 'react-icons/hi';
 import AtpModal from '../../components/modal/AtpModal';
+import AtpRecentlyViewed from '../../components/recently-viewed/AtpRecentlyViewed';
 
 type Props = {
     article: Article;
@@ -97,6 +98,8 @@ export const AtpArticle: FC<Props> = ({ article }) => {
                     <AtpText>{article.articleCode}</AtpText>
                 </div>
             </div >
+
+            <AtpRecentlyViewed />
         </>
     );
 }

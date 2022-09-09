@@ -4,12 +4,13 @@ import './AtpLink.scss'
 
 type Props = PropsWithChildren<{
     to: string;
+    className?: string;
 }>
 
-export const AtpLink: FC<Props> = ({ children, to }) => (
-    <div className="atp-link">
+export const AtpLink: FC<Props> = ({ children, to, className }) => (
+    <p className={`atp-link ${className}`}>
         <Link to={to}>{children}</Link>
-    </div>
+    </p>
 );
 
 
