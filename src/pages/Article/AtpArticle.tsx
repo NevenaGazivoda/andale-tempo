@@ -7,17 +7,17 @@ import AtpButton from '../../components/button/AtpButton';
 import AtpPrice from '../../components/price/AtpPrice';
 import AtpSelect from '../../components/select/AtpSelect';
 import { strings } from '../../constants/strings';
-import { Article } from '../../models/article.model';
 import AtpCarousel from '../../components/carousel/AtpCarousel';
 import { HiOutlineHeart } from 'react-icons/hi';
 import AtpModal from '../../components/modal/AtpModal';
 import AtpRecentlyViewed from '../../components/recently-viewed/AtpRecentlyViewed';
+import { ARTICLES_DATA } from '../../assets/dummy-data/atp-data';
+import { useParams } from 'react-router-dom';
+import { Article } from '../../models/article.model';
 
-type Props = {
-    article: Article;
-}
-
-export const AtpArticle: FC<Props> = ({ article }) => {
+export const AtpArticle: FC = () => {
+    const { articleCode } = useParams();
+    const article = ARTICLES_DATA.find(article => article.articleCode === articleCode) as Article;
 
     const [isOpen, setIsOpen] = useState(false);
 

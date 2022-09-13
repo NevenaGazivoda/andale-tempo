@@ -16,8 +16,8 @@ export const App = () => {
       </header>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/article" element={<AtpArticle article={ARTICLES_DATA[0]} />} />
+        <Route path="/" element={<Home articles={ARTICLES_DATA} />} />
+        <Route path="/article/:articleCode" element={<AtpArticle />} />
         <Route path="*" element={<Atp404 />} />
       </Routes>
 
