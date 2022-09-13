@@ -15,7 +15,7 @@ export const AtpHome: FC<Props> = ({ articles }) => {
             <AtpText>ARTICLES</AtpText>
             <div className='atp-recently-viewed__articles'>
                 {articles.map((card, cardIndex) => (
-                    <AtpArticleCard key={cardIndex} articleCode={card.articleCode} image={card.images[0]} brand={card.brand} price={card.price} />
+                    <AtpArticleCard key={cardIndex} article={card} />
                 ))}
             </div>
         </div>
