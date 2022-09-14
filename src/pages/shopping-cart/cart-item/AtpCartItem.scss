@@ -1,0 +1,18 @@
+.atp-item {
+
+    &__elements {
+
+        display: flex;
+
+        &__photo {
+            max-height: 200px;
+            max-width: 100px;
+            margin-bottom: 1rem;
+        }
+
+        &__description {
+            margin-left: 1rem;
+        }
+    }
+
+}

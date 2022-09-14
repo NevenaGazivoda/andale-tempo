@@ -15,7 +15,11 @@ import { ARTICLES_DATA } from '../../assets/dummy-data/atp-data';
 import { useParams } from 'react-router-dom';
 import { Article } from '../../models/article.model';
 
-export const AtpArticle: FC = () => {
+type Props = {
+    handleAddToCart: (clickedItem: Article) => void;
+};
+
+export const AtpArticle: FC<Props> = ({ handleAddToCart }) => {
     const { articleCode } = useParams();
     const article = ARTICLES_DATA.find(article => article.articleCode === articleCode) as Article;
 
@@ -26,7 +30,6 @@ export const AtpArticle: FC = () => {
     }
 
     const [isLiked, setIsLiked] = useState(false);
-
 
     return (
         <>
@@ -58,7 +61,7 @@ export const AtpArticle: FC = () => {
                         <AtpSelect selectValues={article.articleSize} name={'articleSize'} />
 
                         <div className='atp-article-desktop__actions__buttons'>
-                            <AtpButton>{strings.ADD_TO_BAG}</AtpButton>
+                            <AtpButton onClick={() => handleAddToCart(article)}>{strings.ADD_TO_BAG}</AtpButton>
                             <AtpButton isSecondary>{strings.ADD_TO_WISH_LIST}</AtpButton>
                         </div>
                         <AtpText>{article.modelSize}</AtpText>

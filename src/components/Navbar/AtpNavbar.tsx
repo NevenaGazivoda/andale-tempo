@@ -31,7 +31,7 @@ export const AtpNavbar: FC = () => (
                 <AtpLink to="/">{strings.HOME}</AtpLink>
             </li>
             <li className='navbar-list__link--noPadding'>
-                <AtpLink to="/article">{strings.ARTICLE}</AtpLink>
+                <AtpLink to="/shopping-cart">{strings.SHOPPING_CART}</AtpLink>
             </li>
         </ul>
 
@@ -40,7 +40,7 @@ export const AtpNavbar: FC = () => (
                 <AtpLink to="/"><VscAccount className='navbar-list__link__mobile-icon' /> </AtpLink>
             </li>
             <li className='navbar-list__link--noPadding'>
-                <AtpLink to="/article"><VscLock className='navbar-list__link__mobile-icon' /></AtpLink>
+                <AtpLink to="/shopping-cart"><VscLock className='navbar-list__link__mobile-icon' /></AtpLink>
             </li>
         </ul>
     </nav>

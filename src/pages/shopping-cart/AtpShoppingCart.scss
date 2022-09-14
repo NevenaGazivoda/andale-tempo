@@ -1,0 +1,38 @@
+@import '../../assets/styles/main.scss';
+
+.atp-shopping-cart {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    max-width: 700px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $color-light-grey;
+        padding-left: 7.25rem;
+
+        &__grey {
+            color: $color-grey;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        padding-inline-start: 0;
+
+        &__item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid $color-light-grey;
+            margin-top: 1rem;
+
+        }
+    }
+
+    &__total {
+        display: flex;
+        justify-content: space-between;
+
+        padding-left: 7.25rem;
+    }
+}

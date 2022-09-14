@@ -13,4 +13,5 @@ export interface Article {
     images: { url: string, title: string }[];
     articleSize: { value: string, label: string }[];
     modelSize: string;
+    amount?: number;
 }

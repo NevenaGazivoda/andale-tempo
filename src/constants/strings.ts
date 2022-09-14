@@ -8,5 +8,6 @@ export enum strings {
     'MENSWEAR' = 'Menswear',
     'RECENTLY_VIEWED' = 'RECENTLY VIEWED',
     'SELECT_A_SIZE' = 'SELECT A SIZE',
+    'SHOPPING_CART' = 'SHOPPING CART',
     'WOMENWEAR' = 'Womenwear',
 }
