@@ -21,7 +21,7 @@ export const App = () => {
       if (isItemInCart) {
         return prev.map(item =>
           item.articleCode === clickedArticle.articleCode
-            ? { ...item, amount: item.amount! + 1 }
+            ? { ...item, amount: item.amount + 1 }
             : item
         );
       }
@@ -34,7 +34,7 @@ export const App = () => {
       prev.reduce((items, item) => {
         if (item.articleCode === id) {
           if (item.amount === 1) return items;
-          return [...items, { ...item, amount: item.amount! - 1 }];
+          return [...items, { ...item, amount: item.amount - 1 }];
         } else {
           return [...items, item];
         }

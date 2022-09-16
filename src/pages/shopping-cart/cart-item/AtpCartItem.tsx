@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { ARTICLES_DATA } from '../../../assets/dummy-data/atp-data';
 import AtpLink from '../../../components/link/AtpLink';
 import AtpPrice from '../../../components/price/AtpPrice';
 import AtpText from '../../../components/text/AtpText';
