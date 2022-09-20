@@ -1,9 +1,9 @@
 import React from 'react';
 import AtpLink from '../../components/link/AtpLink';
 import AtpText from '../../components/text/AtpText';
-import './Atp404.scss'
+import './AtpNotFound.scss'
 
-export const Atp404 = () => {
+export const AtpNotFound = () => {
     return (
         <div className='atp-page atp-404'>
             <h1>Page not found</h1>
@@ -13,5 +13,4 @@ export const Atp404 = () => {
     )
 };
 
-
-export default Atp404;
+export default AtpNotFound;

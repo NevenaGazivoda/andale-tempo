@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './App.scss'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AtpNavbar } from './components/navbar/AtpNavbar';
-import AtpArticle from './pages/article/AtpArticle';
+import { AtpArticlePage } from './pages/article-page/AtpArticlePage';
 import Home from './pages/home/Home';
-import Atp404 from './pages/page404/Atp404';
+import AtpNotFound from './pages/page-not-found/AtpNotFound';
 import AtpFooter from './pages/footer/AtpFooter';
 import { ARTICLES_DATA } from './assets/dummy-data/atp-data';
 import AtpShoppingCart from './pages/shopping-cart/AtpShoppingCart';
@@ -53,12 +53,12 @@ export const App = () => {
 
       <Routes>
         <Route path="/" element={<Home articles={ARTICLES_DATA} />} />
-        <Route path="/article/:articleCode" element={<AtpArticle handleAddToCart={handleAddToCart} />} />
+        <Route path="/article/:articleCode" element={<AtpArticlePage handleAddToCart={handleAddToCart} />} />
         <Route path='/shopping-cart' element={<AtpShoppingCart
           cartItems={cartItems}
           addToCart={handleAddToCart}
           removeFromCart={handleRemoveFromCart} />} />
-        <Route path="*" element={<Atp404 />} />
+        <Route path="*" element={<AtpNotFound />} />
       </Routes>
 
       <footer>

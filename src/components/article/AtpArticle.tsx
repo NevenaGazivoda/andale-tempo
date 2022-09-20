@@ -6,22 +6,18 @@ import AtpList from '../../components/list/AtpList';
 import AtpButton from '../../components/button/AtpButton';
 import AtpPrice from '../../components/price/AtpPrice';
 import AtpSelect from '../../components/select/AtpSelect';
-import { strings } from '../../constants/strings';
 import AtpCarousel from '../../components/carousel/AtpCarousel';
-import { HiOutlineHeart } from 'react-icons/hi';
 import AtpModal from '../../components/modal/AtpModal';
-import AtpRecentlyViewed from '../../components/recently-viewed/AtpRecentlyViewed';
-import { ARTICLES_DATA } from '../../assets/dummy-data/atp-data';
-import { useParams } from 'react-router-dom';
+import { strings } from '../../constants/strings';
+import { HiOutlineHeart } from 'react-icons/hi';
 import { Article } from '../../models/article.model';
 
 type Props = {
+    article: Article;
     handleAddToCart: (clickedItem: Article) => void;
 };
 
-export const AtpArticle: FC<Props> = ({ handleAddToCart }) => {
-    const { articleCode } = useParams();
-    const article = ARTICLES_DATA.find(article => article.articleCode === articleCode) as Article;
+export const AtpArticle: FC<Props> = ({ article, handleAddToCart }) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -33,7 +29,7 @@ export const AtpArticle: FC<Props> = ({ handleAddToCart }) => {
 
     return (
         <>
-            <div className="atp-page atp-article-desktop">
+            <div className="atp-article-desktop">
 
                 <div className='atp-article-desktop__description'>
                     <div className='atp-article-desktop__description__text'>
@@ -70,7 +66,7 @@ export const AtpArticle: FC<Props> = ({ handleAddToCart }) => {
             </div >
 
 
-            <div className="atp-page atp-article-mobile">
+            <div className="atp-article-mobile">
 
                 <div className='atp-article-mobile__photos'>
                     <AtpCarousel slides={article.images} toggleModal={toggleModal} />
@@ -101,8 +97,6 @@ export const AtpArticle: FC<Props> = ({ handleAddToCart }) => {
                     <AtpText>{article.articleCode}</AtpText>
                 </div>
             </div >
-
-            <AtpRecentlyViewed />
         </>
     );
 }
