@@ -42,10 +42,13 @@ export const App = () => {
     );
   };
 
+  const getTotalItems = (items: Article[]) =>
+    items.reduce((ack: number, item) => ack + item.amount, 0);
+
   return (
     <Router>
       <header>
-        <AtpNavbar />
+        <AtpNavbar totalItems={getTotalItems(cartItems)} />
       </header>
 
       <Routes>

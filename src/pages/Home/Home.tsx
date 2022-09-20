@@ -10,10 +10,12 @@ type Props = {
 
 export const AtpHome: FC<Props> = ({ articles }) => {
 
-    const [recentItems, setRecentItems] = useState([] as Article[])
-
     const handleAddToRecent = (clickedArticle: Article) => {
-        localStorage.setItem("recent", JSON.stringify([...recentItems, clickedArticle]))
+        const recentItems = localStorage.getItem("recent") ? JSON.parse(localStorage.getItem("recent") as string) : JSON.parse('[]')
+
+        if (!recentItems.find((item: { articleCode: string; }) => item.articleCode === clickedArticle.articleCode)) {
+            localStorage.setItem("recent", JSON.stringify([clickedArticle, ...(localStorage.getItem("recent") ? JSON.parse(localStorage.getItem("recent") as string) : JSON.parse('[]'))]))
+        }
     };
 
     return (

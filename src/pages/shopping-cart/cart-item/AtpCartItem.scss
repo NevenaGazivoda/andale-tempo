@@ -1,18 +1,38 @@
 .atp-item {
+    display: flex;
 
-    &__elements {
+    &__photo {
+        max-height: 200px;
+        max-width: 100px;
+        margin-bottom: 1rem;
+    }
 
-        display: flex;
+    &__description {
+        margin-left: 1rem;
 
-        &__photo {
-            max-height: 200px;
-            max-width: 100px;
-            margin-bottom: 1rem;
-        }
+        &__buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 64px;
+            cursor: pointer;
 
-        &__description {
-            margin-left: 1rem;
+            &__amount {
+                margin-bottom: 0;
+                cursor: auto;
+            }
         }
     }
 
+    &__price {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__text {
+            text-decoration: underline;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+    }
 }
