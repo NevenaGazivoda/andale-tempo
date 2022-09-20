@@ -5,7 +5,7 @@ import { AtpNavbar } from './components/navbar/AtpNavbar';
 import { AtpArticlePage } from './pages/article-page/AtpArticlePage';
 import Home from './pages/home/Home';
 import AtpNotFound from './pages/page-not-found/AtpNotFound';
-import AtpFooter from './pages/footer/AtpFooter';
+import AtpFooter from './components/footer/AtpFooter';
 import { ARTICLES_DATA } from './assets/dummy-data/atp-data';
 import AtpShoppingCart from './pages/shopping-cart/AtpShoppingCart';
 import { Article } from './models/article.model';

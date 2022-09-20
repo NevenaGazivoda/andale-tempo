@@ -3,6 +3,10 @@
 .atp-recently-viewed {
     margin: $spacing-xl $spacing-4xl;
 
+    @media screen and (max-width: $breakpoint-md) {
+        margin: $spacing-xl $spacing-xl;
+    }
+
     &__articles {
         display: grid;
         gap: 1rem;
