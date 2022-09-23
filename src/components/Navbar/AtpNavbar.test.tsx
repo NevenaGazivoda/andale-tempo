@@ -3,5 +3,5 @@ import { render } from '@testing-library/react';
 import AtpNavbar from './AtpNavbar';
 
 test('renders navbar', () => {
-    render(<AtpNavbar totalItems={0} />);
+  render(<AtpNavbar totalItems={0} />);
 });

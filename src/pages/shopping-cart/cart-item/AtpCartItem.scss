@@ -1,10 +1,17 @@
+@import '../../../assets/styles/main.scss';
+
 .atp-item {
     display: flex;
 
     &__photo {
-        max-height: 200px;
-        max-width: 100px;
+        max-height: 12.5rem;
+        max-width: 6.25rem;
         margin-bottom: 1rem;
+
+        @media screen and (max-width: $breakpoint-lg) {
+        max-height: 6.25rem;
+        max-width: 3.12rem;
+        }
     }
 
     &__description {
@@ -20,7 +27,7 @@
         flex-direction: column;
         justify-content: space-between;
 
-        &__text {
+        &__remove {
             text-decoration: underline;
             cursor: pointer;
             margin-bottom: 1rem;

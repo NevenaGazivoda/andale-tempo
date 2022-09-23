@@ -3,5 +3,5 @@ import { render } from '@testing-library/react';
 import AtpList from './AtpList';
 
 test('renders list', () => {
-    render(<AtpList listName={''} list={[]} />);
+  render(<AtpList listName={''} list={[]} />);
 });

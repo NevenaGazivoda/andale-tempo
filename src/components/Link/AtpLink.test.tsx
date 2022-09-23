@@ -3,5 +3,5 @@ import { render } from '@testing-library/react';
 import AtpLink from './AtpLink';
 
 test('renders link', () => {
-    render(<AtpLink to={''} />);
+  render(<AtpLink to={''} />);
 });

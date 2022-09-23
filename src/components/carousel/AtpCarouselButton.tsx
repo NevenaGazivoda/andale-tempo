@@ -1,17 +1,17 @@
-import React, { FC } from "react";
-import './AtpCarousel.scss'
+import React, { FC } from 'react';
+import './AtpCarousel.scss';
 
 type Props = {
-    selected: boolean;
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
-}
+  selected: boolean;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+};
 
 export const AtpCarouselButton: FC<Props> = ({ selected, onClick }) => (
-    <button
-        className={`atp-carousel__dot ${selected ? "is-selected" : ""}`}
-        type="button"
-        onClick={onClick}
-    />
+  <button
+    className={`atp-carousel__dot ${selected ? 'is-selected' : ''}`}
+    type="button"
+    onClick={onClick}
+  />
 );
 
 export default AtpCarouselButton;

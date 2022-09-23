@@ -66,8 +66,8 @@
 
             &__counter {
                 position: absolute;
-                top: 8px;
-                right: 9px;
+                top: $spacing-base;
+                right: $spacing-base;
             }
 
             &--icon-link {
