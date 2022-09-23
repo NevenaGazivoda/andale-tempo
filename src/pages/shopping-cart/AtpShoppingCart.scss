@@ -2,13 +2,27 @@
 
 .atp-shopping {
     display: flex;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin-left: $spacing-4xl;
+    margin-right: $spacing-xl;
+
+    @media screen and (max-width: $breakpoint-md) {
+        margin-left: 0;
+        margin-right: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
     &__cart {
         margin-left: 4rem;
         margin-right: 4rem;
-        width: 70%;
+        width: 100%;
+        flex: 3;
+
+        @media screen and (max-width: $breakpoint-lg) {
+            flex: 1;
+            max-width: 300px;
+        }
 
         &__header {
             display: flex;
@@ -29,33 +43,41 @@
                 display: flex;
                 justify-content: space-between;
                 border-bottom: 1px solid $color-light-grey;
-                margin-top: 1rem;
+                margin-top: $spacing-xl;
             }
         }
 
         &__total {
             display: flex;
             justify-content: space-between;
-
             padding-left: 7.25rem;
         }
     }
 
     &__checkout {
-        width: 20%;
-        margin-left: 4rem;
-        margin-right: 4rem;
+        width: 100%;
+        flex: 1;
+        margin-left: $spacing-4xl;
+        margin-right: $spacing-4xl;
 
         &__email {
             border: 1px solid;
             outline: 0;
-            min-height: 35px;
-            width: 300px;
+            width: 97%;
             margin-bottom: 1rem;
+            display: block;
+            line-height: 2rem;
+            font-size: $font-size-base;
+            padding-left: $spacing-base;
 
             &__button {
-                width: 304px;
+                width: 100%;
             }
+        }
+
+        @media screen and (max-width: $breakpoint-lg) {
+            max-width: 250px;
+            margin-left: 1rem;
         }
     }
 }

@@ -8,10 +8,9 @@ type Props = PropsWithChildren<{
 }>
 
 export const AtpLink: FC<Props> = ({ children, to, className }) => (
-    <p className={`atp-link ${className}`}>
+    <div className={`atp-link ${className}`}>
         <Link to={to}>{children}</Link>
-    </p>
+    </div>
 );
-
 
 export default AtpLink;

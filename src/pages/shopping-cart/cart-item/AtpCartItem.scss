@@ -10,17 +10,8 @@
     &__description {
         margin-left: 1rem;
 
-        &__buttons {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 64px;
-            cursor: pointer;
-
-            &__amount {
-                margin-bottom: 0;
-                cursor: auto;
-            }
+        &__size {
+            text-transform: uppercase;
         }
     }
 

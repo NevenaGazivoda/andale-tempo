@@ -2,11 +2,11 @@ import React, { FC } from 'react';
 import { strings } from '../../constants/strings';
 import AtpLink from '../link/AtpLink';
 import './AtpNavbar.scss'
-import { VscMenu, VscSearch, VscAccount, VscLock } from 'react-icons/vsc'
-
+import { VscMenu, VscSearch } from 'react-icons/vsc'
+import { BsBag } from 'react-icons/bs'
 
 type Props = {
-    totalItems: number
+    totalItems: number;
 }
 
 export const AtpNavbar: FC<Props> = ({ totalItems }) => {
@@ -42,14 +42,16 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
             </ul>
 
             <ul className='navbar-list navbar-list--right navbar-list--mobile'>
-                <li className='navbar-list__link'>
-                    <AtpLink to="/"><VscAccount className='navbar-list__link__mobile-icon' /> </AtpLink>
-                </li>
                 <li className='navbar-list__link--noPadding'>
-                    <AtpLink to="/shopping-cart"><VscLock className='navbar-list__link__mobile-icon' /></AtpLink>
+                    <AtpLink to="/shopping-cart" className='navbar-list__link--icon-link'>
+                        <div className='navbar-list__link__icon-wrapper'>
+                            <BsBag className='navbar-list__link__mobile-icon' />
+                            <span className='navbar-list__link__counter'>{totalItems}</span>
+                        </div>
+                    </AtpLink>
                 </li>
             </ul>
-        </nav>
+        </nav >
     );
 };
 

@@ -11,21 +11,37 @@ import AtpModal from '../../components/modal/AtpModal';
 import { strings } from '../../constants/strings';
 import { HiOutlineHeart } from 'react-icons/hi';
 import { Article } from '../../models/article.model';
+import { CartItem } from '../../models/cart-item.model';
 
 type Props = {
     article: Article;
-    handleAddToCart: (clickedItem: Article) => void;
+    handleAddToCart: (clickedItem: CartItem) => void;
 };
 
 export const AtpArticle: FC<Props> = ({ article, handleAddToCart }) => {
-
     const [isOpen, setIsOpen] = useState(false);
+    const [showError, setShowError] = useState(false);
 
     function toggleModal() {
         setIsOpen(!isOpen);
     }
 
+    const [size, setSize] = useState({ value: '', label: '' });
+
+    const onSelect = (selectedSize: { value: string, label: string }) => {
+        setSize(selectedSize);
+    }
+
     const [isLiked, setIsLiked] = useState(false);
+
+    const handleClick = () => {
+        if (size.value) {
+            handleAddToCart({ ...article, image: article.images[0], size })
+        }
+        else {
+            setShowError(true)
+        }
+    }
 
     return (
         <>
@@ -54,10 +70,14 @@ export const AtpArticle: FC<Props> = ({ article, handleAddToCart }) => {
                 <div className='atp-article-desktop__actions'>
                     <div className='atp-article-desktop__actions__elements'>
                         <AtpPrice price={article.price} newPrice={article.newPrice} discount={article.discount} />
-                        <AtpSelect selectValues={article.articleSize} name={'articleSize'} />
+                        <AtpSelect selectValues={article.articleSize} name={'articleSize'} onSelect={onSelect} />
+                        {
+                            showError && !size.value &&
+                            <i> <AtpText>{strings.PLEASE_SELECT_A_SIZE}</AtpText></i>
+                        }
 
                         <div className='atp-article-desktop__actions__buttons'>
-                            <AtpButton onClick={() => handleAddToCart(article)}>{strings.ADD_TO_BAG}</AtpButton>
+                            <AtpButton onClick={handleClick}>{strings.ADD_TO_BAG}</AtpButton>
                             <AtpButton isSecondary>{strings.ADD_TO_WISH_LIST}</AtpButton>
                         </div>
                         <AtpText>{article.modelSize}</AtpText>
@@ -83,10 +103,14 @@ export const AtpArticle: FC<Props> = ({ article, handleAddToCart }) => {
                         </div>
                     </div>
 
-                    <AtpSelect selectValues={article.articleSize} name={'articleSize'} />
+                    <AtpSelect selectValues={article.articleSize} name={'articleSize'} onSelect={onSelect} />
+                    {
+                        showError && !size.value &&
+                        <i> <AtpText>{strings.PLEASE_SELECT_A_SIZE}</AtpText></i>
+                    }
 
                     <div className='atp-article-mobile__description__buttons'>
-                        <AtpButton>{strings.ADD_TO_BAG}</AtpButton>
+                        <AtpButton onClick={handleClick}>{strings.ADD_TO_BAG}</AtpButton>
                         <AtpButton isSecondary><HiOutlineHeart className='atp-article-mobile__description__buttons__icon-heart' onClick={() => setIsLiked(!isLiked)} fill={isLiked ? 'black' : 'white'} /></AtpButton>
                     </div>
 

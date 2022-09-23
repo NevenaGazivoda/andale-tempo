@@ -4,7 +4,6 @@ import AtpText from '../text/AtpText';
 import './AtpRecentlyViewed.scss';
 import { strings } from '../../constants/strings';
 import { Article } from '../../models/article.model';
-import { ARTICLES_DATA } from '../../assets/dummy-data/atp-data';
 
 type Props = {
     article: Article,
@@ -26,17 +25,6 @@ export const AtpRecentlyViewed: FC<Props> = ({ article }) => {
                         <AtpArticleCard key={cardIndex} article={filteredCard} />
                     )
                 )}
-                {/* <AtpArticleCard article={ARTICLES_DATA[1]} />
-                <AtpArticleCard article={ARTICLES_DATA[2]} />
-                <AtpArticleCard article={ARTICLES_DATA[0]} />
-                <AtpArticleCard article={ARTICLES_DATA[1]} />
-                <AtpArticleCard article={ARTICLES_DATA[2]} />
-                <AtpArticleCard article={ARTICLES_DATA[0]} />
-                <AtpArticleCard article={ARTICLES_DATA[1]} />
-                <AtpArticleCard article={ARTICLES_DATA[2]} />
-                <AtpArticleCard article={ARTICLES_DATA[0]} />
-                <AtpArticleCard article={ARTICLES_DATA[1]} />
-                <AtpArticleCard article={ARTICLES_DATA[2]} /> */}
             </div>
         </div>
     )

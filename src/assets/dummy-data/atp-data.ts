@@ -29,7 +29,6 @@ export const ARTICLES_DATA: Article[] = [
         images: [{ url: hoodie1, title: 'hoodie1' }, { url: hoodie2, title: 'hoodie2' }, { url: hoodie3, title: 'hoodie3' }, { url: hoodie4, title: 'hoodie4' }],
         articleSize: [{ value: "xs", label: "XS" }, { value: "s", label: "S" }, { value: "m", label: "M" }, { value: "l", label: "L" }, { value: "xl", label: "XL" }],
         modelSize: 'Model is 6ft 3 and wears size L.',
-        amount: 0,
     },
     {
         brand: 'Theory',
@@ -44,7 +43,6 @@ export const ARTICLES_DATA: Article[] = [
         images: [{ url: shirt1, title: 'theory-shirt1' }, { url: shirt2, title: 'theory-shirt2' }, { url: shirt3, title: 'theory-shirt3' }, { url: shirt4, title: 'theory-shirt4' }],
         articleSize: [{ value: "xs", label: "XS" }, { value: "s", label: "S" }, { value: "m", label: "M" }, { value: "l", label: "L" }, { value: "xl", label: "XL" }],
         modelSize: 'Model is 6ft 1 and wears size L.',
-        amount: 0,
     },
     {
         brand: 'Moncler',
@@ -59,6 +57,5 @@ export const ARTICLES_DATA: Article[] = [
         images: [{ url: moncler1, title: 'moncler1' }, { url: moncler2, title: 'moncler2' }, { url: moncler3, title: 'moncler3' }, { url: moncler4, title: 'moncler4' }],
         articleSize: [{ value: "xs", label: "XS" }, { value: "s", label: "S" }, { value: "m", label: "M" }, { value: "l", label: "L" }, { value: "xl", label: "XL" }],
         modelSize: 'Model is 6ft 3 and wears size XL.',
-        amount: 0,
     }
 ]

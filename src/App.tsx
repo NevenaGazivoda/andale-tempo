@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AtpNavbar } from './components/navbar/AtpNavbar';
@@ -11,53 +11,34 @@ import AtpShoppingCart from './pages/shopping-cart/AtpShoppingCart';
 import { Article } from './models/article.model';
 
 export const App = () => {
+  const cart = JSON.parse(localStorage.getItem("cart") || '[]') as Article[];
+  const [totalItems, setTotalItems] = useState(cart.length);
 
-  const [cartItems, setCartItems] = useState([] as Article[])
+  useEffect(() => {
+    window.localStorage.getItem(("cart") || '[]');
 
-  const handleAddToCart = (clickedArticle: Article) => {
-    setCartItems(prev => {
-      const isItemInCart = prev.find(item => item.articleCode === clickedArticle.articleCode);
+    const getTotalItems = () => {
+      setTotalItems((JSON.parse(localStorage.getItem("cart") || '[]') as Article[]).length);
+    };
 
-      if (isItemInCart) {
-        return prev.map(item =>
-          item.articleCode === clickedArticle.articleCode
-            ? { ...item, amount: item.amount + 1 }
-            : item
-        );
-      }
-      return [...prev, { ...clickedArticle, amount: 1 }];
-    });
-  };
+    window.addEventListener('storage', getTotalItems);
 
-  const handleRemoveFromCart = (id: string) => {
-    setCartItems(prev =>
-      prev.reduce((items, item) => {
-        if (item.articleCode === id) {
-          if (item.amount === 1) return items;
-          return [...items, { ...item, amount: item.amount - 1 }];
-        } else {
-          return [...items, item];
-        }
-      }, [] as Article[])
-    );
-  };
-
-  const getTotalItems = (items: Article[]) =>
-    items.reduce((ack: number, item) => ack + item.amount, 0);
+    //Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("storage", getTotalItems);
+    }
+  }, []);
 
   return (
     <Router>
       <header>
-        <AtpNavbar totalItems={getTotalItems(cartItems)} />
+        <AtpNavbar totalItems={totalItems} />
       </header>
 
       <Routes>
         <Route path="/" element={<Home articles={ARTICLES_DATA} />} />
-        <Route path="/article/:articleCode" element={<AtpArticlePage handleAddToCart={handleAddToCart} />} />
-        <Route path='/shopping-cart' element={<AtpShoppingCart
-          cartItems={cartItems}
-          addToCart={handleAddToCart}
-          removeFromCart={handleRemoveFromCart} />} />
+        <Route path="/article/:articleCode" element={<AtpArticlePage />} />
+        <Route path='/shopping-cart' element={<AtpShoppingCart />} />
         <Route path="*" element={<AtpNotFound />} />
       </Routes>
 

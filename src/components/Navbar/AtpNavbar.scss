@@ -59,6 +59,22 @@
             &__mobile-icon {
                 font-size: 1.5rem;
             }
+
+            &__icon-wrapper {
+                position: relative;
+            }
+
+            &__counter {
+                position: absolute;
+                top: 8px;
+                right: 9px;
+            }
+
+            &--icon-link {
+                :hover {
+                    text-decoration: none;
+                }
+            }
         }
 
     }
