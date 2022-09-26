@@ -28,7 +28,7 @@ export const AtpCartItem: FC<Props> = ({ article, removeFromCart }) => {
         </div>
       </div>
       <div className="atp-item__price">
-        <AtpPrice price={article.price} />
+        <AtpPrice price={article.price} newPrice={article.newPrice} discount={article.discount} />
         <span
           className="atp-item__price__remove"
           onClick={() => removeFromCart(article.articleCode)}

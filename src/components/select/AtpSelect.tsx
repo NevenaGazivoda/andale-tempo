@@ -10,7 +10,6 @@ type Props = {
 
 export const AtpSelect: FC<Props> = ({ selectValues, name, onSelect }) => {
   const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
-    console.log(e.target.options[e.target.selectedIndex].text);
     onSelect({ value: e.target.value, label: e.target.options[e.target.selectedIndex].text });
   };
 

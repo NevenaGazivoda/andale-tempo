@@ -86,7 +86,6 @@ export const AtpArticle: FC<Props> = ({ article, handleAddToCart }) => {
             />
             {showError && !size.value && (
               <i>
-                {' '}
                 <AtpText>{strings.PLEASE_SELECT_A_SIZE}</AtpText>
               </i>
             )}
@@ -113,6 +112,7 @@ export const AtpArticle: FC<Props> = ({ article, handleAddToCart }) => {
             </div>
             <div className="atp-article-mobile__description__info__price">
               <AtpPrice
+                className="atp-article-mobile__price"
                 price={article.price}
                 newPrice={article.newPrice}
                 discount={article.discount}

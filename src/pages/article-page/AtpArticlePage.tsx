@@ -33,6 +33,8 @@ export const AtpArticlePage: FC = () => {
       articleCode: item.articleCode,
       size: item.size,
       price: item.price,
+      newPrice: item.newPrice,
+      discount: item.discount,
       image: item.image,
     };
 
@@ -51,9 +53,8 @@ export const AtpArticlePage: FC = () => {
     <>
       <div className="atp-page">
         <AtpArticle article={article} handleAddToCart={handleAddToCart} />
+        <AtpRecentlyViewed article={article} />
       </div>
-
-      <AtpRecentlyViewed article={article} />
     </>
   );
 };

@@ -95,7 +95,9 @@
             }
         }
     }
-
+        &__price {
+            display: block;
+        }
 
     @media screen and (min-width: $breakpoint-md) {
         flex-direction: row;
@@ -110,5 +112,4 @@
     @media screen and (min-width: $breakpoint-xl) {
         display: none;
     }
-
 }

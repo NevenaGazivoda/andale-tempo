@@ -25,7 +25,10 @@ export const AtpShoppingCart: FC = () => {
   };
 
   const calculateTotal = (items: CartItem[]) =>
-    items.reduce((accumulator: number, item) => accumulator + item.price, 0);
+    items.reduce(
+      (accumulator: number, item) => accumulator + (item.newPrice ? item.newPrice : item.price),
+      0
+    );
 
   return (
     <div className="atp-page atp-shopping">

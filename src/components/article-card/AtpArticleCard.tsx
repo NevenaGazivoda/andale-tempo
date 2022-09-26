@@ -18,7 +18,7 @@ export const AtpArticleCard: FC<Props> = ({ article }) => (
       <AtpLink className="atp-card__link" to={`/article/${article.articleCode}`}>
         {article.brand}
       </AtpLink>
-      <AtpPrice price={article.price} />
+      <AtpPrice price={article.price} newPrice={article.newPrice} discount={article.discount} />
     </div>
   </div>
 );
