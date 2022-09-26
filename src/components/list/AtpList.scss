@@ -1,13 +1,13 @@
 @import '../../assets/styles/main.scss';
 
 .atp-list {
-    font-size: $font-size-base;
-    text-align: left;
-    padding-inline-start: 0;
-    list-style: none;
+  font-size: $font-size-base;
+  text-align: left;
+  padding-inline-start: 0;
+  list-style: none;
 
-    li:before {
-        content: "· ";
-        vertical-align: middle;
-    }
+  li:before {
+    content: '· ';
+    vertical-align: middle;
+  }
 }

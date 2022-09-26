@@ -1,36 +1,27 @@
 @import '../../../assets/styles/main.scss';
 
 .atp-item {
-    display: flex;
+  display: flex;
+  position: relative;
+  &__photo {
+    max-height: 8.125rem;
+  }
 
-    &__photo {
-        max-height: 12.5rem;
-        max-width: 6.25rem;
-        margin-bottom: 1rem;
+  &__description {
+    width: 100%;
+    margin: 0 $spacing-md;
+  }
 
-        @media screen and (max-width: $breakpoint-lg) {
-        max-height: 6.25rem;
-        max-width: 3.12rem;
-        }
+  &__price {
+    width: 100%;
+    text-align: right;
+
+    &__remove {
+      text-decoration: underline;
+      cursor: pointer;
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
-
-    &__description {
-        margin-left: 1rem;
-
-        &__size {
-            text-transform: uppercase;
-        }
-    }
-
-    &__price {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        &__remove {
-            text-decoration: underline;
-            cursor: pointer;
-            margin-bottom: 1rem;
-        }
-    }
+  }
 }

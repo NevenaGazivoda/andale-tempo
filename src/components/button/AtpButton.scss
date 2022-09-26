@@ -1,33 +1,33 @@
 @import '../../assets/styles/main.scss';
 
 .atp-button {
-    border: 1px solid;
-    min-height: 35px;
-    text-transform: uppercase;
-    outline: 0;
-    font-weight: 500;
-    font-size: $font-size-base;
-    cursor: pointer;
+  border: 1px solid;
+  min-height: 35px;
+  text-transform: uppercase;
+  outline: 0;
+  font-weight: 500;
+  font-size: $font-size-base;
+  cursor: pointer;
 
-    &--primary {
-        background-color: $color-black;
-        border-color: $color-black;
-        color: $color-white;
-        width: 60%;
+  &--primary {
+    background-color: $color-black;
+    border-color: $color-black;
+    color: $color-white;
+    width: 60%;
 
-        @media screen and (max-width: $breakpoint-xl) {
-            width: 85%;
-        }
+    @media screen and (max-width: $breakpoint-xl) {
+      width: 85%;
     }
+  }
 
-    &--secondary {
-        background-color: $color-white;
-        color: $color-black;
-        border-color: $color-white;
-        width: 40%;
+  &--secondary {
+    background-color: $color-white;
+    color: $color-black;
+    border-color: $color-white;
+    width: 40%;
 
-        @media screen and (max-width: $breakpoint-xl) {
-            width: 15%;
-        }
+    @media screen and (max-width: $breakpoint-xl) {
+      width: 15%;
     }
+  }
 }

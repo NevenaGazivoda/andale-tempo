@@ -1,18 +1,18 @@
 .atp-card {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    &__photo {
-        max-height: 20rem;
-    }
+  &__photo {
+    max-height: 20rem;
+  }
 
-    &__info {
-        align-self: flex-start;
-    }
+  &__info {
+    align-self: flex-start;
+  }
 
-    &__link {
-        margin: 0.2rem 0;
-    }
+  &__link {
+    margin: 0.2rem 0;
+  }
 }

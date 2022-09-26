@@ -1,115 +1,113 @@
 @import '../../assets/styles/main.scss';
 
 .atp-article-desktop {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    margin-left: $spacing-xl;
-    margin-right: $spacing-xl;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin-left: $spacing-xl;
+  margin-right: $spacing-xl;
 
-    &__description {
-        width: 100%;
-        margin-left: $spacing-4xl;
+  &__description {
+    width: 100%;
+    margin-left: $spacing-4xl;
 
-        &__text {
-            margin-left: $spacing-xl;
-            position: sticky;
-            top: 35vh;
-            padding-bottom: 35vh;
-        }
+    &__text {
+      margin-left: $spacing-xl;
+      position: sticky;
+      top: 35vh;
+      padding-bottom: 35vh;
+    }
+  }
+
+  &__actions {
+    width: 100%;
+    margin: 0 $spacing-4xl 0 0;
+
+    &__elements {
+      position: sticky;
+      top: 40vh;
+      margin-right: $spacing-xl;
+      width: 400px;
+      margin-left: auto;
+      padding-bottom: 35vh;
     }
 
-    &__actions {
-        width: 100%;
-        margin: 0 $spacing-4xl 0 0;
-
-        &__elements {
-            position: sticky;
-            top: 40vh;
-            margin-right: $spacing-xl;
-            width: 400px;
-            margin-left: auto;
-            padding-bottom: 35vh;
-        }
-
-        &__buttons {
-            margin-bottom: $spacing-xl;
-        }
+    &__buttons {
+      margin-bottom: $spacing-xl;
     }
+  }
 
-    &__photos {
-        width: 100%;
+  &__photos {
+    width: 100%;
 
-        &__photo {
-            margin: 0 auto;
-            height: calc(100vh - 60px);
-            margin-bottom: $spacing-4xl;
-            display: block;
-        }
+    &__photo {
+      margin: 0 auto;
+      height: calc(100vh - 60px);
+      margin-bottom: $spacing-4xl;
+      display: block;
     }
+  }
 
-    @media screen and (max-width: $breakpoint-xl) {
-        display: none;
-    }
+  @media screen and (max-width: $breakpoint-xl) {
+    display: none;
+  }
 }
 
 .atp-article-mobile {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-left: $spacing-xl;
-    margin-right: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
-    &__photos {
-        width: 100%;
+  &__photos {
+    width: 100%;
+  }
+
+  &__description {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 37.5rem;
+
+    &__info {
+      display: flex;
+      flex-direction: row;
+
+      &__brand {
+        flex-direction: column;
+        width: 60%;
+      }
+
+      &__price {
+        width: 40%;
+        text-align: end;
+      }
     }
+
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: $spacing-xl;
+      width: 100%;
+
+      &__icon-heart {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  &__price {
+    display: block;
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    flex-direction: row;
+    margin-left: $spacing-4xl;
+    margin-right: $spacing-4xl;
 
     &__description {
-        width: 100%;
-        margin: 0 auto;
-        max-width: 37.5rem;
-
-        &__info {
-            display: flex;
-            flex-direction: row;
-
-            &__brand {
-                flex-direction: column;
-                width: 60%;
-            }
-
-            &__price {
-                width: 40%;
-                text-align: end;
-            }
-        }
-
-        &__buttons {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: $spacing-xl;
-            width: 100%;
-
-            &__icon-heart {
-                font-size: 1.5rem;
-            }
-        }
+      margin-top: $spacing-xl;
     }
-        &__price {
-            display: block;
-        }
+  }
 
-    @media screen and (min-width: $breakpoint-md) {
-        flex-direction: row;
-        margin-left: $spacing-4xl;
-        margin-right: $spacing-4xl;
-
-        &__description {
-            margin-top: $spacing-xl;
-        }
-    }
-
-    @media screen and (min-width: $breakpoint-xl) {
-        display: none;
-    }
+  @media screen and (min-width: $breakpoint-xl) {
+    display: none;
+  }
 }

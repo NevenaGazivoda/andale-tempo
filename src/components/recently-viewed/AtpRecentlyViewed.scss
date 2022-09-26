@@ -1,23 +1,23 @@
 @import '../../assets/styles/main.scss';
 
 .atp-recently-viewed {
-    margin: $spacing-xl $spacing-4xl;
+  margin: $spacing-xl $spacing-4xl;
 
-    @media screen and (max-width: $breakpoint-md) {
-        margin: $spacing-xl $spacing-xl;
-    }
+  @media screen and (max-width: $breakpoint-md) {
+    margin: $spacing-xl 0;
+  }
 
-    &__articles {
-        display: grid;
-        gap: 1rem;
-        justify-content: start;
-        grid-auto-flow: column;
-        grid-auto-columns: 11rem;
-        overflow-x: auto;
-        scrollbar-width: none;
-    }
+  &__articles {
+    display: grid;
+    gap: 1rem;
+    justify-content: start;
+    grid-auto-flow: column;
+    grid-auto-columns: 11rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
 
-    &__articles::-webkit-scrollbar {
-        display: none;
-    }
+  &__articles::-webkit-scrollbar {
+    display: none;
+  }
 }

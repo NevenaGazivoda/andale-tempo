@@ -1,97 +1,97 @@
 @import '../../assets/styles/main.scss';
 
 .atp-carousel {
-    position: relative;
-    padding: 1.25rem;
-    max-width: 41.875rem;
-    margin-left: auto;
-    margin-right: auto;
+  position: relative;
+  padding: 1.25rem;
+  max-width: 41.875rem;
+  margin-left: auto;
+  margin-right: auto;
 
-    @media screen and (min-width: $breakpoint-xl) {
-        display: none;
-    }
+  @media screen and (min-width: $breakpoint-xl) {
+    display: none;
+  }
 }
 
 .atp-carousel__viewport {
-    overflow: hidden;
-    width: 100%;
+  overflow: hidden;
+  width: 100%;
 }
 
 .atp-carousel__viewport.is-draggable {
-    cursor: move;
-    cursor: grab;
+  cursor: move;
+  cursor: grab;
 }
 
 .atp-carousel__viewport.is-dragging {
-    cursor: grabbing;
+  cursor: grabbing;
 }
 
 .atp-carousel__container {
-    display: flex;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    margin-left: -0.625rem;
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: -0.625rem;
 }
 
 .atp-carousel__slide {
-    position: relative;
-    min-width: 100%;
-    padding-left: 0.625rem;
+  position: relative;
+  min-width: 100%;
+  padding-left: 0.625rem;
 }
 
 .atp-carousel__slide__inner {
-    position: relative;
-    overflow: hidden;
-    height: 50rem;
+  position: relative;
+  overflow: hidden;
+  height: 50rem;
 
-    @media screen and (max-width: $breakpoint-md) {
-        height: 31.25rem;
-    }
+  @media screen and (max-width: $breakpoint-md) {
+    height: 31.25rem;
+  }
 }
 
 .atp-carousel__slide__img {
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    width: auto;
-    max-width: none;
-    transform: translate(-50%, -50%);
-    height: 100%;
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  height: 100%;
 }
 
 .atp-carousel__dots {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    padding-top: 0.625rem;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding-top: 0.625rem;
 }
 
 .atp-carousel__dot {
-    background-color: transparent;
-    cursor: pointer;
-    position: relative;
-    padding: 0;
-    outline: 0;
-    border: 0;
-    width: 1.875rem;
-    height: 1.875rem;
-    margin-right: 0.469rem;
-    margin-left: 0.469rem;
-    display: flex;
-    align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  width: 1.875rem;
+  height: 1.875rem;
+  margin-right: 0.469rem;
+  margin-left: 0.469rem;
+  display: flex;
+  align-items: center;
 }
 
 .atp-carousel__dot:after {
-    background-color: #efefef;
-    width: 100%;
-    height: 0.25rem;
-    content: "";
+  background-color: #efefef;
+  width: 100%;
+  height: 0.25rem;
+  content: '';
 }
 
 .atp-carousel__dot.is-selected:after {
-    background-color: $color-black;
-    opacity: 1;
+  background-color: $color-black;
+  opacity: 1;
 }

@@ -9,5 +9,7 @@ button {
 .atp-page {
     background-color: $color-white;
     margin-top: $spacing-4xl;
+    margin-left: $spacing-xl;
+    margin-right: $spacing-xl;
     min-height: calc(100vh - 110px);
 }

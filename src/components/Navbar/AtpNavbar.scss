@@ -1,81 +1,80 @@
 @import '../../assets/styles/main.scss';
 
 .atp-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: $color-white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: $spacing-4xl;
+  z-index: $zindex-fixed;
+
+  &__title {
+    font-size: large;
+  }
+
+  .navbar-list {
+    list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: $spacing-4xl;
-    z-index: $zindex-fixed;
+    padding-inline-start: 0;
 
-    &__title {
-        font-size: large;
+    &--desktop {
+      margin: 0 4rem;
+      width: 12rem;
+
+      @media screen and (max-width: $breakpoint-md) {
+        display: none;
+      }
+
+      @media screen and (max-width: $breakpoint-lg) {
+        margin: 0 3rem;
+      }
     }
 
-    .navbar-list {
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        padding-inline-start: 0;
+    &--mobile {
+      margin: 0 1rem;
+      width: 4rem;
 
-        &--desktop {
-            margin: 0 4rem;
-            width: 12rem;
-
-            @media screen and (max-width: $breakpoint-md) {
-                display: none;
-            }
-
-            @media screen and (max-width: $breakpoint-lg) {
-                margin: 0 3rem;
-            }
-        }
-
-        &--mobile {
-            margin: 0 1rem;
-            width: 4rem;
-
-            @media screen and (min-width: $breakpoint-md) {
-                display: none;
-            }
-        }
-
-        &--right {
-            justify-content: flex-end;
-        }
-
-        &__link {
-            padding-right: $spacing-md;
-
-            &--noPadding {
-                padding-right: 0;
-            }
-
-            &__mobile-icon {
-                font-size: 1.5rem;
-            }
-
-            &__icon-wrapper {
-                position: relative;
-            }
-
-            &__counter {
-                position: absolute;
-                top: $spacing-base;
-                right: $spacing-base;
-            }
-
-            &--icon-link {
-                :hover {
-                    text-decoration: none;
-                }
-            }
-        }
-
+      @media screen and (min-width: $breakpoint-md) {
+        display: none;
+      }
     }
+
+    &--right {
+      justify-content: flex-end;
+    }
+
+    &__link {
+      padding-right: $spacing-md;
+
+      &--noPadding {
+        padding-right: 0;
+      }
+
+      &__mobile-icon {
+        font-size: 1.5rem;
+      }
+
+      &__icon-wrapper {
+        position: relative;
+      }
+
+      &__counter {
+        position: absolute;
+        top: $spacing-base;
+        right: 0.563rem;
+      }
+
+      &--icon-link {
+        :hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }

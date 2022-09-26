@@ -1,41 +1,41 @@
 @import '../../assets/styles/main.scss';
 
 .close-modal {
-    margin-top: $spacing-md;
-    text-align: right;
+  margin-top: $spacing-md;
+  text-align: right;
 
-    &__icon {
-        font-size: 1.5rem;
-        position: fixed;
-        top: $spacing-xl;
-        right: $spacing-xl;
-    }
+  &__icon {
+    font-size: 1.5rem;
+    position: fixed;
+    top: $spacing-xl;
+    right: $spacing-xl;
+  }
 }
 
 .modal-photo {
-    margin: 0 auto;
-    width: 100%;
-    margin-bottom: 4rem;
-    display: block;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 4rem;
+  display: block;
 
-    @media screen and (min-width: $breakpoint-md) {
-        height: calc(100vh - 60px);
-        width: auto;
-    }
+  @media screen and (min-width: $breakpoint-md) {
+    height: calc(100vh - 60px);
+    width: auto;
+  }
 }
 
 .modal-overlay {
-    background-color: $color-white;
-    position: fixed;
-    inset: 0;
-    z-index: $zindex-modal;
+  background-color: $color-white;
+  position: fixed;
+  inset: 0;
+  z-index: $zindex-modal;
 }
 
 .modal-content {
-    position: absolute;
-    overflow: auto;
-    outline: none;
-    padding: 1.25rem;
-    inset: 0;
-    border: 0
+  position: absolute;
+  overflow: auto;
+  outline: none;
+  padding: 1.25rem;
+  inset: 0;
+  border: 0;
 }

@@ -1,15 +1,15 @@
 @import '../../assets/styles/main.scss';
 
 .atp-price-main {
-    display: inline;
+  display: inline;
 }
 
 .atp-price {
-    color: $color-grey;
-    text-decoration: line-through;
-    padding: 0 $spacing-base;
+  color: $color-grey;
+  text-decoration: line-through;
+  padding: 0 $spacing-base;
 
-    &--grey {
-        color: $color-grey;
-    }
+  &--grey {
+    color: $color-grey;
+  }
 }

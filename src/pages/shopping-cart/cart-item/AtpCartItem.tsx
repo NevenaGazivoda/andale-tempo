@@ -8,7 +8,7 @@ import './AtpCartItem.scss';
 
 type Props = {
   article: CartItem;
-  removeFromCart: (id: string) => void;
+  removeFromCart: (id: string, size: string) => void;
 };
 
 export const AtpCartItem: FC<Props> = ({ article, removeFromCart }) => {
@@ -26,15 +26,15 @@ export const AtpCartItem: FC<Props> = ({ article, removeFromCart }) => {
             {strings.SIZE} {article.size.label}
           </AtpText>
         </div>
-      </div>
-      <div className="atp-item__price">
-        <AtpPrice price={article.price} newPrice={article.newPrice} discount={article.discount} />
-        <span
-          className="atp-item__price__remove"
-          onClick={() => removeFromCart(article.articleCode)}
-        >
-          {strings.REMOVE}
-        </span>
+        <div className="atp-item__price">
+          <AtpPrice price={article.price} newPrice={article.newPrice} discount={article.discount} />
+          <span
+            className="atp-item__price__remove"
+            onClick={() => removeFromCart(article.articleCode, article.size.value)}
+          >
+            {strings.REMOVE}
+          </span>
+        </div>
       </div>
     </>
   );
