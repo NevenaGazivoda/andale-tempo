@@ -16,6 +16,10 @@
     width: 100%;
     text-align: right;
 
+    &__block {
+      display: block;
+    }
+
     &__remove {
       text-decoration: underline;
       cursor: pointer;

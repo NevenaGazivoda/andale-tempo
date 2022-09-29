@@ -9,23 +9,26 @@ type Props = {
 };
 
 export const AtpCarousel: FC<Props> = ({ slides, toggleModal }) => {
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
+  const [viewportRef, emblaCarousel] = useEmblaCarousel({ skipSnaps: false });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
-  const scrollTo = useCallback((index: number) => embla && embla.scrollTo(index), [embla]);
+  const scrollTo = useCallback(
+    (index: number) => emblaCarousel && emblaCarousel.scrollTo(index),
+    [emblaCarousel]
+  );
 
   const onSelect = useCallback(() => {
-    if (!embla) return;
-    setSelectedIndex(embla.selectedScrollSnap());
-  }, [embla, setSelectedIndex]);
+    if (!emblaCarousel) return;
+    setSelectedIndex(emblaCarousel.selectedScrollSnap());
+  }, [emblaCarousel, setSelectedIndex]);
 
   useEffect(() => {
-    if (!embla) return;
+    if (!emblaCarousel) return;
     onSelect();
-    setScrollSnaps(embla.scrollSnapList());
-    embla.on('select', onSelect);
-  }, [embla, setScrollSnaps, onSelect]);
+    setScrollSnaps(emblaCarousel.scrollSnapList());
+    emblaCarousel.on('select', onSelect);
+  }, [emblaCarousel, setScrollSnaps, onSelect]);
 
   return (
     <div className="atp-carousel">

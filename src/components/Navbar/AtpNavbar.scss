@@ -24,7 +24,7 @@
     padding-inline-start: 0;
 
     &--desktop {
-      margin: 0 4rem;
+      margin: 0 $spacing-4xl;
       width: 12rem;
 
       @media screen and (max-width: $breakpoint-md) {
@@ -32,13 +32,13 @@
       }
 
       @media screen and (max-width: $breakpoint-lg) {
-        margin: 0 3rem;
+        margin: 0 $spacing-3xl;
       }
     }
 
     &--mobile {
-      margin: 0 1rem;
-      width: 4rem;
+      margin: 0 $spacing-xl;
+      width: $spacing-4xl;
 
       @media screen and (min-width: $breakpoint-md) {
         display: none;
@@ -57,7 +57,7 @@
       }
 
       &__mobile-icon {
-        font-size: 1.5rem;
+        font-size: $font-size-icon;
       }
 
       &__icon-wrapper {
@@ -67,7 +67,7 @@
       &__counter {
         position: absolute;
         top: $spacing-base;
-        right: 0.563rem;
+        right: 9px;
       }
 
       &--icon-link {

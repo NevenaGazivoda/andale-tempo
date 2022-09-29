@@ -9,7 +9,7 @@
 
   &__articles {
     display: grid;
-    gap: 1rem;
+    gap: $spacing-xl;
     justify-content: start;
     grid-auto-flow: column;
     grid-auto-columns: 11rem;

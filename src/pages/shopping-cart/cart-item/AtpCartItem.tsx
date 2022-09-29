@@ -3,15 +3,16 @@ import AtpLink from '../../../components/link/AtpLink';
 import AtpPrice from '../../../components/price/AtpPrice';
 import AtpText from '../../../components/text/AtpText';
 import { strings } from '../../../constants/strings';
-import { CartItem } from '../../../models/cart-item.model';
+import { CartItem } from '../../../models/cartItem.model';
 import './AtpCartItem.scss';
 
 type Props = {
   article: CartItem;
-  removeFromCart: (id: string, size: string) => void;
+  removeFromCart: (cartItemIndex: number) => void;
+  cartItemIndex: number;
 };
 
-export const AtpCartItem: FC<Props> = ({ article, removeFromCart }) => {
+export const AtpCartItem: FC<Props> = ({ article, cartItemIndex, removeFromCart }) => {
   return (
     <>
       <div className="atp-item">
@@ -27,11 +28,13 @@ export const AtpCartItem: FC<Props> = ({ article, removeFromCart }) => {
           </AtpText>
         </div>
         <div className="atp-item__price">
-          <AtpPrice price={article.price} newPrice={article.newPrice} discount={article.discount} />
-          <span
-            className="atp-item__price__remove"
-            onClick={() => removeFromCart(article.articleCode, article.size.value)}
-          >
+          <AtpPrice
+            className="atp-item__price__block"
+            price={article.price}
+            newPrice={article.newPrice}
+            discount={article.discount}
+          />
+          <span className="atp-item__price__remove" onClick={() => removeFromCart(cartItemIndex)}>
             {strings.REMOVE}
           </span>
         </div>

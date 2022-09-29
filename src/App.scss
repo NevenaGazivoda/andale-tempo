@@ -3,13 +3,25 @@
 body,
 select,
 button {
-    font-size: $font-size-base;
+  font-size: $font-size-base;
 }
 
 .atp-page {
-    background-color: $color-white;
-    margin-top: $spacing-4xl;
-    margin-left: $spacing-xl;
-    margin-right: $spacing-xl;
-    min-height: calc(100vh - 110px);
+  background-color: $color-white;
+  margin-top: $spacing-4xl;
+  margin-left: $spacing-xl;
+  margin-right: $spacing-xl;
+  min-height: calc(100vh - 110px);
+}
+
+.atp-input {
+  width: 100%;
+  font-size: $font-size-base;
+  box-sizing: border-box;
+  border: $border-classic;
+  outline: 0;
+  line-height: $spacing-2xl;
+  min-height: $spacing-2xl;
+  margin: 0 0 $spacing-xl 0;
+  padding: 0 0 0 $spacing-base;
 }

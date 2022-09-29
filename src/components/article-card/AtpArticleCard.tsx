@@ -9,13 +9,17 @@ type Props = PropsWithChildren<{
 }>;
 
 export const AtpArticleCard: FC<Props> = ({ article }) => (
-  <div className="atp-card">
+  <div className="atp-article-card">
     <AtpLink to={`/article/${article.articleCode}`}>
-      <img className="atp-card__photo" src={article.images[0].url} alt={article.images[0].title} />
+      <img
+        className="atp-article-card__photo"
+        src={article.images[0].url}
+        alt={article.images[0].title}
+      />
     </AtpLink>
 
-    <div className="atp-card__info">
-      <AtpLink className="atp-card__link" to={`/article/${article.articleCode}`}>
+    <div className="atp-article-card__info">
+      <AtpLink className="atp-article-card__link" to={`/article/${article.articleCode}`}>
         {article.brand}
       </AtpLink>
       <AtpPrice price={article.price} newPrice={article.newPrice} discount={article.discount} />

@@ -3,20 +3,20 @@ import './AtpModal.scss';
 import Modal from 'react-modal';
 import { VscClose } from 'react-icons/vsc';
 
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 type Props = {
-  isOpen: boolean;
+  isModalOpen: boolean;
   toggleModal: () => void;
   content: { url: string; title: string }[];
 };
 
-export const AtpModal: FC<Props> = ({ isOpen, toggleModal, content }) => {
+export const AtpModal: FC<Props> = ({ isModalOpen, toggleModal, content }) => {
   return (
     <Modal
       overlayClassName="modal-overlay"
       className="modal-content"
-      isOpen={isOpen}
+      isOpen={isModalOpen}
       onRequestClose={toggleModal}
       contentLabel="My dialog"
     >

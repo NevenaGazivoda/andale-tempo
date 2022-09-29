@@ -17,7 +17,10 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
           <AtpLink to="/">{strings.MENSWEAR}</AtpLink>
         </li>
         <li className="navbar-list__link">
-          <AtpLink to="/">{strings.WOMENWEAR}</AtpLink>
+          <AtpLink to="/">{strings.WOMENSWEAR}</AtpLink>
+        </li>
+        <li className="navbar-list__link">
+          <AtpLink to="/">{strings.SEARCH}</AtpLink>
         </li>
       </ul>
 

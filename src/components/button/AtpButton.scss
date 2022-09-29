@@ -1,8 +1,8 @@
 @import '../../assets/styles/main.scss';
 
 .atp-button {
-  border: 1px solid;
-  min-height: 35px;
+  border: $border-classic;
+  min-height: $spacing-2xl;
   text-transform: uppercase;
   outline: 0;
   font-weight: 500;
@@ -30,4 +30,12 @@
       width: 15%;
     }
   }
+}
+
+.atp-button:active {
+  background: $color-grey;
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+  outline: none;
 }

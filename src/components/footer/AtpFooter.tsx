@@ -3,11 +3,7 @@ import AtpText from '../text/AtpText';
 import './AtpFooter.scss';
 
 export const AtpFooter = () => {
-  return (
-    <div className="atp-footer">
-      <AtpText>Andale Tempo © 2022</AtpText>
-    </div>
-  );
+  return <AtpText className="atp-footer">Andale Tempo © 2022</AtpText>;
 };
 
 export default AtpFooter;

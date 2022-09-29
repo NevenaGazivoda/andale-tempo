@@ -11,7 +11,7 @@ import AtpModal from '../../components/modal/AtpModal';
 import { strings } from '../../constants/strings';
 import { HiOutlineHeart } from 'react-icons/hi';
 import { Article } from '../../models/article.model';
-import { CartItem } from '../../models/cart-item.model';
+import { CartItem } from '../../models/cartItem.model';
 
 type Props = {
   article: Article;
@@ -19,11 +19,11 @@ type Props = {
 };
 
 export const AtpArticle: FC<Props> = ({ article, handleAddToCart }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [showError, setShowError] = useState(false);
 
   function toggleModal() {
-    setIsOpen(!isOpen);
+    setIsModalOpen(!isModalOpen);
   }
 
   const [size, setSize] = useState({ value: '', label: '' });
@@ -69,7 +69,7 @@ export const AtpArticle: FC<Props> = ({ article, handleAddToCart }) => {
               onClick={toggleModal}
             />
           ))}
-          <AtpModal isOpen={isOpen} toggleModal={toggleModal} content={article.images} />
+          <AtpModal isModalOpen={isModalOpen} toggleModal={toggleModal} content={article.images} />
         </div>
 
         <div className="atp-article-desktop__actions">
@@ -123,7 +123,6 @@ export const AtpArticle: FC<Props> = ({ article, handleAddToCart }) => {
           <AtpSelect selectValues={article.articleSize} name={'articleSize'} onSelect={onSelect} />
           {showError && !size.value && (
             <i>
-              {' '}
               <AtpText>{strings.PLEASE_SELECT_A_SIZE}</AtpText>
             </i>
           )}

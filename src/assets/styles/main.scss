@@ -1,10 +1,23 @@
 $font-size-base: 0.75rem;
+$font-size-icon: 1.5rem;
 
+$spacing-xs: 0.25rem; //4px
 $spacing-base: 0.5rem; //8px
+$spacing-sm: 0.625; //10px
 $spacing-md: 0.75rem; //12px
-$spacing-lg: 0.875rem; // 14px
-$spacing-xl: 1rem; // 16px
-$spacing-4xl: 4rem; // 64px
+$spacing-lg: 0.875rem; //14px
+$spacing-xl: 1rem; //16px
+$spacing-xl-bonus: 1.25rem; //20px
+$spacing-2xl: 2rem; //32px
+$spacing-3xl: 3rem; //48px
+$spacing-3xl-bonus: 3.75rem; //60px
+$spacing-4xl: 4rem; //64px
+$spacing-4xl-bonus: 4.375rem; //70px
+$spacing-8xl: 8rem; //128px
+$spacing-10xl: 10rem; //160px
+$spacing-20xl: 20rem; //320px
+
+//put sizes to variables
 
 $color-black: #000;
 $color-white: #fff;
@@ -19,3 +32,7 @@ $breakpoint-4xl: 1536px;
 
 $zindex-fixed: 1000;
 $zindex-modal: 2000;
+
+$border-classic: 1px solid;
+
+$shadow: inset 0px 0px 5px $color-light-grey;

@@ -1,11 +1,13 @@
-.atp-card {
+@import '../../assets/styles/main.scss';
+
+.atp-article-card {
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   &__photo {
-    max-height: 20rem;
+    max-height: $spacing-20xl;
   }
 
   &__info {

@@ -1,10 +1,11 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import AtpRecentlyViewed from '../../components/recently-viewed/AtpRecentlyViewed';
 import AtpArticle from '../../components/article/AtpArticle';
-import { ARTICLES_DATA } from '../../assets/dummy-data/atp-data';
+import { ARTICLES_DATA } from '../../assets/dummy-data/articlesData';
 import { useParams } from 'react-router-dom';
 import { Article } from '../../models/article.model';
-import { CartItem } from '../../models/cart-item.model';
+import { CartItem } from '../../models/cartItem.model';
+import { addToCart } from '../../utilities/shoppingCart';
 
 export const AtpArticlePage: FC = () => {
   const { articleCode } = useParams();
@@ -22,31 +23,8 @@ export const AtpArticlePage: FC = () => {
     }
   }, []);
 
-  const [cart, setCartItems] = useState(
-    JSON.parse(localStorage.getItem('cart') || '[]') as CartItem[]
-  );
-
-  const handleAddToCart = (item: CartItem) => {
-    const cartItem = {
-      brand: item.brand,
-      articleName: item.articleName,
-      articleCode: item.articleCode,
-      size: item.size,
-      price: item.price,
-      newPrice: item.newPrice,
-      discount: item.discount,
-      image: item.image,
-    };
-
-    const cartCopy = [...cart];
-
-    cartCopy.push(cartItem);
-
-    setCartItems(cartCopy);
-
-    localStorage.setItem('cart', JSON.stringify(cartCopy));
-
-    window.dispatchEvent(new Event('storage'));
+  const handleAddToCart = (clickedItem: CartItem) => {
+    addToCart(clickedItem);
   };
 
   return (

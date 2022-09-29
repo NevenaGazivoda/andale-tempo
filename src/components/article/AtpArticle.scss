@@ -27,7 +27,7 @@
       position: sticky;
       top: 40vh;
       margin-right: $spacing-xl;
-      width: 400px;
+      width: 25rem;
       margin-left: auto;
       padding-bottom: 35vh;
     }
@@ -42,7 +42,7 @@
 
     &__photo {
       margin: 0 auto;
-      height: calc(100vh - 60px);
+      height: calc(100vh - #{$spacing-3xl-bonus});
       margin-bottom: $spacing-4xl;
       display: block;
     }
@@ -89,7 +89,7 @@
       width: 100%;
 
       &__icon-heart {
-        font-size: 1.5rem;
+        font-size: $font-size-icon;
       }
     }
   }

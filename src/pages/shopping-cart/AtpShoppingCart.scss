@@ -4,6 +4,10 @@
   &__cart {
     margin-top: $spacing-xl;
 
+    @media screen and (min-width: $breakpoint-md) {
+      margin-left: $spacing-4xl;
+      margin-right: $spacing-4xl;
+    }
     @media screen and (min-width: $breakpoint-lg) {
       float: left;
       min-width: 50vw;
@@ -12,31 +16,33 @@
     }
 
     @media screen and (min-width: $breakpoint-xl) {
-      margin-left: 8rem;
+      margin-left: $spacing-8xl;
     }
 
     &__header {
-      border-bottom: 1px solid $color-light-grey;
+      border-bottom: $border-classic $color-light-grey;
       margin-bottom: $spacing-xl;
 
-      &--left {
-        display: inline-block;
+      &__item {
         color: $color-grey;
-        margin-left: 4.37rem;
-      }
 
-      &--right {
-        float: right;
-        color: $color-grey;
+        &--left {
+          display: inline-block;
+          margin-left: $spacing-4xl-bonus;
+        }
+
+        &--right {
+          float: right;
+        }
       }
     }
 
     &__list {
       display: grid;
       gap: $spacing-xl;
-      grid-auto-rows: 9.37rem;
+      grid-auto-rows: 9.375rem;
       &__item {
-        border-bottom: 1px solid $color-light-grey;
+        border-bottom: $border-classic $color-light-grey;
       }
     }
 
@@ -44,7 +50,7 @@
       margin-top: $spacing-xl;
       &--order {
         display: inline-block;
-        margin-left: 4.37rem;
+        margin-left: $spacing-4xl-bonus;
       }
       &--price {
         float: right;
@@ -55,7 +61,11 @@
   &__checkout {
     margin-top: $spacing-xl;
     width: 100%;
-    max-width: 20rem;
+    max-width: $spacing-20xl;
+
+    @media screen and (min-width: $breakpoint-md) {
+      margin-left: $spacing-4xl;
+    }
 
     @media screen and (min-width: $breakpoint-lg) {
       float: right;
@@ -66,19 +76,40 @@
     }
 
     &__input {
-      width: 100%;
-      font-size: $font-size-base;
-      box-sizing: border-box;
-      border: 1px solid;
-      outline: 0;
-      line-height: 2rem;
-      min-height: 2.18rem;
-      margin: 0.25rem 0 $spacing-xl 0;
-      padding: 0 0 0 $spacing-base;
+      margin-top: $spacing-base;
     }
 
     &__button {
       width: 100%;
+    }
+  }
+
+  &__empty-cart {
+    text-align: center;
+    margin: auto;
+    display: block;
+    margin-top: $spacing-10xl;
+
+    &__links {
+      display: flex;
+      justify-content: center;
+      margin-top: $spacing-4xl;
+      margin-bottom: $spacing-4xl;
+
+      &__link {
+        margin: $spacing-md;
+      }
+    }
+
+    &__list {
+      columns: 2;
+      text-align: left;
+      width: 15rem;
+      margin: $spacing-xl auto;
+
+      &__link {
+        margin-left: $spacing-2xl;
+      }
     }
   }
 }

@@ -17,7 +17,7 @@ export const AtpSelect: FC<Props> = ({ selectValues, name, onSelect }) => {
     <select
       name={name}
       id="size-select"
-      className="atp-selector"
+      className="atp-selector atp-input"
       defaultValue={''}
       onChange={handleChange}
     >
