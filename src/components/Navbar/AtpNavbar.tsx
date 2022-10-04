@@ -20,7 +20,7 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
           <AtpLink to="/">{strings.WOMENSWEAR}</AtpLink>
         </li>
         <li className="navbar-list__link">
-          <AtpLink to="/">{strings.SEARCH}</AtpLink>
+          <AtpLink to="/search">{strings.SEARCH}</AtpLink>
         </li>
       </ul>
 
@@ -31,7 +31,7 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
           </AtpLink>
         </li>
         <li className="navbar-list__link">
-          <AtpLink to="/">
+          <AtpLink to="/search">
             <VscSearch className="navbar-list__link__mobile-icon" />
           </AtpLink>
         </li>

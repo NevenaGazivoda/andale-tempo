@@ -1,9 +1,13 @@
 export enum strings {
   'ADD_TO_BAG' = 'Add to bag',
   'ADD_TO_WISH_LIST' = 'Add to wishlist',
+  'ALL' = 'All',
   'ARTICLE' = 'Article',
   'BRAND_NAME' = 'ANDALE TEMPO',
+  'CATEGORIES'  = 'Categories',
   'CHECKOUT' = 'CHECKOUT',
+  'CLOSE' = 'Close',
+  'DESIGNERS' = 'DESIGNERS',
   'ENTER_EMAIL' = 'Enter your email to login or continue to checkout as a guest.',
   'EMAIL_ADDRESS' = 'Email address:',
   'EVERYTHING_ELSE' = 'Everything else',

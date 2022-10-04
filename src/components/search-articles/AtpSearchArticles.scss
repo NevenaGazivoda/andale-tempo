@@ -1,0 +1,11 @@
+@import '../../assets/styles/main.scss';
+
+.atp-search-articles {
+  display: grid;
+  gap: $spacing-xl;
+  justify-content: start;
+  grid-auto-flow: column;
+  grid-auto-columns: 11rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}

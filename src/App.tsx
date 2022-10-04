@@ -9,6 +9,7 @@ import AtpFooter from './components/footer/AtpFooter';
 import { ARTICLES_DATA } from './assets/dummy-data/articlesData';
 import AtpShoppingCart from './pages/shopping-cart/AtpShoppingCart';
 import { Article } from './models/article.model';
+import AtpSearchPage from './pages/search-page/AtpSearchPage';
 
 export const App = () => {
   const cart = JSON.parse(localStorage.getItem('cart') || '[]') as Article[];
@@ -38,6 +39,7 @@ export const App = () => {
         <Route path="/" element={<Home articles={ARTICLES_DATA} />} />
         <Route path="/article/:articleCode" element={<AtpArticlePage />} />
         <Route path="/shopping-cart" element={<AtpShoppingCart />} />
+        <Route path="/search" element={<AtpSearchPage />} />
         <Route path="*" element={<AtpNotFound />} />
       </Routes>
 
