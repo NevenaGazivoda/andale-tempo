@@ -30,18 +30,31 @@
   }
   &__input-container {
     margin: $spacing-xl 0 $spacing-xl $spacing-xl;
+    display: flex;
+
+    &__field {
+      position: relative;
+      width: 85%;
+    }
 
     &__input {
       margin-bottom: 0;
-      width: 85%;
-      background-image: url("data:image/svg+xml,%3Csvg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 512 512' class='atp-search__input-container__icon' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke-miterlimit='10' stroke-width='32' d='M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z'%3E%3C/path%3E%3Cpath fill='none' stroke-linecap='round' stroke-miterlimit='10' stroke-width='32' d='M338.29 338.29L448 448'%3E%3C/path%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right $spacing-base center;
-      background-size: $spacing-xl;
     }
 
-    &__button {
-      width: 15%;
+    &__submit {
+      background-color: $color-white;
+      border: 0;
+      position: absolute;
+      top: 7px;
+      right: $spacing-base;
+      font-size: $font-size-icon-xs;
+      @media screen and (min-width: $breakpoint-md) {
+        top: 4px;
+      }
+    }
+
+    &__close {
+      width: 15% !important;
     }
   }
 }

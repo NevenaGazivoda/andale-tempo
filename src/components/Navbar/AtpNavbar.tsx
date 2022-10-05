@@ -1,15 +1,22 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { strings } from '../../constants/strings';
 import AtpLink from '../link/AtpLink';
 import './AtpNavbar.scss';
 import { VscMenu, VscSearch } from 'react-icons/vsc';
 import { BsBag } from 'react-icons/bs';
+import AtpSearchBox from '../search-box/AtpSearchBox';
 
 type Props = {
   totalItems: number;
 };
 
 export const AtpNavbar: FC<Props> = ({ totalItems }) => {
+  const [showSearch, setShowSearch] = useState(false);
+
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+  };
+
   return (
     <nav className="atp-navbar">
       <ul className="navbar-list navbar-list--desktop">
@@ -19,10 +26,11 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
         <li className="navbar-list__link">
           <AtpLink to="/">{strings.WOMENSWEAR}</AtpLink>
         </li>
-        <li className="navbar-list__link">
-          <AtpLink to="/search">{strings.SEARCH}</AtpLink>
+        <li className="navbar-list__link navbar-list__link--search" onClick={toggleSearch}>
+          {strings.SEARCH}
         </li>
       </ul>
+      {showSearch && <AtpSearchBox onClose={toggleSearch} />}
 
       <ul className="navbar-list navbar-list--mobile">
         <li className="navbar-list__link">
@@ -30,10 +38,8 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
             <VscMenu className="navbar-list__link__mobile-icon" />
           </AtpLink>
         </li>
-        <li className="navbar-list__link">
-          <AtpLink to="/search">
-            <VscSearch className="navbar-list__link__mobile-icon" />
-          </AtpLink>
+        <li className="navbar-list__link" onClick={toggleSearch}>
+          <VscSearch className="navbar-list__link__mobile-icon" />
         </li>
       </ul>
 

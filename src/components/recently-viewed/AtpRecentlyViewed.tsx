@@ -18,8 +18,11 @@ export const AtpRecentlyViewed: FC<Props> = ({ article }) => {
       <div className="atp-recently-viewed__articles">
         {recentItems
           .filter((card) => card.articleCode !== article.articleCode)
-          .map((filteredCard, cardIndex) => (
-            <AtpArticleCard key={cardIndex} article={filteredCard} />
+          .map((filteredCard) => (
+            <AtpArticleCard
+              key={filteredCard.articleCode + filteredCard.articleName}
+              article={filteredCard}
+            />
           ))}
       </div>
     </div>

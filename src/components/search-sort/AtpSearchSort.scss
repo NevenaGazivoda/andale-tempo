@@ -1,16 +1,21 @@
 @import '../../assets/styles/main.scss';
 
-.atp-search-selection {
-  position: relative;
-  margin-left: 3rem;
+.atp-search-sort {
+  margin-right: 3rem;
   height: 100%;
   width: $spacing-10xl;
+  text-align: right;
 
   &__title {
-    padding: $spacing-xl 0;
+    text-transform: uppercase;
+    padding-top: $spacing-xl;
     font-weight: $bold-text;
   }
+
   &__link {
     padding-bottom: $spacing-xs;
+    a {
+      text-transform: capitalize;
+    }
   }
 }

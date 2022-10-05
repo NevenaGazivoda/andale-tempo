@@ -1,11 +1,15 @@
 @import '../../assets/styles/main.scss';
 
 .atp-search-articles {
-  display: grid;
-  gap: $spacing-xl;
-  justify-content: start;
-  grid-auto-flow: column;
-  grid-auto-columns: 11rem;
-  overflow-x: auto;
-  scrollbar-width: none;
+  margin: $spacing-xl auto;
+
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__grid {
+    display: grid;
+    gap: $spacing-4xl;
+    grid-template-columns: auto auto auto auto;
+  }
 }

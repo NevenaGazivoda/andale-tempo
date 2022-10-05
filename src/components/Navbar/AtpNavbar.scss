@@ -52,6 +52,14 @@
     &__link {
       padding-right: $spacing-md;
 
+      &--search {
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      &--search:hover {
+        text-decoration: underline;
+      }
+
       &--noPadding {
         padding-right: 0;
       }

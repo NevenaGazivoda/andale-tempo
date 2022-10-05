@@ -3,7 +3,7 @@ import AtpLink from '../../components/link/AtpLink';
 import { strings } from '../../constants/strings';
 import './AtpSearchSelection.scss';
 
-export const AtpNotFound = () => {
+export const AtpSearchSelection = () => {
   const categories = ['ACCESSORIES', 'BAGS', 'CLOTHING', 'SHOES'];
   const brands = [
     'OFF-WHITE',
@@ -67,21 +67,22 @@ export const AtpNotFound = () => {
     'Hunza G',
     ' Hyein Seo',
   ];
+
   return (
     <div className="atp-search-selection">
       <div className="atp-search-selection__title">
         <AtpLink to={''}>{strings.ALL + ' ' + strings.CATEGORIES}</AtpLink>
       </div>
-      {categories.map((brand: string, index: number) => (
-        <AtpLink className="atp-search-selection__link" key={index} to={''}>
-          {brand}
+      {categories.map((category: string) => (
+        <AtpLink className="atp-search-selection__link" key={category} to={''}>
+          {category}
         </AtpLink>
       ))}
       <div className="atp-search-selection__title">
         <AtpLink to={''}>{strings.ALL + ' ' + strings.DESIGNERS}</AtpLink>
       </div>
-      {brands.map((brand: string, index: number) => (
-        <AtpLink className="atp-search-selection__link" key={index} to={''}>
+      {brands.map((brand: string) => (
+        <AtpLink className="atp-search-selection__link" key={brand} to={''}>
           {brand}
         </AtpLink>
       ))}
@@ -89,4 +90,4 @@ export const AtpNotFound = () => {
   );
 };
 
-export default AtpNotFound;
+export default AtpSearchSelection;

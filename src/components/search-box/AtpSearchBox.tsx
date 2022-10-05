@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import './AtpSearchBox.scss';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
 import AtpLink from '../link/AtpLink';
+import { IoSearchOutline } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
-export const AtpSearchBox = () => {
+type Props = {
+  onClose: () => void;
+};
+
+export const AtpSearchBox: FC<Props> = ({ onClose }) => {
+  const navigate = useNavigate();
+
+  const [term, setTerm] = useState('');
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    onClose();
+    navigate(`/search?term=${term}`);
+  };
+
   return (
     <div className="atp-search-box">
       <ul className="atp-search-box__list">
@@ -18,12 +34,28 @@ export const AtpSearchBox = () => {
           <AtpLink to="/">{strings.EVERYTHING_ELSE}</AtpLink>
         </li>
       </ul>
-      <div className="atp-search-box__input-container">
-        <input type="text" className="atp-input atp-search-box__input-container__input" />
-        <AtpButton isSecondary className="atp-search__input-box-container__button">
-          {strings.CLOSE}
-        </AtpButton>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div className="atp-search-box__input-container">
+          <div className="atp-search-box__input-container__field">
+            <input
+              type="text"
+              name="search"
+              onChange={(event) => setTerm(event.target.value)}
+              className="atp-input atp-search-box__input-container__input"
+            />
+            <button type="submit" className="atp-search-box__input-container__submit">
+              <IoSearchOutline />
+            </button>
+          </div>
+          <AtpButton
+            onClick={onClose}
+            isSecondary
+            className="atp-search-box__input-container__close"
+          >
+            {strings.CLOSE}
+          </AtpButton>
+        </div>
+      </form>
     </div>
   );
 };

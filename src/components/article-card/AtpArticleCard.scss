@@ -16,5 +16,11 @@
 
   &__link {
     margin: 0.2rem 0;
+
+    &--capitalize {
+      a {
+        text-transform: capitalize;
+      }
+    }
   }
 }
