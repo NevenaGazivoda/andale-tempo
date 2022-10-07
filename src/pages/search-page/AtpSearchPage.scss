@@ -1,5 +1,39 @@
 @import '../../assets/styles/main.scss';
 
 .atp-search {
-  display: flex;
+  &__mobile {
+    @media screen and (min-width: $breakpoint-lg) {
+      display: none;
+    }
+    &__buttons {
+      @media screen and (min-width: $breakpoint-lg) {
+        display: none;
+      }
+      display: flex;
+      align-items: center;
+      width: 104%;
+      height: 60px;
+      margin: 0 -11px;
+      &__field {
+        width: 50%;
+        text-align: center;
+        border-top: 1px solid $color-light-grey;
+        border-bottom: 1px solid $color-light-grey;
+        line-height: 48px;
+        &__button {
+          width: 40%;
+        }
+        &--refine {
+          border-right: 1px solid $color-light-grey;
+        }
+      }
+    }
+  }
+
+  &__desktop {
+    display: none;
+    @media screen and (min-width: $breakpoint-lg) {
+      display: flex;
+    }
+  }
 }

@@ -1,21 +1,60 @@
 @import '../../assets/styles/main.scss';
 
-.atp-search-sort {
-  margin-right: 3rem;
+.atp-search-sort-mobile {
+  position: fixed;
+  background: white;
+  top: 0;
+  z-index: 1000000;
   height: 100%;
-  width: $spacing-10xl;
-  text-align: right;
+  width: 100%;
+  padding: $spacing-xl;
 
-  &__title {
-    text-transform: uppercase;
-    padding-top: $spacing-xl;
-    font-weight: $bold-text;
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-2xl;
+    &__sort {
+      color: $color-grey;
+      margin: 0 30%;
+    }
   }
 
-  &__link {
-    padding-bottom: $spacing-xs;
-    a {
-      text-transform: capitalize;
+  &__menu-item {
+    font-size: 16px;
+    padding-left: $spacing-2xl;
+    margin-bottom: $spacing-2xl;
+    &__icon {
+      vertical-align: middle;
+      padding: $spacing-xs;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    display: none;
+  }
+}
+
+.atp-search-sort-desktop {
+  display: none;
+
+  @media screen and (min-width: $breakpoint-md) {
+    display: block;
+    margin-right: 3rem;
+    height: 100%;
+    width: $spacing-10xl;
+    text-align: right;
+
+    &__title {
+      text-transform: uppercase;
+      padding-top: $spacing-xl;
+      font-weight: $bold-text;
+    }
+
+    &__link {
+      padding-bottom: $spacing-xs;
+      a {
+        text-transform: capitalize;
+      }
     }
   }
 }

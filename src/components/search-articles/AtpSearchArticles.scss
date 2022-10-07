@@ -1,15 +1,25 @@
 @import '../../assets/styles/main.scss';
 
 .atp-search-articles {
-  margin: $spacing-xl auto;
-
   &__title {
     text-transform: uppercase;
   }
 
+  @media screen and (min-width: $breakpoint-lg) {
+    margin: $spacing-xl auto;
+  }
+
   &__grid {
     display: grid;
-    gap: $spacing-4xl;
-    grid-template-columns: auto auto auto auto;
+    gap: $spacing-2xl;
+    grid-template-columns: auto auto;
+    @media screen and (min-width: $breakpoint-md) {
+      gap: $spacing-3xl;
+      grid-template-columns: auto auto auto;
+    }
+    @media screen and (min-width: $breakpoint-lg) {
+      gap: $spacing-4xl;
+      grid-template-columns: auto auto auto auto;
+    }
   }
 }

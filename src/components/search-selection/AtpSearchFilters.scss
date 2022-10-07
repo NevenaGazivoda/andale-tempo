@@ -1,0 +1,98 @@
+@import '../../assets/styles/main.scss';
+
+.atp-search-filters-mobile {
+  position: fixed;
+  background: $color-white;
+  top: 0;
+  z-index: 1000000;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  padding: $spacing-xl;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-xl;
+    overflow: auto;
+    padding-right: $spacing-xl-bonus;
+
+    &__remove-filter {
+      float: right;
+      margin-right: $spacing-sm;
+      color: grey;
+      padding-left: $spacing-sm;
+    }
+    &__refine {
+      color: $color-grey;
+      text-transform: uppercase;
+      margin: 0 30%;
+    }
+    &__button {
+      width: $spacing-4xl;
+      text-align: start;
+    }
+  }
+  &__header::-webkit-scrollbar {
+    display: none;
+  }
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding-inline-start: 0;
+    margin-left: $spacing-xl;
+    margin-block-start: $spacing-xl;
+    margin-block-end: $spacing-xl;
+
+    &__link {
+      padding-right: $spacing-md;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    &__link:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__categories {
+    text-align: left;
+    margin-left: $spacing-2xl;
+    overflow: auto;
+    max-height: 100vh;
+    margin-bottom: $spacing-sm;
+    &__text {
+      margin-bottom: 0;
+      line-height: $spacing-2xl;
+    }
+  }
+
+  &__apply {
+    position: fixed;
+    bottom: $spacing-xl-bonus;
+    left: 0;
+    width: 100%;
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    display: none;
+  }
+}
+
+.atp-search-filters-desktop {
+  display: none;
+  @media screen and (min-width: $breakpoint-md) {
+    display: block;
+    margin-left: $spacing-3xl;
+    height: 100%;
+    width: $spacing-10xl;
+
+    &__title {
+      padding: $spacing-xl 0;
+      font-weight: $bold-text;
+    }
+    &__link {
+      padding-bottom: $spacing-xs;
+    }
+  }
+}

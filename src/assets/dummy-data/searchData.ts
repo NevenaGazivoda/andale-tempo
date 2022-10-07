@@ -1,11 +1,4 @@
-import React from 'react';
-import AtpLink from '../../components/link/AtpLink';
-import { strings } from '../../constants/strings';
-import './AtpSearchSelection.scss';
-
-export const AtpSearchSelection = () => {
-  const categories = ['ACCESSORIES', 'BAGS', 'CLOTHING', 'SHOES'];
-  const brands = [
+export const brands = [
     'OFF-WHITE',
     'THEORY',
     'MONCLER',
@@ -65,29 +58,7 @@ export const AtpSearchSelection = () => {
     'HUGO KREIT',
     'Hunter',
     'Hunza G',
-    ' Hyein Seo',
+    'Hyein Seo',
   ];
 
-  return (
-    <div className="atp-search-selection">
-      <div className="atp-search-selection__title">
-        <AtpLink to={''}>{strings.ALL + ' ' + strings.CATEGORIES}</AtpLink>
-      </div>
-      {categories.map((category: string) => (
-        <AtpLink className="atp-search-selection__link" key={category} to={''}>
-          {category}
-        </AtpLink>
-      ))}
-      <div className="atp-search-selection__title">
-        <AtpLink to={''}>{strings.ALL + ' ' + strings.DESIGNERS}</AtpLink>
-      </div>
-      {brands.map((brand: string) => (
-        <AtpLink className="atp-search-selection__link" key={brand} to={''}>
-          {brand}
-        </AtpLink>
-      ))}
-    </div>
-  );
-};
-
-export default AtpSearchSelection;
+export const categories = ['ACCESSORIES', 'BAGS', 'CLOTHING', 'SHOES'];

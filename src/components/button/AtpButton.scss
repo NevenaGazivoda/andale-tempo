@@ -30,6 +30,17 @@
       width: 15%;
     }
   }
+
+  &__filter {
+    display: inline-flex;
+    justify-content: space-between;
+    background-color: #f3f3f3;
+    padding: $spacing-sm 0 $spacing-sm $spacing-sm;
+    margin-right: $spacing-md;
+    border: none;
+    color: $color-black;
+    max-width: 120px;
+  }
 }
 
 .atp-button:active {
