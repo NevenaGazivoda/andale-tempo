@@ -121,7 +121,7 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
           <AtpLink to={''}>{strings.ALL + ' ' + strings.DESIGNERS}</AtpLink>
         </div>
         {brands.map((brand: string) => (
-          <AtpLink className="atp-search-filters-desktop__link" key={brand} to={''}>
+          <AtpLink className="atp-search-filters-desktop__link" key={brand} to={`/search/${brand}`}>
             {brand}
           </AtpLink>
         ))}

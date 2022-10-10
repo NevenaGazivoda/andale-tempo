@@ -1,22 +1,27 @@
 import React, { FC } from 'react';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
-import AtpLink from '../link/AtpLink';
 import AtpText from '../text/AtpText';
 import './AtpSearchSort.scss';
 import { HiOutlineMinus } from 'react-icons/hi';
 
 type Props = {
   toggleSort: () => void;
+  sortingResults: (sort: string) => void;
 };
 
-export const AtpSearchSort: FC<Props> = ({ toggleSort }) => {
+export const AtpSearchSort: FC<Props> = ({ sortingResults, toggleSort }) => {
+  const handleClick = (sortOrder: string) => {
+    sortingResults(sortOrder);
+    toggleSort();
+  };
+
   return (
     <>
       <div className="atp-search-sort-mobile">
         <div className="atp-search-sort-mobile__header">
           <AtpButton isSecondary onClick={toggleSort}>
-            Cancel
+            {strings.CANCEL}
           </AtpButton>
           <div className="atp-search-sort-mobile__header__sort">{strings.SORT}</div>
         </div>
@@ -32,14 +37,18 @@ export const AtpSearchSort: FC<Props> = ({ toggleSort }) => {
           <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
           {strings.TRENDING}
         </div>
-        <div className="atp-search-sort-mobile__menu-item">
+        <div
+          className="atp-search-sort-mobile__menu-item"
+          onClick={() => handleClick('low to high')}
+        >
           <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
-
           {strings.PRICE + ' ' + strings.LOW_TO_HIGH}
         </div>
-        <div className="atp-search-sort-mobile__menu-item">
+        <div
+          className="atp-search-sort-mobile__menu-item"
+          onClick={() => handleClick('high to low')}
+        >
           <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
-
           {strings.PRICE + ' ' + strings.HIGH_TO_LOW}
         </div>
       </div>
@@ -47,18 +56,14 @@ export const AtpSearchSort: FC<Props> = ({ toggleSort }) => {
       <div className="atp-search-sort-desktop">
         <AtpText className="atp-search-sort-desktop__title">{strings.SORT}</AtpText>
 
-        <AtpLink className="atp-search-sort-desktop__link" to={''}>
-          {strings.LATEST_ARRIVALS}
-        </AtpLink>
-        <AtpLink className="atp-search-sort-desktop__link" to={''}>
-          {strings.TRENDING}
-        </AtpLink>
-        <AtpLink className="atp-search-sort-desktop__link" to={''}>
+        <div className="atp-search-sort-desktop__link">{strings.LATEST_ARRIVALS}</div>
+        <div className="atp-search-sort-desktop__link">{strings.TRENDING}</div>
+        <div className="atp-search-sort-desktop__link" onClick={() => handleClick('low to high')}>
           {strings.PRICE + ' ' + strings.LOW_TO_HIGH}
-        </AtpLink>
-        <AtpLink className="atp-search-sort-desktop__link" to={''}>
+        </div>
+        <div className="atp-search-sort-desktop__link" onClick={() => handleClick('high to low')}>
           {strings.PRICE + ' ' + strings.HIGH_TO_LOW}
-        </AtpLink>
+        </div>
       </div>
     </>
   );

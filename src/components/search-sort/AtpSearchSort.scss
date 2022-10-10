@@ -52,9 +52,13 @@
 
     &__link {
       padding-bottom: $spacing-xs;
-      a {
-        text-transform: capitalize;
-      }
+      cursor: pointer;
+    }
+    &__link:active {
+      text-decoration: underline;
+    }
+    &__link:hover {
+      text-decoration: underline;
     }
   }
 }

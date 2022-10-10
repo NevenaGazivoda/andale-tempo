@@ -40,6 +40,7 @@ export const App = () => {
         <Route path="/article/:articleCode" element={<AtpArticlePage />} />
         <Route path="/shopping-cart" element={<AtpShoppingCart />} />
         <Route path="/search" element={<AtpSearchPage />} />
+        <Route path="/search/:designer" element={<AtpSearchPage />} />
         <Route path="*" element={<AtpNotFound />} />
       </Routes>
 
