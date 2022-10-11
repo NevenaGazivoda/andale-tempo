@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import './AtpSearchBox.scss';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
@@ -10,7 +10,9 @@ type Props = {
   onClose: () => void;
 };
 
-export const AtpSearchBox: FC<Props> = ({ onClose }) => {
+type Ref = HTMLDivElement;
+
+export const AtpSearchBox: React.ForwardRefRenderFunction<Ref, Props> = ({ onClose }, ref) => {
   const navigate = useNavigate();
 
   const [term, setTerm] = useState('');
@@ -22,7 +24,7 @@ export const AtpSearchBox: FC<Props> = ({ onClose }) => {
   };
 
   return (
-    <div className="atp-search-box">
+    <div ref={ref} className="atp-search-box">
       <ul className="atp-search-box__list">
         <li className="atp-search-box__list__link">
           <AtpLink to="/">{strings.MENSWEAR}</AtpLink>
@@ -60,4 +62,4 @@ export const AtpSearchBox: FC<Props> = ({ onClose }) => {
   );
 };
 
-export default AtpSearchBox;
+export default React.forwardRef<HTMLDivElement, Props>(AtpSearchBox);

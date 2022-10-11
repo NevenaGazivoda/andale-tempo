@@ -17,9 +17,9 @@
       gap: $spacing-3xl;
       grid-template-columns: auto auto auto;
     }
-    @media screen and (min-width: $breakpoint-lg) {
+    @media screen and (min-width: $breakpoint-xl) {
       gap: $spacing-4xl;
-      grid-template-columns: auto auto auto auto;
+      grid-template-columns: 170px 170px 170px 170px;
     }
   }
 }

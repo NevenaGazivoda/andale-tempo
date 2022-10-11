@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { strings } from '../../constants/strings';
 import AtpLink from '../link/AtpLink';
 import './AtpNavbar.scss';
@@ -12,6 +12,19 @@ type Props = {
 
 export const AtpNavbar: FC<Props> = ({ totalItems }) => {
   const [showSearch, setShowSearch] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as HTMLElement)) {
+        setShowSearch(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [wrapperRef]);
 
   const toggleSearch = () => {
     setShowSearch(!showSearch);
@@ -30,7 +43,7 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
           {strings.SEARCH}
         </li>
       </ul>
-      {showSearch && <AtpSearchBox onClose={toggleSearch} />}
+      {showSearch && wrapperRef && <AtpSearchBox ref={wrapperRef} onClose={toggleSearch} />}
 
       <ul className="navbar-list navbar-list--mobile">
         <li className="navbar-list__link">

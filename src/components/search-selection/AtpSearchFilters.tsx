@@ -4,6 +4,7 @@ import { strings } from '../../constants/strings';
 import './AtpSearchFilters.scss';
 import AtpButton from '../button/AtpButton';
 import { brands, categories } from '../../assets/dummy-data/searchData';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   toggleFilters: () => void;
@@ -37,6 +38,13 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
 
   const removeAllFilters = () => {
     setFilters([]);
+  };
+
+  const navigate = useNavigate();
+
+  const applyFilter = () => {
+    navigate(`/search/${filters[0]}`);
+    toggleFilters();
   };
 
   return (
@@ -104,7 +112,9 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
           </div>
         )}
         <div className="atp-search-filters-mobile__apply">
-          <AtpButton>{strings.APPLY_FILTERS + ' (' + filters.length + ')'}</AtpButton>
+          <AtpButton onClick={applyFilter}>
+            {strings.APPLY_FILTERS + ' (' + filters.length + ')'}
+          </AtpButton>
         </div>
       </div>
 

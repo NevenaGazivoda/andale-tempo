@@ -9,6 +9,13 @@
   box-sizing: border-box;
 
   @media screen and (min-width: $breakpoint-md) {
+    padding-left: $spacing-2xl;
+    padding-right: $spacing-2xl;
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    padding-left: 0;
+    padding-right: 0;
     width: 450px;
     left: $spacing-4xl;
     border: $border-classic;
@@ -45,12 +52,10 @@
       background-color: $color-white;
       border: 0;
       position: absolute;
-      top: 7px;
+      padding-top: 3px;
+      top: $spacing-xs;
       right: $spacing-base;
       font-size: $font-size-icon-xs;
-      @media screen and (min-width: $breakpoint-md) {
-        top: 4px;
-      }
     }
 
     &__close {

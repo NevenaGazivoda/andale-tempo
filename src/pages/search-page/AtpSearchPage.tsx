@@ -39,7 +39,9 @@ export const AtpSearchPage = () => {
       setTerm(term);
       setSearchResults(articles);
     }
+  }, [search]);
 
+  useEffect(() => {
     if (designer) {
       const articles = ARTICLES_DATA.filter(
         (article) => article.brand.toLowerCase() === designer.toLowerCase()
@@ -48,18 +50,7 @@ export const AtpSearchPage = () => {
       setTerm(designer);
       setSearchResults(articles);
     }
-  }, [search, designer]);
-
-  // const queryParams = new URLSearchParams(window.location.search);
-  // const term = queryParams.get('term') || '';
-  // console.log(term);
-
-  // const articles = ARTICLES_DATA.filter(
-  //   (article) =>
-  //     Object.values(article)
-  //       .map((v) => v.toString().toLowerCase())
-  //       .includes(term)
-  // ) as Article[];
+  }, [designer]);
 
   const [sortOrder, setSortOrder] = useState('low to high');
 
@@ -75,7 +66,6 @@ export const AtpSearchPage = () => {
         setSearchResults(searchResults);
         break;
     }
-    console.log(sortOrder);
   }, [sortOrder]);
 
   return (
