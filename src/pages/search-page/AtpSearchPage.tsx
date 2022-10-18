@@ -13,7 +13,11 @@ export const AtpSearchPage = () => {
   const { search } = useLocation();
   const { designer } = useParams();
 
-  const [searchResults, setSearchResults] = useState<Article[]>([]);
+  const searchResults = localStorage.getItem('search')
+    ? JSON.parse(localStorage.getItem('search') as string)
+    : JSON.parse('[]');
+
+  // const [searchResults, setSearchResults] = useState<Article[]>([]);
   const [term, setTerm] = useState('');
 
   const [isSortOpen, setIsSortOpen] = useState(false);
@@ -37,7 +41,9 @@ export const AtpSearchPage = () => {
       ) as Article[];
 
       setTerm(term);
-      setSearchResults(articles);
+      localStorage.setItem('search', JSON.stringify(articles));
+
+      // setSearchResults(articles);
     }
   }, [search]);
 
@@ -48,25 +54,27 @@ export const AtpSearchPage = () => {
       ) as Article[];
 
       setTerm(designer);
-      setSearchResults(articles);
+      localStorage.setItem('search', JSON.stringify(articles));
+
+      // setSearchResults(articles);
     }
   }, [designer]);
 
   const [sortOrder, setSortOrder] = useState('low to high');
 
-  useEffect(() => {
-    switch (sortOrder) {
-      case 'low to high':
-        setSearchResults(searchResults.sort((a, b) => a.price - b.price));
-        break;
-      case 'high to low':
-        setSearchResults(searchResults.sort((a, b) => b.price - a.price));
-        break;
-      default:
-        setSearchResults(searchResults);
-        break;
-    }
-  }, [sortOrder]);
+  // useEffect(() => {
+  //   switch (sortOrder) {
+  //     case 'low to high':
+  //       setSearchResults(searchResults.sort((a, b) => a.price - b.price));
+  //       break;
+  //     case 'high to low':
+  //       setSearchResults(searchResults.sort((a, b) => b.price - a.price));
+  //       break;
+  //     default:
+  //       setSearchResults(searchResults);
+  //       break;
+  //   }
+  // }, [sortOrder]);
 
   return (
     <div className="atp-page atp-search">

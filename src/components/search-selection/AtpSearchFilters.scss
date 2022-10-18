@@ -62,8 +62,12 @@
     max-height: 100vh;
     margin-bottom: $spacing-sm;
     &__text {
+      text-transform: uppercase;
       margin-bottom: 0;
       line-height: $spacing-2xl;
+    }
+    &--capitalize {
+      text-transform: capitalize;
     }
   }
 
@@ -87,12 +91,21 @@
     height: 100%;
     width: $spacing-10xl;
 
+    &__categories {
+      margin-left: $spacing-xl;
+    }
+
     &__title {
       padding: $spacing-xl 0;
       font-weight: $bold-text;
     }
     &__link {
-      padding-bottom: $spacing-xs;
+      margin-bottom: $spacing-xs;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    &__link:hover {
+      text-decoration: underline;
     }
   }
 }

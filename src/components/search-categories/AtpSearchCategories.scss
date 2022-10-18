@@ -1,0 +1,47 @@
+@import '../../assets/styles/main.scss';
+
+.atp-search-categories {
+  text-align: left;
+  margin-left: $spacing-2xl;
+  overflow: auto;
+  max-height: 100vh;
+  margin-bottom: $spacing-sm;
+  @media screen and (min-width: $breakpoint-lg) {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    vertical-align: middle;
+    padding: $spacing-xs;
+    @media screen and (min-width: $breakpoint-lg) {
+      display: none;
+    }
+  }
+
+  &__text {
+    text-transform: uppercase;
+    margin-bottom: 0;
+    line-height: $spacing-2xl;
+    @media screen and (min-width: $breakpoint-lg) {
+      padding-top: $spacing-xs;
+      margin-left: $spacing-md;
+      padding-bottom: $spacing-xs;
+      cursor: pointer;
+      line-height: $spacing-md;
+      &--no-margin {
+        margin: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    &__label {
+      display: inline;
+    }
+    @media screen and (min-width: $breakpoint-lg) {
+      &__label:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

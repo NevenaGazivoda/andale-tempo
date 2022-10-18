@@ -3,6 +3,7 @@
 .atp-search-articles {
   &__title {
     text-transform: uppercase;
+    padding-top: $spacing-md;
   }
 
   @media screen and (min-width: $breakpoint-lg) {

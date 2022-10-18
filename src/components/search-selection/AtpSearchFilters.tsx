@@ -3,8 +3,9 @@ import AtpLink from '../link/AtpLink';
 import { strings } from '../../constants/strings';
 import './AtpSearchFilters.scss';
 import AtpButton from '../button/AtpButton';
-import { brands, categories } from '../../assets/dummy-data/searchData';
+import { brands, categories_data } from '../../assets/dummy-data/searchData';
 import { useNavigate } from 'react-router-dom';
+import AtpSearchCategories from '../search-categories/AtpSearchCategories';
 
 type Props = {
   toggleFilters: () => void;
@@ -32,8 +33,8 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
     }
   };
 
-  const removeFilter = (selectedFilter: string) => {
-    setFilters(filters.filter((filter) => filter !== selectedFilter));
+  const removeFilter = (categoryIndex: number) => {
+    setFilters((oldItems) => oldItems.filter((item, index) => index !== categoryIndex));
   };
 
   const removeAllFilters = () => {
@@ -45,6 +46,16 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
   const applyFilter = () => {
     navigate(`/search/${filters[0]}`);
     toggleFilters();
+  };
+
+  const onFilterChange = (categoryName: string, parentName?: string) => {
+    if (parentName && filters.includes(parentName)) {
+      const parentIndex = filters.indexOf(parentName);
+
+      filters.splice(parentIndex, 1);
+      setFilters(filters);
+    }
+    addFilter(categoryName);
   };
 
   return (
@@ -69,8 +80,8 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
             {strings.CLEAR}
           </AtpButton>
           {filters &&
-            filters.map((filter) => (
-              <AtpButton isFilterButton onClick={() => removeFilter(filter)} key={filter}>
+            filters.map((filter, filterIndex) => (
+              <AtpButton isFilterButton onClick={() => removeFilter(filterIndex)} key={filter}>
                 {filter} <span className="atp-search-filters-mobile__header__remove-filter">X</span>
               </AtpButton>
             ))}
@@ -99,17 +110,11 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
           </div>
         )}
         {isCategorySelected && (
-          <div className="atp-search-filters-mobile__categories">
-            {categories.map((category: string) => (
-              <div
-                onClick={() => addFilter(category)}
-                className="atp-search-filters-mobile__categories__text"
-                key={category}
-              >
-                {category}
-              </div>
-            ))}
-          </div>
+          <AtpSearchCategories
+            depthLevel={0}
+            categories={categories_data}
+            onFilterChange={onFilterChange}
+          />
         )}
         <div className="atp-search-filters-mobile__apply">
           <AtpButton onClick={applyFilter}>
@@ -119,16 +124,16 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
       </div>
 
       <div className="atp-search-filters-desktop">
-        <div className="atp-search-filters-desktop__title">
-          <AtpLink to={''}>{strings.ALL + ' ' + strings.CATEGORIES}</AtpLink>
+        <div className="atp-search-filters-desktop__title atp-search-filters-desktop__link">
+          {strings.ALL + ' ' + strings.CATEGORIES}
         </div>
-        {categories.map((category: string) => (
-          <AtpLink className="atp-search-filters-desktop__link" key={category} to={''}>
-            {category}
-          </AtpLink>
-        ))}
-        <div className="atp-search-filters-desktop__title">
-          <AtpLink to={''}>{strings.ALL + ' ' + strings.DESIGNERS}</AtpLink>
+        <AtpSearchCategories
+          depthLevel={0}
+          categories={categories_data}
+          onFilterChange={onFilterChange}
+        />
+        <div className="atp-search-filters-desktop__title atp-search-filters-desktop__link">
+          {strings.ALL + ' ' + strings.DESIGNERS}
         </div>
         {brands.map((brand: string) => (
           <AtpLink className="atp-search-filters-desktop__link" key={brand} to={`/search/${brand}`}>
