@@ -4,7 +4,7 @@
   position: fixed;
   background: $color-white;
   top: 0;
-  z-index: 1000000;
+  z-index: $zindex-menu;
   height: 100%;
   width: 100%;
   overflow: auto;
@@ -36,40 +36,6 @@
   &__header::-webkit-scrollbar {
     display: none;
   }
-  &__list {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    padding-inline-start: 0;
-    margin-left: $spacing-xl;
-    margin-block-start: $spacing-xl;
-    margin-block-end: $spacing-xl;
-
-    &__link {
-      padding-right: $spacing-md;
-      text-transform: uppercase;
-      cursor: pointer;
-    }
-    &__link:hover {
-      text-decoration: underline;
-    }
-  }
-
-  &__categories {
-    text-align: left;
-    margin-left: $spacing-2xl;
-    overflow: auto;
-    max-height: 100vh;
-    margin-bottom: $spacing-sm;
-    &__text {
-      text-transform: uppercase;
-      margin-bottom: 0;
-      line-height: $spacing-2xl;
-    }
-    &--capitalize {
-      text-transform: capitalize;
-    }
-  }
 
   &__apply {
     position: fixed;
@@ -90,10 +56,6 @@
     margin-left: $spacing-3xl;
     height: 100%;
     width: $spacing-10xl;
-
-    &__categories {
-      margin-left: $spacing-xl;
-    }
 
     &__title {
       padding: $spacing-xl 0;

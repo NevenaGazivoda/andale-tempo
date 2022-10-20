@@ -25,7 +25,7 @@
     line-height: $spacing-2xl;
     @media screen and (min-width: $breakpoint-lg) {
       padding-top: $spacing-xs;
-      margin-left: $spacing-md;
+      margin-left: 0;
       padding-bottom: $spacing-xs;
       cursor: pointer;
       line-height: $spacing-md;

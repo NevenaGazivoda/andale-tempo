@@ -4,7 +4,7 @@
   position: fixed;
   background: white;
   top: 0;
-  z-index: 1000000;
+  z-index: $zindex-menu;
   height: 100%;
   width: 100%;
   padding: $spacing-xl;

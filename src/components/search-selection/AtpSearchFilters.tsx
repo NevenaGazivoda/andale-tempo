@@ -1,61 +1,75 @@
 import React, { FC, useState } from 'react';
-import AtpLink from '../link/AtpLink';
 import { strings } from '../../constants/strings';
 import './AtpSearchFilters.scss';
 import AtpButton from '../button/AtpButton';
-import { brands, categories_data } from '../../assets/dummy-data/searchData';
+import { brandsData, categoriesData } from '../../assets/dummy-data/searchData';
 import { useNavigate } from 'react-router-dom';
 import AtpSearchCategories from '../search-categories/AtpSearchCategories';
+import AtpSearchTabs from '../search-tabs/AtpSearchTabs';
+import AtpSearchBrands from '../search-brands/AtpSearchBrands';
+import { Filter } from '../../models/filter.model';
 
 type Props = {
   toggleFilters: () => void;
 };
 
 export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
-  const [isCategorySelected, setCategorySelected] = useState(false);
-  const [isBrandSelected, setBrandSelected] = useState(false);
+  const navigate = useNavigate();
 
-  const [filters, setFilters] = useState<string[]>([]);
+  const [filters, setFilters] = useState<Filter[]>([]);
 
-  const selectBrand = () => {
-    setBrandSelected(!isBrandSelected);
-    setCategorySelected(false);
-  };
-
-  const selectCategory = () => {
-    setCategorySelected(!isCategorySelected);
-    setBrandSelected(false);
-  };
-
-  const addFilter = (selectedFilter: string) => {
+  const addFilter = (selectedFilter: Filter) => {
+    // console.log('addFilter', filters);
     if (!filters.includes(selectedFilter)) {
-      setFilters([...filters, selectedFilter]);
+      setFilters((oldFilters) => [...oldFilters, selectedFilter]);
     }
+    // console.log(filters, 'after adding');
   };
 
-  const removeFilter = (categoryIndex: number) => {
-    setFilters((oldItems) => oldItems.filter((item, index) => index !== categoryIndex));
+  const removeFilter = (selectedFilter: Filter) => {
+    setFilters((oldItems) => oldItems.filter((item) => item.label !== selectedFilter.label));
   };
 
   const removeAllFilters = () => {
     setFilters([]);
   };
 
-  const navigate = useNavigate();
-
   const applyFilter = () => {
     navigate(`/search/${filters[0]}`);
     toggleFilters();
   };
 
-  const onFilterChange = (categoryName: string, parentName?: string) => {
-    if (parentName && filters.includes(parentName)) {
-      const parentIndex = filters.indexOf(parentName);
+  const onFilterChange = (selectedFilter: Filter, parent?: Filter) => {
+    if (parent) {
+      setFilters((current) =>
+        current.map((filter) => {
+          if (parent === filter) {
+            return { ...filter, isHidden: true };
+          }
+          return filter;
+        })
+      );
 
-      filters.splice(parentIndex, 1);
-      setFilters(filters);
+      // if (!filters.includes(categoryName)) {
+      //   setFilters((oldFilters) => [
+      //     ...oldFilters.filter((item) => item !== parentName),
+      //     categoryName,
+      //   ]);
+      // }
     }
-    addFilter(categoryName);
+
+    const filterInArray = filters.find((filter) => filter.label === selectedFilter.label);
+
+    if (!filterInArray) {
+      addFilter(selectedFilter);
+    } else {
+      removeFilter(selectedFilter);
+    }
+    console.log(filterInArray);
+
+    // if (!filters.includes(selectedFilter)) {
+    //   addFilter(selectedFilter);
+    // }
   };
 
   return (
@@ -80,42 +94,23 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
             {strings.CLEAR}
           </AtpButton>
           {filters &&
-            filters.map((filter, filterIndex) => (
-              <AtpButton isFilterButton onClick={() => removeFilter(filterIndex)} key={filter}>
-                {filter} <span className="atp-search-filters-mobile__header__remove-filter">X</span>
-              </AtpButton>
-            ))}
+            filters
+              .filter((filter) => filter.isHidden !== true)
+              .map((filter) => (
+                <AtpButton isFilterButton onClick={() => removeFilter(filter)} key={filter.label}>
+                  {filter.label}
+                  <span className="atp-search-filters-mobile__header__remove-filter">X</span>
+                </AtpButton>
+              ))}
         </div>
-        <ul className="atp-search-filters-mobile__list">
-          <li className="atp-search-filters-mobile__list__link" onClick={selectBrand}>
-            {strings.DESIGNERS}
-          </li>
-          <li className="atp-search-filters-mobile__list__link" onClick={selectCategory}>
-            {strings.CATEGORIES}
-          </li>
-          <li className="atp-search-filters-mobile__list__link">{strings.COLORS}</li>
-          <li className="atp-search-filters-mobile__list__link">{strings.SIZES}</li>
-        </ul>
-        {isBrandSelected && (
-          <div className="atp-search-filters-mobile__categories">
-            {brands.map((brand: string) => (
-              <div
-                onClick={() => addFilter(brand)}
-                className="atp-search-filters-mobile__categories__text"
-                key={brand}
-              >
-                {brand}
-              </div>
-            ))}
-          </div>
-        )}
-        {isCategorySelected && (
-          <AtpSearchCategories
-            depthLevel={0}
-            categories={categories_data}
-            onFilterChange={onFilterChange}
-          />
-        )}
+
+        <AtpSearchTabs
+          filters={filters}
+          brands={brandsData}
+          categories={categoriesData}
+          onFilterChange={onFilterChange}
+        />
+
         <div className="atp-search-filters-mobile__apply">
           <AtpButton onClick={applyFilter}>
             {strings.APPLY_FILTERS + ' (' + filters.length + ')'}
@@ -128,18 +123,15 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
           {strings.ALL + ' ' + strings.CATEGORIES}
         </div>
         <AtpSearchCategories
-          depthLevel={0}
-          categories={categories_data}
+          categories={categoriesData}
           onFilterChange={onFilterChange}
+          filters={filters}
+          depthLevel={0}
         />
         <div className="atp-search-filters-desktop__title atp-search-filters-desktop__link">
           {strings.ALL + ' ' + strings.DESIGNERS}
         </div>
-        {brands.map((brand: string) => (
-          <AtpLink className="atp-search-filters-desktop__link" key={brand} to={`/search/${brand}`}>
-            {brand}
-          </AtpLink>
-        ))}
+        <AtpSearchBrands filters={filters} brands={brandsData} onFilterChange={onFilterChange} />
       </div>
     </>
   );

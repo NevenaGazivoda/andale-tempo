@@ -1,0 +1,29 @@
+@import '../../assets/styles/main.scss';
+
+.atp-menu-mobile {
+  position: fixed;
+  background: white;
+  top: 0;
+  z-index: $zindex-menu;
+  height: 100%;
+  width: 100%;
+  &__header {
+    text-align: right;
+    margin-top: 1rem;
+  }
+  &__list {
+    list-style: none;
+    padding-inline-start: 0;
+    margin-right: $spacing-xl;
+    margin-left: $spacing-xl;
+    &__link {
+      margin-bottom: $spacing-xl;
+
+      &--capitalize {
+        a {
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}

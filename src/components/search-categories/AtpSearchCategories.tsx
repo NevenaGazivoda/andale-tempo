@@ -1,40 +1,38 @@
-import React, { FC, MouseEventHandler, SelectHTMLAttributes, useState } from 'react';
+import React, { FC } from 'react';
 import { Category } from '../../models/category.model';
 import './AtpSearchCategories.scss';
 import { HiOutlineMinus } from 'react-icons/hi';
-import { categories_data } from '../../assets/dummy-data/searchData';
 import AtpText from '../text/AtpText';
 import classNames from 'classnames';
+import { categoriesData } from '../../assets/dummy-data/searchData';
+import { Filter } from '../../models/filter.model';
 
 type Props = {
   categories: Category[];
-  onFilterChange: (categoryName: string, parentName?: string) => void;
+  onFilterChange: (category: Filter, parent?: Filter) => void;
+  filters: Filter[];
   depthLevel: number;
 };
 
-export const AtpSearchCategories: FC<Props> = ({ categories, onFilterChange, depthLevel }) => {
-  const [categoryId, setCategoryId] = useState('');
-  const [selected, setSelected] = useState(false);
-
-  const clickHandler = (id: string, categoryName: string) => {
-    if (categoryId === id && selected) {
-      setSelected(!selected);
-    } else {
-      if (!selected) {
-        setSelected(!selected);
-      }
-    }
-    onFilterChange(categoryName);
-    setCategoryId(id);
+export const AtpSearchCategories: FC<Props> = ({
+  categories,
+  onFilterChange,
+  filters,
+  depthLevel,
+}) => {
+  const clickHandler = (category: Filter) => {
     if (depthLevel > 0) {
-      const parentName = findParent(categories_data, id).label;
-      onFilterChange(categoryName, parentName);
+      const parent = findParent(categoriesData, category.id);
+      onFilterChange(category, parent);
+    } else {
+      onFilterChange(category);
     }
   };
-  const findParent: any = (categories: Category[], id: string, parent = null) => {
-    for (const item of categories) {
+
+  const findParent: any = (_categories: Category[], id: number, parent = null) => {
+    for (const item of _categories) {
       const result: Category =
-        item.id === id ? parent : item.children && findParent(item.children, id, item);
+        item.id === id ? parent : item.children!.length > 0 && findParent(item.children, id, item);
       if (result) return result;
     }
   };
@@ -42,26 +40,22 @@ export const AtpSearchCategories: FC<Props> = ({ categories, onFilterChange, dep
   return (
     <div className="atp-search-categories">
       {categories.map((category) => (
-        <div
-          key={category.name}
-          className={classNames(
-            'atp-search-categories__text',
-            `${depthLevel == 0 && 'atp-search-categories__text--no-margin'}`
-          )}
-        >
-          <div onClick={() => clickHandler(category.id, category.label)}>
-            {selected && categoryId === category.id && (
+        <div key={category.label} className={classNames('atp-search-categories__text')}>
+          <div onClick={() => clickHandler(category)}>
+            {filters.find((filter) => filter.label === category.label) && (
               <HiOutlineMinus className="atp-search-categories__icon" />
             )}
             <AtpText className="atp-search-categories__text__label">{category.label}</AtpText>
           </div>
-          {selected && category.children.length > 0 && categoryId === category.id && (
-            <AtpSearchCategories
-              categories={category.children}
-              onFilterChange={onFilterChange}
-              depthLevel={depthLevel + 1}
-            />
-          )}
+          {filters.find((filter) => filter.label === category.label) &&
+            category.children.length > 0 && (
+              <AtpSearchCategories
+                categories={category.children}
+                onFilterChange={onFilterChange}
+                filters={filters}
+                depthLevel={0 + 1}
+              />
+            )}
         </div>
       ))}
     </div>
