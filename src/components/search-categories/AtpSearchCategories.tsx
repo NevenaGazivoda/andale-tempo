@@ -32,7 +32,7 @@ export const AtpSearchCategories: FC<Props> = ({
   const findParent: any = (_categories: Category[], id: number, parent = null) => {
     for (const item of _categories) {
       const result: Category =
-        item.id === id ? parent : item.children!.length > 0 && findParent(item.children, id, item);
+        item.id === id ? parent : item.children.length > 0 && findParent(item.children, id, item);
       if (result) return result;
     }
   };

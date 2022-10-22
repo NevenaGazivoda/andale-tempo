@@ -18,11 +18,18 @@
     margin-left: $spacing-xl;
     &__link {
       margin-bottom: $spacing-xl;
-
+      &__icon {
+        font-size: $spacing-lg;
+        float: right;
+      }
       &--capitalize {
         a {
           text-transform: capitalize;
         }
+      }
+
+      &--top-margin {
+        margin-top: $spacing-3xl;
       }
     }
   }

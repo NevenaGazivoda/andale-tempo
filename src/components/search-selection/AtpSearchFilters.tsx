@@ -19,11 +19,9 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
   const [filters, setFilters] = useState<Filter[]>([]);
 
   const addFilter = (selectedFilter: Filter) => {
-    // console.log('addFilter', filters);
     if (!filters.includes(selectedFilter)) {
       setFilters((oldFilters) => [...oldFilters, selectedFilter]);
     }
-    // console.log(filters, 'after adding');
   };
 
   const removeFilter = (selectedFilter: Filter) => {
@@ -43,7 +41,7 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
     if (parent) {
       setFilters((current) =>
         current.map((filter) => {
-          if (parent === filter) {
+          if (parent.label === filter.label) {
             return { ...filter, isHidden: true };
           }
           return filter;
@@ -58,18 +56,45 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
       // }
     }
 
-    const filterInArray = filters.find((filter) => filter.label === selectedFilter.label);
+    const filterInArray = filters.find(
+      (filter) => filter.id === selectedFilter.id && filter.label === selectedFilter.label
+    );
 
     if (!filterInArray) {
       addFilter(selectedFilter);
     } else {
+      for (const item of selectedFilter.children) {
+        removeFilter(item);
+        if (item.children) {
+          item.children.forEach((element) => {
+            removeFilter(element);
+          });
+        }
+      }
+      if (parent) {
+        setFilters((current) =>
+          current.map((filter) => {
+            if (parent.label === filter.label) {
+              return { ...filter, isHidden: false };
+            }
+            return filter;
+          })
+        );
+      }
       removeFilter(selectedFilter);
     }
-    console.log(filterInArray);
 
-    // if (!filters.includes(selectedFilter)) {
-    //   addFilter(selectedFilter);
-    // }
+    if (!filterInArray?.children) {
+      setFilters((current) =>
+        current.map((filter) => {
+          if (filter.children == []) {
+            console.log('aa');
+            return { ...filter, isHidden: false };
+          }
+          return filter;
+        })
+      );
+    }
   };
 
   return (

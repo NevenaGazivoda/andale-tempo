@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { VscChevronRight } from 'react-icons/vsc';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
 import AtpLink from '../link/AtpLink';
@@ -19,15 +20,24 @@ export const AtpMenuMobile: FC<Props> = ({ toggleMenu }) => {
 
       <ul className="atp-menu-mobile__list">
         <li className="atp-menu-mobile__list__link">
-          <AtpLink to="/">{strings.MENSWEAR}</AtpLink>
+          <AtpLink to="/">
+            {strings.MENSWEAR}
+            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
+          </AtpLink>
         </li>
         <li className="atp-menu-mobile__list__link">
-          <AtpLink to="/">{strings.WOMENSWEAR}</AtpLink>
+          <AtpLink to="/">
+            {strings.WOMENSWEAR}
+            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
+          </AtpLink>
         </li>
         <li className="atp-menu-mobile__list__link">
-          <AtpLink to="/">{strings.EVERYTHING_ELSE}</AtpLink>
+          <AtpLink to="/">
+            {strings.EVERYTHING_ELSE}
+            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
+          </AtpLink>
         </li>
-        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
+        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize atp-menu-mobile__list__link--top-margin">
           <AtpLink to="/">{strings.SHOPPING_CART}</AtpLink>
         </li>
         <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
@@ -36,14 +46,20 @@ export const AtpMenuMobile: FC<Props> = ({ toggleMenu }) => {
         <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
           <AtpLink to="/">{strings.LANGUAGE}</AtpLink>
         </li>
-        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
-          <AtpLink to="/">{strings.CUSTOMER_CARE}</AtpLink>
+        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize atp-menu-mobile__list__link--top-margin">
+          <AtpLink to="/">
+            {strings.CUSTOMER_CARE}
+            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
+          </AtpLink>
         </li>
         <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
           <AtpLink to="/">{strings.LIVE_ASSISTANCE}</AtpLink>
         </li>
         <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
-          <AtpLink to="/">{strings.LOCATIONS}</AtpLink>
+          <AtpLink to="/">
+            {strings.LOCATIONS}
+            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
+          </AtpLink>
         </li>
       </ul>
     </div>

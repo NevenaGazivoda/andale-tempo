@@ -17,32 +17,37 @@ type Props = {
 export const AtpSearchTabs: FC<Props> = ({ brands, categories, onFilterChange, filters }) => {
   const [activeTab, setActiveTab] = useState('tab1');
 
-  const selectBrand = () => {
-    // update the state to tab1
-    setActiveTab('tab1');
-  };
-  const selectCategory = () => {
-    // update the state to tab2
-    setActiveTab('tab2');
+  const handleClick = (id: string) => {
+    setActiveTab(id);
   };
 
+  //   const selectBrand = () => {
+  //     // update the state to tab1
+  //     setActiveTab('tab1');
+  //   };
+  //   const selectCategory = () => {
+  //     // update the state to tab2
+  //     setActiveTab('tab2');
+  //   };
+
   return (
-    <div className="Tabs">
+    <>
       <ul className="atp-search-tabs">
-        <li className={classNames('atp-search-tabs__link')} onClick={selectBrand}>
+        <li className={classNames('atp-search-tabs__link')} onClick={() => handleClick('tab1')}>
           {strings.DESIGNERS}
         </li>
-        <li className={classNames('atp-search-tabs__link')} onClick={selectCategory}>
+        <li className={classNames('atp-search-tabs__link')} onClick={() => handleClick('tab2')}>
           {strings.CATEGORIES}
         </li>
         <li className="atp-search-tabs__link">{strings.COLORS}</li>
         <li className="atp-search-tabs__link">{strings.SIZES}</li>
       </ul>
 
-      <div className="outlet">
-        {activeTab === 'tab1' ? (
+      <>
+        {activeTab === 'tab1' && (
           <AtpSearchBrands brands={brands} onFilterChange={onFilterChange} filters={filters} />
-        ) : (
+        )}
+        {activeTab === 'tab2' && (
           <AtpSearchCategories
             categories={categories}
             onFilterChange={onFilterChange}
@@ -50,8 +55,8 @@ export const AtpSearchTabs: FC<Props> = ({ brands, categories, onFilterChange, f
             depthLevel={0}
           />
         )}
-      </div>
-    </div>
+      </>
+    </>
   );
 };
 
