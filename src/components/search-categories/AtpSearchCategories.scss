@@ -33,6 +33,9 @@
         margin: 0;
         padding-bottom: 0;
       }
+      &__child {
+        margin-left: $spacing-sm;
+      }
     }
 
     &__label {

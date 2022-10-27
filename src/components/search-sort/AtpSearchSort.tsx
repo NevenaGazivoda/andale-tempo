@@ -1,18 +1,38 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
 import AtpText from '../text/AtpText';
 import './AtpSearchSort.scss';
 import { HiOutlineMinus } from 'react-icons/hi';
+import { sortOptions } from '../../assets/dummy-data/searchData';
 
-type Props = {
-  toggleSort: () => void;
-  sortingResults: (sort: string) => void;
+type SortItemProps = {
+  text: string;
+  value: string;
+  onClick: (sortOptionValue: string) => void;
+  selected?: boolean;
 };
 
-export const AtpSearchSort: FC<Props> = ({ sortingResults, toggleSort }) => {
+const SearchSortItem: FC<SortItemProps> = ({ text, value, onClick, selected }) => (
+  <div className="atp-search-sort-mobile__menu-item" onClick={() => onClick(value)}>
+    {selected ? (
+      <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
+    ) : (
+      <span className="atp-search-sort-mobile__menu-item__icon"></span>
+    )}
+    {text}
+  </div>
+);
+
+type Props = {
+  selectedSort: string;
+  toggleSort: () => void;
+  onChangeSortOrder: (sort: string) => void;
+};
+
+export const AtpSearchSort: FC<Props> = ({ selectedSort, onChangeSortOrder, toggleSort }) => {
   const handleClick = (sortOrder: string) => {
-    sortingResults(sortOrder);
+    onChangeSortOrder(sortOrder);
     toggleSort();
   };
 
@@ -20,50 +40,23 @@ export const AtpSearchSort: FC<Props> = ({ sortingResults, toggleSort }) => {
     <>
       <div className="atp-search-sort-mobile">
         <div className="atp-search-sort-mobile__header">
-          <AtpButton isSecondary onClick={toggleSort}>
+          <AtpButton
+            isSecondary
+            onClick={toggleSort}
+            className="atp-search-sort-mobile__header__button"
+          >
             {strings.CANCEL}
           </AtpButton>
           <div className="atp-search-sort-mobile__header__sort">{strings.SORT}</div>
         </div>
-        <div className="atp-search-sort-mobile__menu-item">
-          <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
-          {strings.RELEVANCE}
-        </div>
-        <div className="atp-search-sort-mobile__menu-item">
-          <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
-          {strings.LATEST_ARRIVALS}
-        </div>
-        <div className="atp-search-sort-mobile__menu-item">
-          <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
-          {strings.TRENDING}
-        </div>
-        <div
-          className="atp-search-sort-mobile__menu-item"
-          onClick={() => handleClick('low to high')}
-        >
-          <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
-          {strings.PRICE + ' ' + strings.LOW_TO_HIGH}
-        </div>
-        <div
-          className="atp-search-sort-mobile__menu-item"
-          onClick={() => handleClick('high to low')}
-        >
-          <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
-          {strings.PRICE + ' ' + strings.HIGH_TO_LOW}
-        </div>
-      </div>
-
-      <div className="atp-search-sort-desktop">
-        <AtpText className="atp-search-sort-desktop__title">{strings.SORT}</AtpText>
-
-        <div className="atp-search-sort-desktop__link">{strings.LATEST_ARRIVALS}</div>
-        <div className="atp-search-sort-desktop__link">{strings.TRENDING}</div>
-        <div className="atp-search-sort-desktop__link" onClick={() => handleClick('low to high')}>
-          {strings.PRICE + ' ' + strings.LOW_TO_HIGH}
-        </div>
-        <div className="atp-search-sort-desktop__link" onClick={() => handleClick('high to low')}>
-          {strings.PRICE + ' ' + strings.HIGH_TO_LOW}
-        </div>
+        {sortOptions.map((sortOption) => (
+          <SearchSortItem
+            key={'sort-option-item-' + sortOption.id}
+            {...sortOption}
+            onClick={handleClick}
+            selected={sortOption.value === selectedSort}
+          />
+        ))}
       </div>
     </>
   );

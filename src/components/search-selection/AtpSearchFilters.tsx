@@ -3,7 +3,7 @@ import { strings } from '../../constants/strings';
 import './AtpSearchFilters.scss';
 import AtpButton from '../button/AtpButton';
 import { brandsData, categoriesData } from '../../assets/dummy-data/searchData';
-import { useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 import AtpSearchCategories from '../search-categories/AtpSearchCategories';
 import AtpSearchTabs from '../search-tabs/AtpSearchTabs';
 import AtpSearchBrands from '../search-brands/AtpSearchBrands';
@@ -25,15 +25,25 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
   };
 
   const removeFilter = (selectedFilter: Filter) => {
-    setFilters((oldItems) => oldItems.filter((item) => item.label !== selectedFilter.label));
+    setFilters((oldItems) => [...oldItems.filter((item) => item.label !== selectedFilter.label)]);
   };
 
   const removeAllFilters = () => {
     setFilters([]);
   };
 
+  const filtersString = filters.map((element) => element.label.toLowerCase());
+
+  const params = {
+    term: filtersString,
+  };
+
   const applyFilter = () => {
-    navigate(`/search/${filters[0]}`);
+    navigate({
+      pathname: '/search',
+      search: `?${createSearchParams(params)}`,
+    });
+    // navigate(`/search/${filters[0]}`);
     toggleFilters();
   };
 
@@ -75,7 +85,16 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
         setFilters((current) =>
           current.map((filter) => {
             if (parent.label === filter.label) {
-              return { ...filter, isHidden: false };
+              console.log(filter.children);
+              console.log(current);
+              const commonNumbers = current.filter((i) => filter.children.includes(i));
+              console.log(commonNumbers, 'common');
+
+              if (commonNumbers.length > 1) {
+                return { ...filter, isHidden: true };
+              } else {
+                return { ...filter, isHidden: false };
+              }
             }
             return filter;
           })
@@ -152,6 +171,7 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
           onFilterChange={onFilterChange}
           filters={filters}
           depthLevel={0}
+          isMenuItem={false}
         />
         <div className="atp-search-filters-desktop__title atp-search-filters-desktop__link">
           {strings.ALL + ' ' + strings.DESIGNERS}

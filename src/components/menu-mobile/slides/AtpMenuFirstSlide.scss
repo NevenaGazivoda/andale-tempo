@@ -1,0 +1,43 @@
+@import '../../../assets/styles/main.scss';
+
+.atp-menu-mobile__link {
+  overflow-x: auto;
+  white-space: nowrap;
+  line-height: $spacing-2xl;
+
+  &__icon {
+    font-size: $spacing-lg;
+    float: right;
+    height: $spacing-2xl;
+  }
+  &--capitalize {
+    a {
+      text-transform: capitalize;
+    }
+  }
+
+  &--top-margin {
+    margin-top: $spacing-2xl;
+  }
+
+  &--bottom-padding {
+    padding-bottom: $spacing-xl;
+  }
+
+  &--no-margin {
+    margin-left: -2rem;
+  }
+
+  &__button-in-array {
+    border-color: $color-light-grey;
+    width: auto;
+  }
+
+  &__designers {
+    margin-left: $spacing-sm;
+  }
+}
+
+.atp-menu-mobile__link::-webkit-scrollbar {
+  display: none;
+}

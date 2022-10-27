@@ -8,29 +8,21 @@
   height: 100%;
   width: 100%;
   &__header {
-    text-align: right;
-    margin-top: 1rem;
+    margin: $spacing-xl $spacing-xs 0 $spacing-xs;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__title {
+      text-transform: uppercase;
+      color: $color-grey;
+    }
   }
   &__list {
     list-style: none;
     padding-inline-start: 0;
+    margin-top: $spacing-3xl;
     margin-right: $spacing-xl;
     margin-left: $spacing-xl;
-    &__link {
-      margin-bottom: $spacing-xl;
-      &__icon {
-        font-size: $spacing-lg;
-        float: right;
-      }
-      &--capitalize {
-        a {
-          text-transform: capitalize;
-        }
-      }
-
-      &--top-margin {
-        margin-top: $spacing-3xl;
-      }
-    }
   }
 }

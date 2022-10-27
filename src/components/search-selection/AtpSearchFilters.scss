@@ -15,7 +15,6 @@
     align-items: center;
     margin-bottom: $spacing-xl;
     overflow: auto;
-    padding-right: $spacing-xl-bonus;
 
     &__remove-filter {
       float: right;
@@ -26,7 +25,8 @@
     &__refine {
       color: $color-grey;
       text-transform: uppercase;
-      margin: 0 30%;
+      padding-right: $spacing-5xl;
+      margin: 0 auto;
     }
     &__button {
       width: $spacing-4xl;

@@ -53,6 +53,7 @@ export const AtpSearchTabs: FC<Props> = ({ brands, categories, onFilterChange, f
             onFilterChange={onFilterChange}
             filters={filters}
             depthLevel={0}
+            isMenuItem={false}
           />
         )}
       </>

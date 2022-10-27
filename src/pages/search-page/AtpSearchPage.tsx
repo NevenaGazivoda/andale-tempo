@@ -33,7 +33,7 @@ export const AtpSearchPage = () => {
   };
 
   useEffect(() => {
-    const term = search.split('=')[1];
+    const term = search.split('=')[1].split('&')[0];
 
     if (term) {
       const articles = ARTICLES_DATA.filter((article) =>
@@ -60,7 +60,7 @@ export const AtpSearchPage = () => {
     }
   }, [designer]);
 
-  const [sortOrder, setSortOrder] = useState('low to high');
+  const [sortOrder, setSortOrder] = useState('latest-arrivals');
 
   // useEffect(() => {
   //   switch (sortOrder) {
@@ -99,7 +99,13 @@ export const AtpSearchPage = () => {
               {strings.SORT}
             </AtpButton>
           </div>
-          {isSortOpen && <AtpSearchSort toggleSort={toggleSort} sortingResults={setSortOrder} />}
+          {isSortOpen && (
+            <AtpSearchSort
+              selectedSort={sortOrder}
+              toggleSort={toggleSort}
+              onChangeSortOrder={setSortOrder}
+            />
+          )}
         </div>
         <AtpSearchArticles term={term} articles={searchResults} />
       </div>
@@ -107,7 +113,12 @@ export const AtpSearchPage = () => {
       <div className="atp-search__desktop">
         <AtpSearchFilters toggleFilters={toggleFilters} />
         <AtpSearchArticles term={term} articles={searchResults} />
-        <AtpSearchSort toggleSort={toggleSort} sortingResults={setSortOrder} />
+        {/* T.P.  TODO: Bad prop name: sortingResults */}
+        <AtpSearchSort
+          selectedSort={sortOrder}
+          toggleSort={toggleSort}
+          onChangeSortOrder={setSortOrder}
+        />
       </div>
     </div>
   );

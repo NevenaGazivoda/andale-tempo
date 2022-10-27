@@ -2,7 +2,7 @@
 
 .atp-search-sort-mobile {
   position: fixed;
-  background: white;
+  background: $color-white;
   top: 0;
   z-index: $zindex-menu;
   height: 100%;
@@ -13,52 +13,70 @@
     display: flex;
     align-items: center;
     margin-bottom: $spacing-2xl;
+    @media screen and (min-width: $breakpoint-lg) {
+      display: block;
+      text-align: right;
+      margin-bottom: 0;
+    }
+
+    &__button {
+      width: $spacing-4xl;
+      text-align: start;
+      @media screen and (min-width: $breakpoint-lg) {
+        display: none;
+      }
+    }
+
     &__sort {
       color: $color-grey;
-      margin: 0 30%;
+      padding-right: $spacing-5xl;
+      margin: 0 auto;
+
+      @media screen and (min-width: $breakpoint-lg) {
+        padding-top: $spacing-xl;
+        font-weight: $bold-text;
+        color: $color-black;
+        text-align: right;
+        padding: $spacing-xl 0;
+        margin: 0;
+        margin-bottom: 0.25rem;
+      }
     }
   }
 
   &__menu-item {
-    font-size: 16px;
-    padding-left: $spacing-2xl;
+    font-size: $font-size-icon-xs;
+    padding-left: $spacing-xl;
     margin-bottom: $spacing-2xl;
+    display: flex;
+    @media screen and (min-width: $breakpoint-lg) {
+      font-size: $font-size-base;
+      padding-left: 0;
+      margin-bottom: $spacing-xs;
+      display: block;
+      cursor: pointer;
+    }
+
     &__icon {
       vertical-align: middle;
-      padding: $spacing-xs;
+      padding-right: $spacing-sm;
+      width: $spacing-xl-bonus;
+      @media screen and (min-width: $breakpoint-lg) {
+        display: none;
+      }
     }
+  }
+  &__menu-item:hover {
+    text-decoration: underline;
   }
 
   @media screen and (min-width: $breakpoint-lg) {
-    display: none;
-  }
-}
-
-.atp-search-sort-desktop {
-  display: none;
-
-  @media screen and (min-width: $breakpoint-md) {
-    display: block;
-    margin-right: 3rem;
+    position: static;
+    z-index: 0;
     height: 100%;
     width: $spacing-10xl;
+    padding: 0;
     text-align: right;
-
-    &__title {
-      text-transform: uppercase;
-      padding-top: $spacing-xl;
-      font-weight: $bold-text;
-    }
-
-    &__link {
-      padding-bottom: $spacing-xs;
-      cursor: pointer;
-    }
-    &__link:active {
-      text-decoration: underline;
-    }
-    &__link:hover {
-      text-decoration: underline;
-    }
+    margin-right: $spacing-3xl;
   }
 }

@@ -23,4 +23,8 @@
       grid-template-columns: 170px 170px 170px 170px;
     }
   }
+
+  @media screen and (min-width: $breakpoint-md) {
+    padding: 0 $spacing-2xl;
+  }
 }

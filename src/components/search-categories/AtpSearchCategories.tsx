@@ -6,12 +6,14 @@ import AtpText from '../text/AtpText';
 import classNames from 'classnames';
 import { categoriesData } from '../../assets/dummy-data/searchData';
 import { Filter } from '../../models/filter.model';
+import { VscChevronRight } from 'react-icons/vsc';
 
 type Props = {
   categories: Category[];
-  onFilterChange: (category: Filter, parent?: Filter) => void;
-  filters: Filter[];
+  onFilterChange?: (category: Filter, parent?: Filter) => void;
+  filters?: Filter[];
   depthLevel: number;
+  isMenuItem: boolean;
 };
 
 export const AtpSearchCategories: FC<Props> = ({
@@ -19,13 +21,14 @@ export const AtpSearchCategories: FC<Props> = ({
   onFilterChange,
   filters,
   depthLevel,
+  isMenuItem,
 }) => {
   const clickHandler = (category: Filter) => {
     if (depthLevel > 0) {
       const parent = findParent(categoriesData, category.id);
-      onFilterChange(category, parent);
+      onFilterChange ? onFilterChange(category, parent) : null;
     } else {
-      onFilterChange(category);
+      onFilterChange ? onFilterChange(category) : null;
     }
   };
 
@@ -40,20 +43,29 @@ export const AtpSearchCategories: FC<Props> = ({
   return (
     <div className="atp-search-categories">
       {categories.map((category) => (
-        <div key={category.label} className={classNames('atp-search-categories__text')}>
+        <div
+          key={category.label}
+          className={classNames(
+            'atp-search-categories__text',
+            `${depthLevel > 0 && 'atp-search-categories__text__child'}`
+          )}
+        >
           <div onClick={() => clickHandler(category)}>
-            {filters.find((filter) => filter.label === category.label) && (
+            {filters && filters.find((filter) => filter.label === category.label) && (
               <HiOutlineMinus className="atp-search-categories__icon" />
             )}
             <AtpText className="atp-search-categories__text__label">{category.label}</AtpText>
+            {isMenuItem && <VscChevronRight className="atp-menu-mobile__link__icon" />}
           </div>
-          {filters.find((filter) => filter.label === category.label) &&
+          {filters &&
+            filters.find((filter) => filter.label === category.label) &&
             category.children.length > 0 && (
               <AtpSearchCategories
                 categories={category.children}
                 onFilterChange={onFilterChange}
                 filters={filters}
                 depthLevel={0 + 1}
+                isMenuItem={false}
               />
             )}
         </div>

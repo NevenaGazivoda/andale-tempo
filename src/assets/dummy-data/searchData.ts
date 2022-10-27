@@ -1,5 +1,5 @@
+import { strings } from '../../constants/strings';
 import { Category } from '../../models/category.model';
-import { Filter } from '../../models/filter.model';
 
 export const brandsData = [
   { id: 1, label: 'OFF-WHITE', children: [] },
@@ -108,5 +108,38 @@ export const categoriesData: Category[] = [
       { id: 13, name: 'boots', label: 'Boots', children: [] },
       { id: 14, name: 'sandals', label: 'Sandals', children: [] },
     ],
+  },
+];
+
+export const featuredDesigners = [
+  'AMIRI',
+  'THEORY',
+  'BOSS',
+  'CARTIER',
+  'GUCCI',
+  'MONCLER',
+  'OFF-WHITE',
+];
+
+export const sortOptions = [
+  {
+    id: 1,
+    text: strings.LATEST_ARRIVALS,
+    value: 'latest-arrivals',
+  },
+  {
+    id: 2,
+    text: strings.TRENDING,
+    value: 'trending',
+  },
+  {
+    id: 3,
+    text: strings.PRICE + ' ' + strings.LOW_TO_HIGH,
+    value: 'low to high',
+  },
+  {
+    id: 4,
+    text: strings.PRICE + ' ' + strings.HIGH_TO_LOW,
+    value: 'high to low',
   },
 ];

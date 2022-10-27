@@ -1,66 +1,72 @@
-import React, { FC } from 'react';
-import { VscChevronRight } from 'react-icons/vsc';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { brandsData } from '../../assets/dummy-data/searchData';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
-import AtpLink from '../link/AtpLink';
+import AtpSearchBrands from '../search-brands/AtpSearchBrands';
 import './AtpMenuMobile.scss';
+import AtpMenuFirstSlide from './slides/AtpMenuFirstSlide';
+import AtpMenuSecondSlide from './slides/AtpMenuSecondSlide';
 
 type Props = {
   toggleMenu: () => void;
 };
+const usePrevious = (value: any) => {
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current = value;
+  });
+
+  return ref.current;
+};
 
 export const AtpMenuMobile: FC<Props> = ({ toggleMenu }) => {
+  const [slideCounter, setSlideCounter] = useState(0);
+  const [title, setTitle] = useState('');
+  const previousTitle = usePrevious(title);
+
+  const onSlideChange = (slideCount: number, title?: string) => {
+    setSlideCounter(() => {
+      return 0 + slideCount;
+    });
+    title && setTitle(title);
+  };
+
   return (
     <div className="atp-menu-mobile">
       <div className="atp-menu-mobile__header">
-        <AtpButton isSecondary onClick={toggleMenu}>
+        {slideCounter > 0 && (
+          <AtpButton
+            isSecondary
+            onClick={() => onSlideChange(slideCounter - 1, previousTitle)}
+            className="atp-menu-mobile__header__back"
+          >
+            {strings.BACK}
+          </AtpButton>
+        )}
+        {slideCounter > 0 && <span className="atp-menu-mobile__header__title">{title}</span>}
+        <AtpButton isSecondary onClick={toggleMenu} className="atp-menu-mobile__header__close">
           {strings.CLOSE}
         </AtpButton>
       </div>
 
       <ul className="atp-menu-mobile__list">
-        <li className="atp-menu-mobile__list__link">
-          <AtpLink to="/">
-            {strings.MENSWEAR}
-            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
-          </AtpLink>
-        </li>
-        <li className="atp-menu-mobile__list__link">
-          <AtpLink to="/">
-            {strings.WOMENSWEAR}
-            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
-          </AtpLink>
-        </li>
-        <li className="atp-menu-mobile__list__link">
-          <AtpLink to="/">
-            {strings.EVERYTHING_ELSE}
-            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
-          </AtpLink>
-        </li>
-        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize atp-menu-mobile__list__link--top-margin">
-          <AtpLink to="/">{strings.SHOPPING_CART}</AtpLink>
-        </li>
-        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
-          <AtpLink to="/">{strings.WISHLIST}</AtpLink>
-        </li>
-        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
-          <AtpLink to="/">{strings.LANGUAGE}</AtpLink>
-        </li>
-        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize atp-menu-mobile__list__link--top-margin">
-          <AtpLink to="/">
-            {strings.CUSTOMER_CARE}
-            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
-          </AtpLink>
-        </li>
-        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
-          <AtpLink to="/">{strings.LIVE_ASSISTANCE}</AtpLink>
-        </li>
-        <li className="atp-menu-mobile__list__link atp-menu-mobile__list__link--capitalize">
-          <AtpLink to="/">
-            {strings.LOCATIONS}
-            <VscChevronRight className="atp-menu-mobile__list__link__icon" />
-          </AtpLink>
-        </li>
+        {slideCounter === 0 && (
+          <AtpMenuFirstSlide
+            toggleMenu={toggleMenu}
+            onSlideChange={onSlideChange}
+            slideCount={slideCounter}
+          />
+        )}
+        {slideCounter === 1 && (
+          <AtpMenuSecondSlide
+            onSlideChange={onSlideChange}
+            slideCount={slideCounter}
+            onCloseMenu={toggleMenu}
+          />
+        )}
+
+        {slideCounter === 2 && <AtpSearchBrands brands={brandsData} onCloseMenu={toggleMenu} />}
       </ul>
     </div>
   );
