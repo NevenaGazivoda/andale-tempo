@@ -1,7 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
-import AtpText from '../text/AtpText';
 import './AtpSearchSort.scss';
 import { HiOutlineMinus } from 'react-icons/hi';
 import { sortOptions } from '../../assets/dummy-data/searchData';
@@ -13,7 +12,7 @@ type SortItemProps = {
   selected?: boolean;
 };
 
-const SearchSortItem: FC<SortItemProps> = ({ text, value, onClick, selected }) => (
+const AtpSearchSortItem: FC<SortItemProps> = ({ text, value, onClick, selected }) => (
   <div className="atp-search-sort-mobile__menu-item" onClick={() => onClick(value)}>
     {selected ? (
       <HiOutlineMinus className="atp-search-sort-mobile__menu-item__icon" />
@@ -48,9 +47,10 @@ export const AtpSearchSort: FC<Props> = ({ selectedSort, onChangeSortOrder, togg
             {strings.CANCEL}
           </AtpButton>
           <div className="atp-search-sort-mobile__header__sort">{strings.SORT}</div>
+          <span className="atp-search-sort-mobile__header__button"></span>
         </div>
         {sortOptions.map((sortOption) => (
-          <SearchSortItem
+          <AtpSearchSortItem
             key={'sort-option-item-' + sortOption.id}
             {...sortOption}
             onClick={handleClick}

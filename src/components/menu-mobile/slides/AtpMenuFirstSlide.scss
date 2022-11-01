@@ -4,6 +4,11 @@
   overflow-x: auto;
   white-space: nowrap;
   line-height: $spacing-2xl;
+  cursor: pointer;
+
+  &--uppercase {
+    text-transform: uppercase;
+  }
 
   &__icon {
     font-size: $spacing-lg;
@@ -36,6 +41,10 @@
   &__designers {
     margin-left: $spacing-sm;
   }
+}
+
+.atp-menu-mobile__link:hover {
+  text-decoration: underline;
 }
 
 .atp-menu-mobile__link::-webkit-scrollbar {

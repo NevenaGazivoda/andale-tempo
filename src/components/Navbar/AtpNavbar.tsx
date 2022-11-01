@@ -64,7 +64,10 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
       </ul>
       {showMenu && <AtpMenuMobile toggleMenu={toggleMenu} />}
 
-      <p className="atp-navbar__title">{strings.BRAND_NAME}</p>
+      <AtpLink className="atp-navbar__title" to="/">
+        {strings.BRAND_NAME}
+      </AtpLink>
+      {/* <p className="atp-navbar__title">{strings.BRAND_NAME}</p> */}
 
       <ul className="navbar-list navbar-list--right navbar-list--desktop">
         <li className="navbar-list__link">

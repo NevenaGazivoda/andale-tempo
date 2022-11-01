@@ -64,6 +64,22 @@ export const brandsData = [
   { id: 60, label: 'Hyein Seo', children: [] },
 ];
 
+export const colorsData = [
+  { id: 0, label: 'Black', children: [] },
+  { id: 1, label: 'Blue', children: [] },
+  { id: 2, label: 'Brown', children: [] },
+  { id: 3, label: 'Burgundy', children: [] },
+  { id: 4, label: 'Gray', children: [] },
+  { id: 5, label: 'Green', children: [] },
+  { id: 6, label: 'Navy', children: [] },
+  { id: 7, label: 'Orange', children: [] },
+  { id: 8, label: 'Pink', children: [] },
+  { id: 9, label: 'Purple', children: [] },
+  { id: 10, label: 'Red', children: [] },
+  { id: 11, label: 'White', children: [] },
+  { id: 12, label: 'Yellow', children: [] },
+];
+
 export const categoriesData: Category[] = [
   {
     id: 1,
@@ -141,5 +157,100 @@ export const sortOptions = [
     id: 4,
     text: strings.PRICE + ' ' + strings.HIGH_TO_LOW,
     value: 'high to low',
+  },
+];
+
+export const menuOptions = [
+  {
+    id: 0,
+    text: strings.MENSWEAR,
+    icon: true,
+    isShoppingCart: false,
+    isUppercase: true,
+    topMargin: false,
+  },
+  {
+    id: 1,
+    text: strings.WOMENSWEAR,
+    icon: true,
+    isShoppingCart: false,
+    isUppercase: true,
+    topMargin: false,
+  },
+  {
+    id: 2,
+    text: strings.EVERYTHING_ELSE,
+    icon: true,
+    isShoppingCart: false,
+    isUppercase: true,
+    topMargin: false,
+  },
+  {
+    id: 3,
+    text: strings.SHOPPING_CART,
+    icon: false,
+    isShoppingCart: true,
+    isUppercase: false,
+    topMargin: false,
+  },
+  {
+    id: 4,
+    text: strings.WISHLIST,
+    icon: false,
+    isShoppingCart: false,
+    isUppercase: false,
+    topMargin: false,
+  },
+  {
+    id: 5,
+    text: strings.LANGUAGE,
+    icon: false,
+    isShoppingCart: false,
+    isUppercase: false,
+    topMargin: false,
+  },
+
+  {
+    id: 6,
+    text: strings.CUSTOMER_CARE,
+    icon: true,
+    isShoppingCart: false,
+    isUppercase: false,
+    topMargin: true,
+  },
+  {
+    id: 7,
+    text: strings.LIVE_ASSISTANCE,
+    icon: false,
+    isShoppingCart: false,
+    isUppercase: false,
+    topMargin: false,
+  },
+  {
+    id: 8,
+    text: strings.LOCATIONS,
+    icon: true,
+    isShoppingCart: false,
+    isUppercase: false,
+    topMargin: false,
+  },
+];
+
+export const searchTabs = [
+  {
+    id: 1,
+    title: strings.DESIGNERS,
+  },
+  {
+    id: 2,
+    title: strings.CATEGORIES,
+  },
+  {
+    id: 3,
+    title: strings.COLORS,
+  },
+  {
+    id: 4,
+    title: strings.SIZES,
   },
 ];

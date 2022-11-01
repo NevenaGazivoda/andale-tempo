@@ -2,12 +2,14 @@ import React, { FC, useState } from 'react';
 import { strings } from '../../constants/strings';
 import './AtpSearchFilters.scss';
 import AtpButton from '../button/AtpButton';
-import { brandsData, categoriesData } from '../../assets/dummy-data/searchData';
+import { brandsData, categoriesData, colorsData } from '../../assets/dummy-data/searchData';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import AtpSearchCategories from '../search-categories/AtpSearchCategories';
 import AtpSearchTabs from '../search-tabs/AtpSearchTabs';
 import AtpSearchBrands from '../search-brands/AtpSearchBrands';
 import { Filter } from '../../models/filter.model';
+import AtpTabPane from '../search-tabs/AtpTabPane';
+import AtpSearchColors from '../search-colors/AtpSearchColors';
 
 type Props = {
   toggleFilters: () => void;
@@ -43,7 +45,6 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
       pathname: '/search',
       search: `?${createSearchParams(params)}`,
     });
-    // navigate(`/search/${filters[0]}`);
     toggleFilters();
   };
 
@@ -57,13 +58,6 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
           return filter;
         })
       );
-
-      // if (!filters.includes(categoryName)) {
-      //   setFilters((oldFilters) => [
-      //     ...oldFilters.filter((item) => item !== parentName),
-      //     categoryName,
-      //   ]);
-      // }
     }
 
     const filterInArray = filters.find(
@@ -85,10 +79,7 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
         setFilters((current) =>
           current.map((filter) => {
             if (parent.label === filter.label) {
-              console.log(filter.children);
-              console.log(current);
               const commonNumbers = current.filter((i) => filter.children.includes(i));
-              console.log(commonNumbers, 'common');
 
               if (commonNumbers.length > 1) {
                 return { ...filter, isHidden: true };
@@ -107,7 +98,6 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
       setFilters((current) =>
         current.map((filter) => {
           if (filter.children == []) {
-            console.log('aa');
             return { ...filter, isHidden: false };
           }
           return filter;
@@ -128,6 +118,7 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
             {strings.CANCEL}
           </AtpButton>
           <div className="atp-search-filters-mobile__header__refine">{strings.REFINE}</div>
+          <span className="atp-search-filters-mobile__header__button"></span>
         </div>
         <div className="atp-search-filters-mobile__header">
           <AtpButton
@@ -148,16 +139,39 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
               ))}
         </div>
 
-        <AtpSearchTabs
-          filters={filters}
-          brands={brandsData}
-          categories={categoriesData}
-          onFilterChange={onFilterChange}
-        />
+        <AtpSearchTabs>
+          <AtpTabPane title={strings.DESIGNERS}>
+            <AtpSearchBrands
+              brands={brandsData}
+              onFilterChange={onFilterChange}
+              filters={filters}
+            />
+          </AtpTabPane>
+          <AtpTabPane title={strings.CATEGORIES}>
+            <AtpSearchCategories
+              categories={categoriesData}
+              onFilterChange={onFilterChange}
+              filters={filters}
+              depthLevel={0}
+              isMenuItem={false}
+            />
+          </AtpTabPane>
+          <AtpTabPane title={strings.COLORS}>
+            <AtpSearchColors
+              colors={colorsData}
+              onFilterChange={onFilterChange}
+              filters={filters}
+            />
+          </AtpTabPane>
+          <AtpTabPane title={strings.SIZES}>{}</AtpTabPane>
+        </AtpSearchTabs>
 
         <div className="atp-search-filters-mobile__apply">
           <AtpButton onClick={applyFilter}>
-            {strings.APPLY_FILTERS + ' (' + filters.length + ')'}
+            {strings.APPLY_FILTERS +
+              ' (' +
+              filters.filter((filter) => filter.isHidden !== true).length +
+              ')'}
           </AtpButton>
         </div>
       </div>

@@ -4,9 +4,10 @@
   position: fixed;
   background: $color-white;
   top: 0;
+  left: 0;
   z-index: $zindex-menu;
   height: 100%;
-  width: 100%;
+  width: calc(100% - #{$spacing-2xl});
   padding: $spacing-xl;
 
   &__header {
@@ -29,7 +30,6 @@
 
     &__sort {
       color: $color-grey;
-      padding-right: $spacing-5xl;
       margin: 0 auto;
 
       @media screen and (min-width: $breakpoint-lg) {

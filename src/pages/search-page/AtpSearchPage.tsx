@@ -8,6 +8,9 @@ import { ARTICLES_DATA } from '../../assets/dummy-data/articlesData';
 import { Article } from '../../models/article.model';
 import AtpButton from '../../components/button/AtpButton';
 import { strings } from '../../constants/strings';
+import AtpSearchBrands from '../../components/search-brands/AtpSearchBrands';
+import { colorsData } from '../../assets/dummy-data/searchData';
+import AtpSearchColors from '../../components/search-colors/AtpSearchColors';
 
 export const AtpSearchPage = () => {
   const { search } = useLocation();
@@ -113,12 +116,17 @@ export const AtpSearchPage = () => {
       <div className="atp-search__desktop">
         <AtpSearchFilters toggleFilters={toggleFilters} />
         <AtpSearchArticles term={term} articles={searchResults} />
-        {/* T.P.  TODO: Bad prop name: sortingResults */}
-        <AtpSearchSort
-          selectedSort={sortOrder}
-          toggleSort={toggleSort}
-          onChangeSortOrder={setSortOrder}
-        />
+        <div className="atp-search-sort-mobile">
+          <AtpSearchSort
+            selectedSort={sortOrder}
+            toggleSort={toggleSort}
+            onChangeSortOrder={setSortOrder}
+          />
+          <div className="atp-search-filters-desktop__title atp-search-filters-desktop__link">
+            {strings.ALL + ' ' + strings.COLORS}
+          </div>
+          <AtpSearchColors colors={colorsData} />
+        </div>
       </div>
     </div>
   );
