@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import './AtpSearchColors.scss';
 import { Filter } from '../../models/filter.model';
-import { useNavigate } from 'react-router-dom';
 
 type Props = {
   filters?: Filter[];
@@ -11,11 +10,8 @@ type Props = {
 };
 
 export const AtpSearchColors: FC<Props> = ({ colors, onFilterChange, onCloseMenu }) => {
-  const navigate = useNavigate();
-
   const handleClick = (color: Filter) => {
     onFilterChange ? onFilterChange(color) : null;
-    navigate(`/search?term=${color.label.toLowerCase()}`);
     onCloseMenu ? onCloseMenu() : null;
   };
 

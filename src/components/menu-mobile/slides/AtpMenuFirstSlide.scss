@@ -1,6 +1,6 @@
 @import '../../../assets/styles/main.scss';
 
-.atp-menu-mobile__link {
+.atp-menu-mobile-slide {
   overflow-x: auto;
   white-space: nowrap;
   line-height: $spacing-2xl;
@@ -43,10 +43,10 @@
   }
 }
 
-.atp-menu-mobile__link:hover {
+.atp-menu-mobile-slide:hover {
   text-decoration: underline;
 }
 
-.atp-menu-mobile__link::-webkit-scrollbar {
+.atp-menu-mobile-slide::-webkit-scrollbar {
   display: none;
 }

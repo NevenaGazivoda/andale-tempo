@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './AtpSearchPage.scss';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { AtpSearchFilters } from '../../components/search-selection/AtpSearchFilters';
 import AtpSearchArticles from '../../components/search-articles/AtpSearchArticles';
 import AtpSearchSort from '../../components/search-sort/AtpSearchSort';
@@ -8,8 +8,7 @@ import { ARTICLES_DATA } from '../../assets/dummy-data/articlesData';
 import { Article } from '../../models/article.model';
 import AtpButton from '../../components/button/AtpButton';
 import { strings } from '../../constants/strings';
-import AtpSearchBrands from '../../components/search-brands/AtpSearchBrands';
-import { colorsData } from '../../assets/dummy-data/searchData';
+import { brandsData, categoriesData, colorsData } from '../../assets/dummy-data/searchData';
 import AtpSearchColors from '../../components/search-colors/AtpSearchColors';
 
 export const AtpSearchPage = () => {
@@ -35,8 +34,28 @@ export const AtpSearchPage = () => {
     setAreFiltersOpen(!areFiltersOpen);
   };
 
+  const [params] = useSearchParams();
+
+  //const params = new URLSearchParams(location.search);
+
+  const colorsArray = params.get('color')?.toString().split(',');
+  const brandsArray = params.get('brand')?.toString().split(',');
+  const categoriesArray = params.get('category')?.toString().split(',');
+
+  const colorsFromUrl = colorsData.filter((color) =>
+    colorsArray ? colorsArray.includes(color.label.toLowerCase()) : ''
+  );
+  const brandsFromUrl = brandsData.filter((brand) =>
+    brandsArray ? brandsArray.includes(brand.id.toString()) : ''
+  );
+  const categoriesFromUrl = categoriesData.filter((category) =>
+    categoriesArray ? categoriesArray.includes(category.id.toString()) : ''
+  );
+  const filters = [...colorsFromUrl, ...brandsFromUrl, ...categoriesFromUrl];
+
   useEffect(() => {
-    const term = search.split('=')[1].split('&')[0];
+    const term = params.get('term');
+    // // const term = search.split('=')[1].split('&')[0];
 
     if (term) {
       const articles = ARTICLES_DATA.filter((article) =>
@@ -65,20 +84,6 @@ export const AtpSearchPage = () => {
 
   const [sortOrder, setSortOrder] = useState('latest-arrivals');
 
-  // useEffect(() => {
-  //   switch (sortOrder) {
-  //     case 'low to high':
-  //       setSearchResults(searchResults.sort((a, b) => a.price - b.price));
-  //       break;
-  //     case 'high to low':
-  //       setSearchResults(searchResults.sort((a, b) => b.price - a.price));
-  //       break;
-  //     default:
-  //       setSearchResults(searchResults);
-  //       break;
-  //   }
-  // }, [sortOrder]);
-
   return (
     <div className="atp-page atp-search">
       <div className="atp-search__mobile">
@@ -89,9 +94,11 @@ export const AtpSearchPage = () => {
               isSecondary
               onClick={toggleFilters}
             >
-              {strings.REFINE}
+              {strings.REFINE + ' (' + filters.length + ')'}
             </AtpButton>
-            {areFiltersOpen && <AtpSearchFilters toggleFilters={toggleFilters} />}
+            {areFiltersOpen && (
+              <AtpSearchFilters urlFilters={filters} toggleFilters={toggleFilters} />
+            )}
           </div>
           <div className="atp-search__mobile__buttons__field">
             <AtpButton
@@ -114,7 +121,7 @@ export const AtpSearchPage = () => {
       </div>
 
       <div className="atp-search__desktop">
-        <AtpSearchFilters toggleFilters={toggleFilters} />
+        <AtpSearchFilters urlFilters={filters} toggleFilters={toggleFilters} />
         <AtpSearchArticles term={term} articles={searchResults} />
         <div className="atp-search-sort-mobile">
           <AtpSearchSort

@@ -23,7 +23,6 @@ export const AtpSearchBox: React.ForwardRefRenderFunction<Ref, Props> = ({ onClo
     navigate(`/search?term=${term}`);
   };
 
-  //array - text, to
   return (
     <div ref={ref} className="atp-search-box">
       <ul className="atp-search-box__list">

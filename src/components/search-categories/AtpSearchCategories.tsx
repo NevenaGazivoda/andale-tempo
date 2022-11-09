@@ -47,7 +47,7 @@ export const AtpSearchCategories: FC<Props> = ({
           key={category.label}
           className={classNames(
             'atp-search-categories__text',
-            `${depthLevel > 0 && 'atp-search-categories__text__child'}`
+            depthLevel > 0 && 'atp-search-categories__text__child'
           )}
         >
           <div onClick={() => clickHandler(category)}>
@@ -55,7 +55,7 @@ export const AtpSearchCategories: FC<Props> = ({
               <HiOutlineMinus className="atp-search-categories__icon" />
             )}
             <AtpText className="atp-search-categories__text__label">{category.label}</AtpText>
-            {isMenuItem && <VscChevronRight className="atp-menu-mobile__link__icon" />}
+            {isMenuItem && <VscChevronRight className="atp-menu-mobile-slide__icon" />}
           </div>
           {filters &&
             filters.find((filter) => filter.label === category.label) &&

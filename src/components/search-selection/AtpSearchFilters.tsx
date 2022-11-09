@@ -3,7 +3,7 @@ import { strings } from '../../constants/strings';
 import './AtpSearchFilters.scss';
 import AtpButton from '../button/AtpButton';
 import { brandsData, categoriesData, colorsData } from '../../assets/dummy-data/searchData';
-import { createSearchParams, useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
 import AtpSearchCategories from '../search-categories/AtpSearchCategories';
 import AtpSearchTabs from '../search-tabs/AtpSearchTabs';
 import AtpSearchBrands from '../search-brands/AtpSearchBrands';
@@ -13,12 +13,13 @@ import AtpSearchColors from '../search-colors/AtpSearchColors';
 
 type Props = {
   toggleFilters: () => void;
+  urlFilters: Filter[];
 };
 
-export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
+export const AtpSearchFilters: FC<Props> = ({ toggleFilters, urlFilters }) => {
   const navigate = useNavigate();
 
-  const [filters, setFilters] = useState<Filter[]>([]);
+  const [filters, setFilters] = useState<Filter[]>(urlFilters);
 
   const addFilter = (selectedFilter: Filter) => {
     if (!filters.includes(selectedFilter)) {
@@ -34,10 +35,30 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
     setFilters([]);
   };
 
-  const filtersString = filters.map((element) => element.label.toLowerCase());
+  const colorsArray = filters
+    .filter((filter) => filter.type === 'color')
+    .map((filter) => filter.label.toLowerCase())
+    .join(',');
+
+  const categoriesArray = filters
+    .filter((filter) => filter.type === 'category')
+    .map((filter) => filter.id.toString())
+    .join(',');
+
+  const brandsArray = filters
+    .filter((filter) => filter.type === 'brand')
+    .map((filter) => filter.id.toString())
+    .join(',');
+
+  const [urlParams] = useSearchParams();
+
+  const term = urlParams.get('term')?.toString() || '';
 
   const params = {
-    term: filtersString,
+    term: term,
+    color: colorsArray,
+    brand: brandsArray,
+    category: categoriesArray,
   };
 
   const applyFilter = () => {
@@ -67,19 +88,21 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters }) => {
     if (!filterInArray) {
       addFilter(selectedFilter);
     } else {
-      for (const item of selectedFilter.children) {
-        removeFilter(item);
-        if (item.children) {
-          item.children.forEach((element) => {
-            removeFilter(element);
-          });
+      if (selectedFilter.children) {
+        for (const item of selectedFilter.children) {
+          removeFilter(item);
+          if (item.children) {
+            item.children.forEach((element) => {
+              removeFilter(element);
+            });
+          }
         }
       }
       if (parent) {
         setFilters((current) =>
           current.map((filter) => {
             if (parent.label === filter.label) {
-              const commonNumbers = current.filter((i) => filter.children.includes(i));
+              const commonNumbers = current.filter((i) => filter.children?.includes(i));
 
               if (commonNumbers.length > 1) {
                 return { ...filter, isHidden: true };

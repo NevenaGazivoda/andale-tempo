@@ -27,7 +27,7 @@ const MobileMenuItem: FC<MenuItemProps> = ({
   <>
     {isShoppingCart ? (
       <li
-        className="atp-menu-mobile__link atp-menu-mobile__link--capitalize atp-menu-mobile__link--top-margin"
+        className="atp-menu-mobile-slide atp-menu-mobile-slide--capitalize atp-menu-mobile-slide--top-margin"
         onClick={toggleMenu}
       >
         <AtpLink to="/shopping-cart">{text}</AtpLink>
@@ -35,16 +35,16 @@ const MobileMenuItem: FC<MenuItemProps> = ({
     ) : (
       <li
         className={classNames(
-          'atp-menu-mobile__link',
+          'atp-menu-mobile-slide',
           `${
-            isUppercase ? 'atp-menu-mobile__link--uppercase' : 'atp-menu-mobile__link--capitalize'
+            isUppercase ? 'atp-menu-mobile-slide--uppercase' : 'atp-menu-mobile-slide--capitalize'
           }`,
-          `${topMargin ? 'atp-menu-mobile__link--top-margin' : ''}`
+          `${topMargin ? 'atp-menu-mobile-slide--top-margin' : ''}`
         )}
         onClick={() => onSlideChange(text)}
       >
         {text}
-        {icon && <VscChevronRight className="atp-menu-mobile__link__icon" />}
+        {icon && <VscChevronRight className="atp-menu-mobile-slide__icon" />}
       </li>
     )}
   </>
