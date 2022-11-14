@@ -1,14 +1,18 @@
 @import '../../assets/styles/main.scss';
 
 .atp-link {
-  a {
+  color: $color-black;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: $font-size-base;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited {
     color: $color-black;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: $font-size-base;
-  }
-
-  :hover {
-    text-decoration: underline;
   }
 }

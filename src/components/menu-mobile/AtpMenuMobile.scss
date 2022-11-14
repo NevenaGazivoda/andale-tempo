@@ -26,3 +26,54 @@
     margin-left: $spacing-xl;
   }
 }
+
+.atp-menu-mobile-slide {
+  overflow-x: auto;
+  white-space: nowrap;
+  line-height: $spacing-2xl;
+  cursor: pointer;
+
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    font-size: $spacing-lg;
+    float: right;
+    height: $spacing-2xl;
+  }
+  &--capitalize {
+    a {
+      text-transform: capitalize;
+    }
+  }
+
+  &--top-margin {
+    margin-top: $spacing-2xl;
+  }
+
+  &--bottom-padding {
+    padding-bottom: $spacing-xl;
+  }
+
+  &--no-margin {
+    margin-left: -2rem;
+  }
+
+  &__button-in-array {
+    border-color: $color-light-grey;
+    width: auto;
+  }
+
+  &__designers {
+    margin-left: $spacing-sm;
+  }
+}
+
+.atp-menu-mobile-slide:hover {
+  text-decoration: underline;
+}
+
+.atp-menu-mobile-slide::-webkit-scrollbar {
+  display: none;
+}

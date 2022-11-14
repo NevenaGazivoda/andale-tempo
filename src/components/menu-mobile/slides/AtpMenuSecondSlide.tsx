@@ -6,6 +6,8 @@ import { strings } from '../../../constants/strings';
 import AtpButton from '../../button/AtpButton';
 import AtpLink from '../../link/AtpLink';
 import AtpSearchCategories from '../../search-categories/AtpSearchCategories';
+import AtpText from '../../text/AtpText';
+import AtpMenuCategories from './AtpMenuCategories';
 
 type Props = {
   onSlideChange: (slideCount: number, title?: string) => void;
@@ -42,21 +44,10 @@ export const AtpMenuSecondSlide: FC<Props> = ({ onSlideChange, slideCount, onClo
       <li className="atp-menu-mobile-slide">
         <AtpLink to="/">{strings.FEATURED + ' ' + strings.DESIGNERS}</AtpLink>
       </li>
-      <li className="atp-menu-mobile-slide atp-menu-mobile-slide--bottom-padding">
-        {featuredDesigners.map((designer) => (
-          <span
-            className="atp-menu-mobile-slide__designers"
-            key={designer}
-            onClick={() => handleClick(designer)}
-          >
-            <AtpButton isSecondary className="atp-menu-mobile-slide__button-in-array">
-              {designer}
-            </AtpButton>
-          </span>
-        ))}
-      </li>
-      <li className="atp-menu-mobile-slide--no-margin atp-menu-mobile-slide--top-margin">
-        <AtpSearchCategories categories={categoriesData} depthLevel={0} isMenuItem={true} />
+
+      <li className=" atp-menu-mobile-slide--top-margin">
+        <AtpMenuCategories categories={categoriesData} depthLevel={0} />
+        {/* <AtpSearchCategories categories={categoriesData} depthLevel={0} isMenuItem={true} /> */}
       </li>
     </>
   );

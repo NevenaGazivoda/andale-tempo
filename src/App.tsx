@@ -29,6 +29,10 @@ export const App = () => {
     };
   }, []);
 
+  // enum ROUTE_NAMES = {
+  //   home: '/'
+  // }
+
   return (
     <Router>
       <header>

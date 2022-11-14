@@ -1,0 +1,29 @@
+@import '../../../assets/styles/main.scss';
+
+.atp-menu-categories {
+  text-align: left;
+  overflow: auto;
+  max-height: 100vh;
+  margin-bottom: $spacing-sm;
+
+  &__child {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000000;
+  }
+
+  &__text {
+    text-transform: uppercase;
+    margin-bottom: 0;
+    line-height: $spacing-2xl;
+
+    &__label {
+      display: inline;
+    }
+
+    &__child {
+      margin-left: $spacing-sm;
+    }
+  }
+}

@@ -1,10 +1,12 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
+import React, { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import { VscChevronRight } from 'react-icons/vsc';
 import { brandsData } from '../../assets/dummy-data/searchData';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
+import AtpLink from '../link/AtpLink';
 import AtpSearchBrands from '../search-brands/AtpSearchBrands';
 import './AtpMenuMobile.scss';
-import AtpMenuFirstSlide from './slides/AtpMenuFirstSlide';
 import AtpMenuSecondSlide from './slides/AtpMenuSecondSlide';
 
 type Props = {
@@ -19,6 +21,106 @@ const usePrevious = (value: any) => {
 
   return ref.current;
 };
+
+type MenuItem = {
+  id: number;
+  text: string;
+  children?: ReactNode;
+  linkTo?: string;
+  topMargin?: boolean;
+};
+
+export const menuOptions: MenuItem[] = [
+  {
+    id: 0,
+    text: strings.MENSWEAR,
+    children: 'lol',
+  },
+  {
+    id: 1,
+    text: strings.WOMENSWEAR,
+  },
+  {
+    id: 2,
+    text: strings.EVERYTHING_ELSE,
+  },
+  {
+    id: 3,
+    text: strings.SHOPPING_CART,
+    linkTo: '/shopping-cart',
+    topMargin: true,
+  },
+  {
+    id: 4,
+    text: strings.WISHLIST,
+    linkTo: '#',
+  },
+  {
+    id: 5,
+    text: strings.LANGUAGE,
+    linkTo: '#',
+  },
+  {
+    id: 6,
+    text: strings.CUSTOMER_CARE,
+    linkTo: '#',
+    topMargin: true,
+  },
+  {
+    id: 7,
+    text: strings.LIVE_ASSISTANCE,
+    linkTo: '#',
+  },
+  {
+    id: 8,
+    text: strings.LOCATIONS,
+    linkTo: '#',
+  },
+];
+
+type MenuItemProps = {
+  text: string;
+  linkTo?: string;
+  children?: ReactNode;
+  onSlideChange: (menuOptionValue: string) => void;
+  toggleMenu: () => void;
+  topMargin: boolean;
+};
+
+const MobileMenuItem: FC<MenuItemProps> = ({
+  text,
+  linkTo,
+  topMargin,
+  children,
+  onSlideChange,
+  toggleMenu,
+}) => (
+  <>
+    {linkTo ? (
+      <li
+        className={classNames(
+          'atp-menu-mobile-slide atp-menu-mobile-slide--capitalize',
+          topMargin && 'atp-menu-mobile-slide--top-margin'
+        )}
+        onClick={toggleMenu}
+      >
+        <AtpLink to={linkTo}>{text}</AtpLink>
+      </li>
+    ) : (
+      <li
+        className={classNames(
+          'atp-menu-mobile-slide',
+          `${!linkTo ? 'atp-menu-mobile-slide--uppercase' : 'atp-menu-mobile-slide--capitalize'}`,
+          topMargin && 'atp-menu-mobile-slide--top-margin'
+        )}
+        onClick={() => onSlideChange(text)}
+      >
+        {text}
+        {children && <VscChevronRight className="atp-menu-mobile-slide__icon" />}
+      </li>
+    )}
+  </>
+);
 
 export const AtpMenuMobile: FC<Props> = ({ toggleMenu }) => {
   const [slideCounter, setSlideCounter] = useState(0);
@@ -51,22 +153,32 @@ export const AtpMenuMobile: FC<Props> = ({ toggleMenu }) => {
       </div>
 
       <ul className="atp-menu-mobile__list">
-        {slideCounter === 0 && (
-          <AtpMenuFirstSlide
+        {menuOptions.map((menuItem) => (
+          <MobileMenuItem
+            key={'mobile-menu-item' + menuItem.id}
+            {...menuItem}
+            topMargin={Boolean(menuItem.topMargin)}
+            onSlideChange={() => {
+              console.log('');
+            }}
             toggleMenu={toggleMenu}
-            onSlideChange={onSlideChange}
-            slideCount={slideCounter}
           />
-        )}
-        {slideCounter === 1 && (
-          <AtpMenuSecondSlide
-            onSlideChange={onSlideChange}
-            slideCount={slideCounter}
-            onCloseMenu={toggleMenu}
-          />
-        )}
+        ))}
 
-        {slideCounter === 2 && <AtpSearchBrands brands={brandsData} onCloseMenu={toggleMenu} />}
+        {/* component for sliding featured designers */}
+        {/* <li className="atp-menu-mobile-slide atp-menu-mobile-slide--bottom-padding">
+          {featuredDesigners.map((designer) => (
+            <span
+              className="atp-menu-mobile-slide__designers"
+              key={designer}
+              onClick={() => handleClick(designer)}
+            >
+              <AtpButton isSecondary className="atp-menu-mobile-slide__button-in-array">
+                {designer}
+              </AtpButton>
+            </span>
+          ))}
+        </li> */}
       </ul>
     </div>
   );
