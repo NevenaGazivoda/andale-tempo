@@ -1,19 +1,16 @@
 import classNames from 'classnames';
 import React, { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { VscChevronRight } from 'react-icons/vsc';
-import { brandsData } from '../../assets/dummy-data/searchData';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
 import AtpLink from '../link/AtpLink';
-import AtpSearchBrands from '../search-brands/AtpSearchBrands';
 import './AtpMenuMobile.scss';
-import AtpMenuSecondSlide from './slides/AtpMenuSecondSlide';
 
 type Props = {
   toggleMenu: () => void;
 };
 const usePrevious = (value: any) => {
-  const ref = useRef();
+  const ref = useRef() as React.MutableRefObject<undefined | string>;
 
   useEffect(() => {
     ref.current = value;
