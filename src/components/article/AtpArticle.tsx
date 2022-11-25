@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import './AtpArticle.scss';
-import AtpLink from '../../components/link/AtpLink';
+import AtpLink from '../link-atp/AtpLink';
 import AtpText from '../../components/text/AtpText';
 import AtpList from '../../components/list/AtpList';
 import AtpButton from '../../components/button/AtpButton';

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { categoriesData, featuredDesigners } from '../../../assets/dummy-data/searchData';
 import { strings } from '../../../constants/strings';
 import AtpButton from '../../button/AtpButton';
-import AtpLink from '../../link/AtpLink';
+import AtpLink from '../../link-atp/AtpLink';
 import AtpSearchCategories from '../../search-categories/AtpSearchCategories';
 import AtpText from '../../text/AtpText';
 import AtpMenuCategories from './AtpMenuCategories';

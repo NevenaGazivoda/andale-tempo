@@ -1,5 +1,5 @@
 import React from 'react';
-import AtpLink from '../../components/link/AtpLink';
+import AtpLink from '../../components/link-atp/AtpLink';
 import AtpText from '../../components/text/AtpText';
 import { strings } from '../../constants/strings';
 import './AtpNotFound.scss';

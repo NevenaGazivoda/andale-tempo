@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import AtpLink from '../../../components/link/AtpLink';
+import AtpLink from '../../../components/link-atp/AtpLink';
 import AtpPrice from '../../../components/price/AtpPrice';
 import AtpText from '../../../components/text/AtpText';
 import { strings } from '../../../constants/strings';

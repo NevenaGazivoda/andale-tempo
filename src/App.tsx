@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AtpNavbar } from './components/navbar/AtpNavbar';
+import { AtpNavbar } from './components/navbar-atp/AtpNavbar';
 import { AtpArticlePage } from './pages/article-page/AtpArticlePage';
-import Home from './pages/home/Home';
+import Home from './pages/home-page/Home';
 import AtpNotFound from './pages/page-not-found/AtpNotFound';
 import AtpFooter from './components/footer/AtpFooter';
 import { ARTICLES_DATA } from './assets/dummy-data/articlesData';

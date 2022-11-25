@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { strings } from '../../constants/strings';
-import AtpLink from '../link/AtpLink';
+import AtpLink from '../link-atp/AtpLink';
 import './AtpNavbar.scss';
 import { VscMenu, VscSearch } from 'react-icons/vsc';
 import { BsBag } from 'react-icons/bs';

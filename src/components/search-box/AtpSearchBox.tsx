@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AtpSearchBox.scss';
 import { strings } from '../../constants/strings';
 import AtpButton from '../button/AtpButton';
-import AtpLink from '../link/AtpLink';
+import AtpLink from '../link-atp/AtpLink';
 import { IoSearchOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
