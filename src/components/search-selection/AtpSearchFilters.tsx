@@ -55,10 +55,10 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters, urlFilters }) => {
   const term = urlParams.get('term')?.toString() || '';
 
   const params = {
-    term: term,
-    color: colorsArray,
-    brand: brandsArray,
-    category: categoriesArray,
+    ...(term && { term }),
+    ...(colorsArray.length && { color: colorsArray }),
+    ...(brandsArray.length && { brand: brandsArray }),
+    ...(categoriesArray.length && { category: categoriesArray }),
   };
 
   const applyFilter = () => {
