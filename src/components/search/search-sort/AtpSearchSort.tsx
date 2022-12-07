@@ -1,9 +1,9 @@
+import { sortOptions } from 'assets/dummy-data/searchData';
+import AtpButton from 'components/button/AtpButton';
+import { strings } from 'constants/strings';
 import React, { FC } from 'react';
-import { strings } from '../../constants/strings';
-import AtpButton from '../button/AtpButton';
-import './AtpSearchSort.scss';
 import { HiOutlineMinus } from 'react-icons/hi';
-import { sortOptions } from '../../assets/dummy-data/searchData';
+import './AtpSearchSort.scss';
 
 type SortItemProps = {
   text: string;

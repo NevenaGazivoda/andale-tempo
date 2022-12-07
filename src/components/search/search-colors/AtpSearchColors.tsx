@@ -1,6 +1,6 @@
+import { Filter } from 'models/filter.model';
 import React, { FC } from 'react';
 import './AtpSearchColors.scss';
-import { Filter } from '../../models/filter.model';
 
 type Props = {
   filters?: Filter[];

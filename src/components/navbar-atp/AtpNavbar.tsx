@@ -4,7 +4,7 @@ import AtpLink from '../link-atp/AtpLink';
 import './AtpNavbar.scss';
 import { VscMenu, VscSearch } from 'react-icons/vsc';
 import { BsBag } from 'react-icons/bs';
-import AtpSearchBox from '../search-box/AtpSearchBox';
+import AtpSearchBox from '../search/search-box/AtpSearchBox';
 import AtpMenuMobile from '../menu-mobile/AtpMenuMobile';
 
 type Props = {

@@ -1,15 +1,15 @@
+import { brandsData, categoriesData, colorsData } from 'assets/dummy-data/searchData';
+import AtpButton from 'components/button/AtpButton';
+import { strings } from 'constants/strings';
+import { Filter } from 'models/filter.model';
 import React, { FC, useState } from 'react';
-import { strings } from '../../constants/strings';
-import './AtpSearchFilters.scss';
-import AtpButton from '../button/AtpButton';
-import { brandsData, categoriesData, colorsData } from '../../assets/dummy-data/searchData';
-import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
-import AtpSearchCategories from '../search-categories/AtpSearchCategories';
-import AtpSearchTabs from '../search-tabs/AtpSearchTabs';
+import { useNavigate, useSearchParams, createSearchParams } from 'react-router-dom';
 import AtpSearchBrands from '../search-brands/AtpSearchBrands';
-import { Filter } from '../../models/filter.model';
-import AtpTabPane from '../search-tabs/AtpTabPane';
+import AtpSearchCategories from '../search-categories/AtpSearchCategories';
 import AtpSearchColors from '../search-colors/AtpSearchColors';
+import AtpSearchTabs from '../search-tabs/AtpSearchTabs';
+import AtpTabPane from '../search-tabs/AtpTabPane';
+import './AtpSearchFilters.scss';
 
 type Props = {
   toggleFilters: () => void;
@@ -120,7 +120,7 @@ export const AtpSearchFilters: FC<Props> = ({ toggleFilters, urlFilters }) => {
     if (!filterInArray?.children) {
       setFilters((current) =>
         current.map((filter) => {
-          if (filter.children == []) {
+          if (!filter.children) {
             return { ...filter, isHidden: false };
           }
           return filter;
