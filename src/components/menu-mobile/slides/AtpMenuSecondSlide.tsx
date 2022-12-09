@@ -3,7 +3,7 @@ import { VscChevronRight } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 import { categoriesData } from '../../../assets/dummy-data/searchData';
 import { strings } from '../../../constants/strings';
-import AtpLink from '../../link-atp/AtpLink';
+import AtpLink from '../../common/link-atp/AtpLink';
 import AtpMenuCategories from './AtpMenuCategories';
 
 type Props = {

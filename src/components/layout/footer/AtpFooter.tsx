@@ -1,5 +1,5 @@
 import React from 'react';
-import AtpText from '../text/AtpText';
+import AtpText from '../../common/text/AtpText';
 import './AtpFooter.scss';
 
 export const AtpFooter = () => {

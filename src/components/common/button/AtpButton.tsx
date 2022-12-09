@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import '../button/AtpButton.scss';
+import './AtpButton.scss';
 import classNames from 'classnames';
 
 type Props = PropsWithChildren<{

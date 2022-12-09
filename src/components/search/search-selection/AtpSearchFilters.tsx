@@ -1,5 +1,5 @@
 import { brandsData, categoriesData, colorsData } from 'assets/dummy-data/searchData';
-import AtpButton from 'components/button/AtpButton';
+import AtpButton from 'components/common/button/AtpButton';
 import { strings } from 'constants/strings';
 import { Filter } from 'models/filter.model';
 import React, { FC, useState } from 'react';

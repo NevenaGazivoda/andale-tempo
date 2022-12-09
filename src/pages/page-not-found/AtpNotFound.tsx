@@ -1,6 +1,6 @@
 import React from 'react';
-import AtpLink from '../../components/link-atp/AtpLink';
-import AtpText from '../../components/text/AtpText';
+import AtpLink from '../../components/common/link-atp/AtpLink';
+import AtpText from '../../components/common/text/AtpText';
 import { strings } from '../../constants/strings';
 import './AtpNotFound.scss';
 

@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import AtpText from '../text/AtpText';
+import AtpText from '../common/text/AtpText';
 import './AtpPrice.scss';
 import classNames from 'classnames';
 

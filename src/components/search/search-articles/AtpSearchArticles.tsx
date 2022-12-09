@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { strings } from '../../../constants/strings';
 import { Article } from '../../../models/article.model';
 import AtpArticleCard from '../../article-card/AtpArticleCard';
-import AtpText from '../../text/AtpText';
+import AtpText from '../../common/text/AtpText';
 import './AtpSearchArticles.scss';
 
 type Props = {

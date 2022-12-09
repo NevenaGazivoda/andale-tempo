@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { strings } from '../../constants/strings';
+import { strings } from '../../../constants/strings';
 import './AtpSelect.scss';
 
 type Props = {

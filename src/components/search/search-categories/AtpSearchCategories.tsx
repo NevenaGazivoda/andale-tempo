@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Category } from 'models/category.model';
 import './AtpSearchCategories.scss';
 import { HiOutlineMinus } from 'react-icons/hi';
-import AtpText from 'components/text/AtpText';
+import AtpText from 'components/common/text/AtpText';
 import classNames from 'classnames';
 import { categoriesData } from 'assets/dummy-data/searchData';
 import { Filter } from 'models/filter.model';

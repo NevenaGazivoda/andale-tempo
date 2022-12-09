@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { strings } from '../../constants/strings';
-import AtpLink from '../link-atp/AtpLink';
+import { strings } from '../../../constants/strings';
+import AtpLink from '../../common/link-atp/AtpLink';
 import './AtpNavbar.scss';
 import { VscMenu, VscSearch } from 'react-icons/vsc';
 import { BsBag } from 'react-icons/bs';
-import AtpSearchBox from '../search/search-box/AtpSearchBox';
-import AtpMenuMobile from '../menu-mobile/AtpMenuMobile';
+import AtpSearchBox from '../../search/search-box/AtpSearchBox';
+import AtpMenuMobile from '../../menu-mobile/AtpMenuMobile';
 
 type Props = {
   totalItems: number;

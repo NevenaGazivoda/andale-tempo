@@ -1,6 +1,6 @@
 import { ARTICLES_DATA } from 'assets/dummy-data/articlesData';
 import { colorsData, brandsData, categoriesData } from 'assets/dummy-data/searchData';
-import AtpButton from 'components/button/AtpButton';
+import AtpButton from 'components/common/button/AtpButton';
 import AtpSearchArticles from 'components/search/search-articles/AtpSearchArticles';
 import AtpSearchColors from 'components/search/search-colors/AtpSearchColors';
 import AtpSearchFilters from 'components/search/search-selection/AtpSearchFilters';

@@ -1,5 +1,5 @@
 import { sortOptions } from 'assets/dummy-data/searchData';
-import AtpButton from 'components/button/AtpButton';
+import AtpButton from 'components/common/button/AtpButton';
 import { strings } from 'constants/strings';
 import React, { FC } from 'react';
 import { HiOutlineMinus } from 'react-icons/hi';
