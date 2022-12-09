@@ -10,6 +10,7 @@ import { ARTICLES_DATA } from './assets/dummy-data/articlesData';
 import AtpShoppingCart from './pages/shopping-cart/AtpShoppingCart';
 import AtpSearchPage from './pages/search-page/AtpSearchPage';
 import ShoppingCartStore from './utilities/ShoppingCartStore';
+import AtpCartFloatingButton from './components/floating-button/AtpCartFloatingButton';
 
 export const App = () => {
   const shoppingStore = new ShoppingCartStore();
@@ -32,6 +33,8 @@ export const App = () => {
         <Route path="/search/:designer" element={<AtpSearchPage />} />
         <Route path="*" element={<AtpNotFound />} />
       </Routes>
+
+      <AtpCartFloatingButton store={shoppingStore} />
 
       <footer>
         <AtpFooter />

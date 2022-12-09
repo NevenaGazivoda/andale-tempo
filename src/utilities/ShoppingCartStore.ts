@@ -8,9 +8,9 @@ class ShoppingCartStore {
     makeObservable(this, {
       cart: observable,
       totalCartItems: computed,
+      totalSum: computed,
       addToCart: action,
       removeFromCart: action,
-      calculateTotalSum: action,
     });
   }
 
@@ -46,12 +46,13 @@ class ShoppingCartStore {
     window.dispatchEvent(new Event('storage'));
   };
 
-  calculateTotalSum = (cartItems: CartItem[]) =>
-    cartItems.reduce(
+  get totalSum() {
+    return this.cart.reduce(
       (accumulator: number, cartItem: CartItem) =>
         accumulator + (cartItem.newPrice ? cartItem.newPrice : cartItem.price),
       0
     );
+  }
 }
 
 export default ShoppingCartStore;

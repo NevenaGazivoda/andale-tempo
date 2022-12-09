@@ -55,7 +55,7 @@ export const AtpShoppingCart: FC<Props> = observer(({ store }) => {
                   {strings.ORDER_TOTAL}
                 </AtpText>
                 <AtpText className="atp-shopping__cart__total--price">
-                  ${store.calculateTotalSum(store.cart)} USD
+                  ${store.totalSum} USD
                 </AtpText>
               </b>
             </div>
