@@ -4,9 +4,8 @@ import AtpLink from '../link-atp/AtpLink';
 import './AtpNavbar.scss';
 import { VscMenu, VscSearch } from 'react-icons/vsc';
 import { BsBag } from 'react-icons/bs';
-import AtpSearchBox from '../search-box/AtpSearchBox';
+import { AtpSearchBox } from '../search-box/AtpSearchBox';
 import AtpMenuMobile from '../menu-mobile/AtpMenuMobile';
-import { AtpClassSearchBox } from '../search-box/AtpClassSearchBox';
 
 type Props = {
   totalItems: number;
@@ -51,7 +50,7 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
           {strings.SEARCH}
         </li>
       </ul>
-      {showSearch && wrapperRef && <AtpClassSearchBox ref={wrapperRef} onClose={toggleSearch} />}
+      {showSearch && wrapperRef && <AtpSearchBox ref={wrapperRef} onClose={toggleSearch} />}
 
       <ul className="navbar-list navbar-list--mobile">
         <li className="navbar-list__link" onClick={toggleMenu}>
