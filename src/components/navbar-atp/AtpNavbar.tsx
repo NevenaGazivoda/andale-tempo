@@ -6,12 +6,14 @@ import { VscMenu, VscSearch } from 'react-icons/vsc';
 import { BsBag } from 'react-icons/bs';
 import AtpSearchBox from '../search-box/AtpSearchBox';
 import AtpMenuMobile from '../menu-mobile/AtpMenuMobile';
+import ShoppingCartStore from '../../utilities/ShoppingCartStore';
+import { observer } from 'mobx-react-lite';
 
 type Props = {
-  totalItems: number;
+  store: ShoppingCartStore;
 };
 
-export const AtpNavbar: FC<Props> = ({ totalItems }) => {
+export const AtpNavbar: FC<Props> = observer(({ store }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -75,7 +77,7 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
         </li>
         <li className="navbar-list__link--noPadding">
           <AtpLink to="/shopping-cart">
-            {strings.SHOPPING_CART} ({totalItems})
+            {strings.SHOPPING_CART} ({store.totalCartItems})
           </AtpLink>
         </li>
       </ul>
@@ -85,13 +87,13 @@ export const AtpNavbar: FC<Props> = ({ totalItems }) => {
           <AtpLink to="/shopping-cart" className="navbar-list__link--icon-link">
             <div className="navbar-list__link__icon-wrapper">
               <BsBag className="navbar-list__link__mobile-icon" />
-              <span className="navbar-list__link__counter">{totalItems}</span>
+              <span className="navbar-list__link__counter">{store.totalCartItems}</span>
             </div>
           </AtpLink>
         </li>
       </ul>
     </nav>
   );
-};
+});
 
 export default AtpNavbar;
