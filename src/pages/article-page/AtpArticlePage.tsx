@@ -5,9 +5,14 @@ import { ARTICLES_DATA } from '../../assets/dummy-data/articlesData';
 import { useParams } from 'react-router-dom';
 import { Article } from '../../models/article.model';
 import { CartItem } from '../../models/cartItem.model';
-import { addToCart } from '../../utilities/shoppingCart';
+import ShoppingCartStore from '../../utilities/ShoppingCartStore';
+import { observer } from 'mobx-react-lite';
 
-export const AtpArticlePage: FC = () => {
+type Props = {
+  store: ShoppingCartStore;
+};
+
+export const AtpArticlePage: FC<Props> = observer(({ store }) => {
   const { articleCode } = useParams();
   const article = ARTICLES_DATA.find((article) => article.articleCode === articleCode) as Article;
 
@@ -24,7 +29,7 @@ export const AtpArticlePage: FC = () => {
   }, []);
 
   const handleAddToCart = (clickedItem: CartItem) => {
-    addToCart(clickedItem);
+    store.addToCart(clickedItem);
   };
 
   return (
@@ -35,6 +40,6 @@ export const AtpArticlePage: FC = () => {
       </div>
     </>
   );
-};
+});
 
 export default AtpArticlePage;

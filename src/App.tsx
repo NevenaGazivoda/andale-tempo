@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AtpNavbar } from './components/layout/navbar-atp/AtpNavbar';
@@ -8,26 +8,12 @@ import AtpNotFound from './pages/page-not-found/AtpNotFound';
 import AtpFooter from './components/layout/footer/AtpFooter';
 import { ARTICLES_DATA } from './assets/dummy-data/articlesData';
 import AtpShoppingCart from './pages/shopping-cart/AtpShoppingCart';
-import { Article } from './models/article.model';
 import AtpSearchPage from './pages/search-page/AtpSearchPage';
+import ShoppingCartStore from './utilities/ShoppingCartStore';
+import AtpCartFloatingButton from './components/floating-button/AtpCartFloatingButton';
 
 export const App = () => {
-  const cart = JSON.parse(localStorage.getItem('cart') || '[]') as Article[];
-  const [totalItems, setTotalItems] = useState(cart.length);
-
-  useEffect(() => {
-    window.localStorage.getItem('cart' || '[]');
-
-    const getTotalItems = () => {
-      setTotalItems((JSON.parse(localStorage.getItem('cart') || '[]') as Article[]).length);
-    };
-
-    window.addEventListener('storage', getTotalItems);
-
-    return () => {
-      window.removeEventListener('storage', getTotalItems);
-    };
-  }, []);
+  const shoppingStore = new ShoppingCartStore();
 
   // enum ROUTE_NAMES = {
   //   home: '/'
@@ -36,17 +22,19 @@ export const App = () => {
   return (
     <Router>
       <header>
-        <AtpNavbar totalItems={totalItems} />
+        <AtpNavbar store={shoppingStore} />
       </header>
 
       <Routes>
         <Route path="/" element={<Home articles={ARTICLES_DATA} />} />
-        <Route path="/article/:articleCode" element={<AtpArticlePage />} />
-        <Route path="/shopping-cart" element={<AtpShoppingCart />} />
+        <Route path="/article/:articleCode" element={<AtpArticlePage store={shoppingStore} />} />
+        <Route path="/shopping-cart" element={<AtpShoppingCart store={shoppingStore} />} />
         <Route path="/search" element={<AtpSearchPage />} />
         <Route path="/search/:designer" element={<AtpSearchPage />} />
         <Route path="*" element={<AtpNotFound />} />
       </Routes>
+
+      <AtpCartFloatingButton store={shoppingStore} />
 
       <footer>
         <AtpFooter />
