@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { Article } from '../../models/article.model';
-import AtpLink from '../link-atp/AtpLink';
+import AtpLink from '../common/link-atp/AtpLink';
 import AtpPrice from '../price/AtpPrice';
 import './AtpArticleCard.scss';
 

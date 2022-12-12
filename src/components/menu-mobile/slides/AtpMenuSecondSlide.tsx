@@ -1,12 +1,9 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { VscChevronRight } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
-import { categoriesData, featuredDesigners } from '../../../assets/dummy-data/searchData';
+import { categoriesData } from '../../../assets/dummy-data/searchData';
 import { strings } from '../../../constants/strings';
-import AtpButton from '../../button/AtpButton';
-import AtpLink from '../../link-atp/AtpLink';
-import AtpSearchCategories from '../../search-categories/AtpSearchCategories';
-import AtpText from '../../text/AtpText';
+import AtpLink from '../../common/link-atp/AtpLink';
 import AtpMenuCategories from './AtpMenuCategories';
 
 type Props = {
