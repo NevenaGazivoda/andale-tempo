@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import React, { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { VscChevronRight } from 'react-icons/vsc';
 import { strings } from '../../constants/strings';
-import AtpButton from '../button/AtpButton';
-import AtpLink from '../link-atp/AtpLink';
+import AtpButton from '../common/button/AtpButton';
+import AtpLink from '../common/link-atp/AtpLink';
 import './AtpMenuMobile.scss';
 
 type Props = {
