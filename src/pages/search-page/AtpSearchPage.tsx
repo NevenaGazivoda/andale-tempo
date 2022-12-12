@@ -55,17 +55,17 @@ export const AtpSearchPage = () => {
 
   useEffect(() => {
     const term = params.get('term');
-    // // const term = search.split('=')[1].split('&')[0];
 
     if (term) {
-      const articles = ARTICLES_DATA.filter((article) =>
-        article.brand.toLowerCase().startsWith(term)
-      ) as Article[];
+      // Simulate BE filtering delay
+      setTimeout(() => {
+        const articles = ARTICLES_DATA.filter((article) =>
+          article.brand.toLowerCase().startsWith(term)
+        ) as Article[];
 
-      setTerm(term);
-      localStorage.setItem('search', JSON.stringify(articles));
-
-      // setSearchResults(articles);
+        setTerm(term);
+        localStorage.setItem('search', JSON.stringify(articles));
+      }, 500);
     }
   }, [search]);
 
@@ -77,8 +77,6 @@ export const AtpSearchPage = () => {
 
       setTerm(designer);
       localStorage.setItem('search', JSON.stringify(articles));
-
-      // setSearchResults(articles);
     }
   }, [designer]);
 

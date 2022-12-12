@@ -4,7 +4,7 @@ import AtpLink from '../../common/link-atp/AtpLink';
 import './AtpNavbar.scss';
 import { VscMenu, VscSearch } from 'react-icons/vsc';
 import { BsBag } from 'react-icons/bs';
-import AtpSearchBox from 'components/search/search-box/AtpSearchBox';
+import {AtpSearchBox} from 'components/search/search-box/AtpSearchBox';
 import AtpMenuMobile from 'components/menu-mobile/AtpMenuMobile';
 import { observer } from 'mobx-react-lite';
 import ShoppingCartStore from 'utilities/ShoppingCartStore';
