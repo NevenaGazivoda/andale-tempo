@@ -1,0 +1,97 @@
+@import '../../../assets/styles/main.scss';
+
+.atp-carousel {
+  position: relative;
+  padding: $spacing-xl-bonus;
+  max-width: 41.875rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: $breakpoint-xl) {
+    display: none;
+  }
+}
+
+.atp-carousel__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.atp-carousel__viewport.is-draggable {
+  cursor: move;
+  cursor: grab;
+}
+
+.atp-carousel__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.atp-carousel__container {
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: -$spacing-sm;
+}
+
+.atp-carousel__slide {
+  position: relative;
+  min-width: 100%;
+  padding-left: $spacing-sm;
+}
+
+.atp-carousel__slide__inner {
+  position: relative;
+  overflow: hidden;
+  height: 50rem;
+
+  @media screen and (max-width: $breakpoint-md) {
+    height: 31.25rem;
+  }
+}
+
+.atp-carousel__slide__img {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  height: 100%;
+}
+
+.atp-carousel__dots {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding-top: $spacing-sm;
+}
+
+.atp-carousel__dot {
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  width: $spacing-2xl;
+  height: $spacing-2xl;
+  margin-right: $spacing-base;
+  margin-left: $spacing-base;
+  display: flex;
+  align-items: center;
+}
+
+.atp-carousel__dot:after {
+  background-color: #efefef;
+  width: 100%;
+  height: $spacing-xs;
+  content: '';
+}
+
+.atp-carousel__dot.is-selected:after {
+  background-color: $color-black;
+  opacity: 1;
+}

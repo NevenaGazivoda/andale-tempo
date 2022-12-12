@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import './AtpMenuCategories.scss';
 import { VscChevronRight } from 'react-icons/vsc';
 import { Category } from '../../../models/category.model';
-import AtpText from '../../text/AtpText';
+import AtpText from '../../common/text/AtpText';
 import classNames from 'classnames';
 type ItemsProps = {
   categories: Category[];

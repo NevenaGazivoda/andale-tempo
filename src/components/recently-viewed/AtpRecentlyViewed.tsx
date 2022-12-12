@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import AtpArticleCard from '../article-card/AtpArticleCard';
-import AtpText from '../text/AtpText';
+import AtpText from '../common/text/AtpText';
 import './AtpRecentlyViewed.scss';
 import { strings } from '../../constants/strings';
 import { Article } from '../../models/article.model';

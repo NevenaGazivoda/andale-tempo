@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
-import AtpButton from '../../components/button/AtpButton';
-import AtpLink from '../../components/link-atp/AtpLink';
-import AtpText from '../../components/text/AtpText';
+import AtpButton from '../../components/common/button/AtpButton';
+import AtpLink from '../../components/common/link-atp/AtpLink';
+import AtpText from '../../components/common/text/AtpText';
 import { strings } from '../../constants/strings';
 import { CartItem } from '../../models/cartItem.model';
 import ShoppingCartStore from '../../utilities/ShoppingCartStore';

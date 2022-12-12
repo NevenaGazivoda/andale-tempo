@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import AtpArticleCard from '../../components/article-card/AtpArticleCard';
-import AtpText from '../../components/text/AtpText';
+import AtpText from '../../components/common/text/AtpText';
 import { Article } from '../../models/article.model';
 import './Home.scss';
 
