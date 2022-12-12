@@ -1,0 +1,73 @@
+@import '../../../assets/styles/main.scss';
+
+.atp-search-filters-mobile {
+  position: fixed;
+  background: $color-white;
+  top: 0;
+  left: 0;
+  z-index: $zindex-menu;
+  height: 100%;
+  width: calc(100% - #{$spacing-2xl});
+  overflow: auto;
+  padding: $spacing-xl;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-xl;
+    overflow: auto;
+
+    &__remove-filter {
+      float: right;
+      margin-right: $spacing-sm;
+      color: grey;
+      padding-left: $spacing-sm;
+    }
+    &__refine {
+      color: $color-grey;
+      text-transform: uppercase;
+      margin: 0 auto;
+    }
+    &__button {
+      width: $spacing-4xl;
+      text-align: start;
+    }
+  }
+  &__header::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__apply {
+    position: fixed;
+    bottom: $spacing-xl-bonus;
+    left: 0;
+    width: 100%;
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    display: none;
+  }
+}
+
+.atp-search-filters-desktop {
+  display: none;
+  @media screen and (min-width: $breakpoint-md) {
+    display: block;
+    margin-left: $spacing-3xl;
+    height: 100%;
+    width: $spacing-10xl;
+
+    &__title {
+      padding: $spacing-xl 0;
+      font-weight: $bold-text;
+    }
+    &__link {
+      margin-bottom: $spacing-xs;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    &__link:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import AtpLink from '../../../components/link-atp/AtpLink';
+import AtpLink from '../../../components/common/link-atp/AtpLink';
 import AtpPrice from '../../../components/price/AtpPrice';
-import AtpText from '../../../components/text/AtpText';
+import AtpText from '../../../components/common/text/AtpText';
 import { strings } from '../../../constants/strings';
 import { CartItem } from '../../../models/cartItem.model';
 import './AtpCartItem.scss';

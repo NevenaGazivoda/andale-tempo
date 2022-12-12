@@ -1,0 +1,20 @@
+@import '../../../assets/styles/main.scss';
+
+.atp-search-tabs {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  padding-inline-start: 0;
+  margin-left: $spacing-xl;
+  margin-block-start: $spacing-xl;
+  margin-block-end: $spacing-xl;
+
+  &__link {
+    padding-right: $spacing-md;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  &__link:hover {
+    text-decoration: underline;
+  }
+}
