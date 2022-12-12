@@ -1,15 +1,15 @@
+import { ARTICLES_DATA } from 'assets/dummy-data/articlesData';
+import { colorsData, brandsData, categoriesData } from 'assets/dummy-data/searchData';
+import AtpButton from 'components/common/button/AtpButton';
+import AtpSearchArticles from 'components/search/search-articles/AtpSearchArticles';
+import AtpSearchColors from 'components/search/search-colors/AtpSearchColors';
+import AtpSearchFilters from 'components/search/search-selection/AtpSearchFilters';
+import AtpSearchSort from 'components/search/search-sort/AtpSearchSort';
+import { strings } from 'constants/strings';
+import { Article } from 'models/article.model';
 import React, { useEffect, useState } from 'react';
-import './AtpSearchPage.scss';
 import { useLocation, useParams, useSearchParams } from 'react-router-dom';
-import { AtpSearchFilters } from '../../components/search-selection/AtpSearchFilters';
-import AtpSearchArticles from '../../components/search-articles/AtpSearchArticles';
-import AtpSearchSort from '../../components/search-sort/AtpSearchSort';
-import { ARTICLES_DATA } from '../../assets/dummy-data/articlesData';
-import { Article } from '../../models/article.model';
-import AtpButton from '../../components/button/AtpButton';
-import { strings } from '../../constants/strings';
-import { brandsData, categoriesData, colorsData } from '../../assets/dummy-data/searchData';
-import AtpSearchColors from '../../components/search-colors/AtpSearchColors';
+import './AtpSearchPage.scss';
 
 export const AtpSearchPage = () => {
   const { search } = useLocation();

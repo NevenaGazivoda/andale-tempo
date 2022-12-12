@@ -1,22 +1,27 @@
+import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
-import AtpButton from '../../components/button/AtpButton';
-import AtpLink from '../../components/link-atp/AtpLink';
-import AtpText from '../../components/text/AtpText';
+import AtpButton from '../../components/common/button/AtpButton';
+import AtpLink from '../../components/common/link-atp/AtpLink';
+import AtpText from '../../components/common/text/AtpText';
 import { strings } from '../../constants/strings';
 import { CartItem } from '../../models/cartItem.model';
-import { calculateTotal, cart, removeFromCart } from '../../utilities/shoppingCart';
+import ShoppingCartStore from '../../utilities/ShoppingCartStore';
 import './AtpShoppingCart.scss';
 import AtpCartItem from './cart-item/AtpCartItem';
 
-export const AtpShoppingCart: FC = () => {
+type Props = {
+  store: ShoppingCartStore;
+};
+
+export const AtpShoppingCart: FC<Props> = observer(({ store }) => {
   const handleRemoveFromCart = (articleIndex: number) => {
-    removeFromCart(articleIndex);
+    store.removeFromCart(articleIndex);
   };
   const brands = ['OFF-WHITE', 'THEORY', 'MONCLER', 'AMIRI', 'BOSS', 'CARTIER'];
 
   return (
     <div className="atp-page atp-shopping">
-      {cart.length > 0 ? (
+      {store.cart.length > 0 ? (
         <>
           <div className="atp-shopping__cart">
             <AtpText>{strings.SHOPPING_CART}</AtpText>
@@ -30,7 +35,7 @@ export const AtpShoppingCart: FC = () => {
                 </AtpText>
               </div>
               <div className="atp-shopping__cart__list">
-                {cart.map((cartItem: CartItem, index: number) => (
+                {store.cart.map((cartItem: CartItem, index: number) => (
                   <div
                     key={cartItem.articleCode + index}
                     className="atp-shopping__cart__list__item"
@@ -50,7 +55,7 @@ export const AtpShoppingCart: FC = () => {
                   {strings.ORDER_TOTAL}
                 </AtpText>
                 <AtpText className="atp-shopping__cart__total--price">
-                  ${calculateTotal(cart)} USD
+                  ${store.totalSum} USD
                 </AtpText>
               </b>
             </div>
@@ -96,6 +101,6 @@ export const AtpShoppingCart: FC = () => {
       )}
     </div>
   );
-};
+});
 
 export default AtpShoppingCart;

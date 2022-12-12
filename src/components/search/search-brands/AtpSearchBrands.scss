@@ -1,0 +1,32 @@
+@import '../../../assets/styles/main.scss';
+
+.atp-search-brands {
+  text-align: left;
+  margin-left: $spacing-2xl;
+  overflow: auto;
+  max-height: 100vh;
+  margin-bottom: $spacing-sm;
+  &__label {
+    text-transform: uppercase;
+    margin-bottom: 0;
+    line-height: $spacing-2xl;
+  }
+  @media screen and (min-width: $breakpoint-md) {
+    margin-left: 0;
+    max-height: 100%;
+    margin-bottom: 0;
+    display: block;
+    height: 100%;
+    width: $spacing-10xl;
+
+    &__label {
+      margin-bottom: $spacing-xs;
+      text-transform: uppercase;
+      cursor: pointer;
+      line-height: $spacing-xl;
+    }
+    &__label:hover {
+      text-decoration: underline;
+    }
+  }
+}
