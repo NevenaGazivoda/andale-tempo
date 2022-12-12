@@ -24,12 +24,9 @@ export const AtpSearchCategories: FC<Props> = ({
   isMenuItem,
 }) => {
   const clickHandler = (category: Filter) => {
-    if (depthLevel > 0) {
-      const parent = findParent(categoriesData, category.id);
-      onFilterChange ? onFilterChange(category, parent) : null;
-    } else {
-      onFilterChange ? onFilterChange(category) : null;
-    }
+    if (!onFilterChange) return;
+
+    onFilterChange(category, depthLevel > 0 && findParent(categoriesData, category.id));
   };
 
   const findParent: any = (_categories: Category[], id: number, parent = null) => {
