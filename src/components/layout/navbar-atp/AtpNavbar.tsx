@@ -4,10 +4,11 @@ import AtpLink from '../../common/link-atp/AtpLink';
 import './AtpNavbar.scss';
 import { VscMenu, VscSearch } from 'react-icons/vsc';
 import { BsBag } from 'react-icons/bs';
-import {AtpSearchBox} from 'components/search/search-box/AtpSearchBox';
+import { AtpSearchBox } from 'components/search/search-box/AtpSearchBox';
 import AtpMenuMobile from 'components/menu-mobile/AtpMenuMobile';
 import { observer } from 'mobx-react-lite';
 import ShoppingCartStore from 'utilities/ShoppingCartStore';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   store: ShoppingCartStore;
@@ -16,6 +17,8 @@ type Props = {
 export const AtpNavbar: FC<Props> = observer(({ store }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+
+  const navigate = useNavigate();
 
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +55,9 @@ export const AtpNavbar: FC<Props> = observer(({ store }) => {
           {strings.SEARCH}
         </li>
       </ul>
-      {showSearch && wrapperRef && <AtpSearchBox ref={wrapperRef} onClose={toggleSearch} />}
+      {showSearch && wrapperRef && (
+        <AtpSearchBox ref={wrapperRef} onClose={toggleSearch} navigate={navigate} />
+      )}
 
       <ul className="navbar-list navbar-list--mobile">
         <li className="navbar-list__link" onClick={toggleMenu}>

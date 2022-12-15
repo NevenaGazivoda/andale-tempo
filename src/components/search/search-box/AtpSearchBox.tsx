@@ -6,9 +6,11 @@ import { strings } from '../../../constants/strings';
 import AtpButton from '../../common/button/AtpButton';
 import AtpLink from '../../common/link-atp/AtpLink';
 import debounce from 'utilities/debouncer';
+import { NavigateFunction } from 'react-router-dom';
 
 type Props = {
   onClose: () => void;
+  navigate: NavigateFunction;
 };
 
 type State = {
@@ -23,7 +25,7 @@ export const AtpSearchBox = React.forwardRef<HTMLDivElement, Props>(({ ...props 
     };
 
     debouncedChange = debounce((event: React.ChangeEvent<HTMLInputElement>) => {
-      location.replace(`/search?term=${event.target.value}`);
+      this.props.navigate(`/search?term=${event.target.value}`);
     }, 500);
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
